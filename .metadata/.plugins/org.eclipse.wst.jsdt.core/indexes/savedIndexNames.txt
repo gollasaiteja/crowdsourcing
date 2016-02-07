@@ -1,0 +1,9 @@
+INDEX VERSION 1.3+D:\source\academic\crowdsourcing\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1536053529.index
+3249818209.index
+3246549176.index
+3534838831.index
+3534838831.index
+2967091465.index
+4289873909.index
+2617557733.index
