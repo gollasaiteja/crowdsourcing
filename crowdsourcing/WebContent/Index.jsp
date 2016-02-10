@@ -1,4 +1,5 @@
-<%@ page language="java"%>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,6 +13,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<title>MTL Works</title>
 	</head>
+	
 	<body>
 		
 		<div class="container">
@@ -20,10 +22,10 @@
         		<nav>
           			<ul class="nav nav-justified">
             			<li class="active"><a href="#">Home</a></li>
-            			<li><a href="#">Projects</a></li>
-            			<li><a href="#">Clients</a></li>
-            			<li><a href="#">Workers</a></li>
-            			<li><a href="#">About</a></li>
+            			<li><a href="all-projects.jsp">Projects</a></li>
+            			<li><a href="all-clients.jsp">Clients</a></li>
+            			<li><a href="all-workers.jsp">Workers</a></li>
+            			<li><a href="about-mtlworks.jsp">About</a></li>
           			</ul>
         		</nav>
       		</div>
@@ -38,20 +40,20 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-lg-4">
-          <h2>Safari bug warning!</h2>
-          <p class="text-danger">As of v8.0, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          <h2>Hello from MTL Works!</h2>
+          <p >We aim to help people do their remote projects. You can explore the projects and features. </p>
+          <p></p>
+          <p><a class="btn btn-primary" href="#" role="button">Explore Projects &raquo;</a></p>
         </div>
         <div class="col-lg-4">
           <h2>Clients</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          <p>As client anyone can explore projects and post any new project. The clients track payments and rates projects after completion.</p>
+          <p><a class="btn btn-primary" href="signup-client.jsp" role="button">Sign Up as Client &raquo;</a></p>
        </div>
         <div class="col-lg-4">
           <h2>Workers</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          <p>As worker anyone can apply to projects. The client who posted the tasks approves one application.</p>
+          <p><a class="btn btn-primary" href="signup-worker.jsp" role="button">Sign Up as Worker &raquo;</a></p>
         </div>
       </div>
 
