@@ -55,7 +55,7 @@ public class SignupClient extends HttpServlet {
 			
 			if(result==1){
 				System.out.println("Data inserted succesfully.");
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("client-home.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
 	            requestDispatcher.forward(request, response);
 			}
 			else{
@@ -63,7 +63,7 @@ public class SignupClient extends HttpServlet {
 			}
 		}
 		catch(Exception e){
-			System.out.println("Someting went wrong");
+			System.out.println("Someting went wrong.");
 		}
 
 	}

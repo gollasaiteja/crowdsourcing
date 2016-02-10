@@ -12,7 +12,7 @@ public class DBConnection {
 	   	//  Database credentials
 	   	static final String USER = "root";
 	   	static final String PASS = "";
-	   	Connection conn =null;
+	   	Connection conn = null;
 	   	
 	   	public Connection DBConnect() throws ClassNotFoundException {
 	     
@@ -21,12 +21,10 @@ public class DBConnection {
 	   			// Register JDBC driver
 	   			Class.forName("com.mysql.jdbc.Driver");
 	   			
-	   			// Open a connection
+	   			// Establish connection
 	   			System.out.println("Connecting to database...");
 	   			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 	   			System.out.println("Connected.");
-	      
-	   			//STEP 4: Execute a query
 	   		}
 	   
 	   		catch(SQLException se){
