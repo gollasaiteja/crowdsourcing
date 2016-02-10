@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class SignupClient
- */
+*/
 
 @WebServlet("/SignupClient")
 public class SignupClient extends HttpServlet {
@@ -21,7 +21,7 @@ public class SignupClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	// Default constructor
-    public SignupClient() {
+    public SignupClient(){
         // TODO Auto-generated constructor stub
     }
 
@@ -54,7 +54,7 @@ public class SignupClient extends HttpServlet {
 			int result = pst.executeUpdate();
 			
 			if(result==1){
-				System.out.println("Data insertedsuccesfully");
+				System.out.println("Data inserted succesfully.");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("client-home.jsp");
 	            requestDispatcher.forward(request, response);
 			}

@@ -24,7 +24,7 @@ public class DBConnection {
 	   			// Open a connection
 	   			System.out.println("Connecting to database...");
 	   			conn = DriverManager.getConnection(DB_URL,USER,PASS);
-	   			System.out.println("DBConnected");
+	   			System.out.println("Connected.");
 	      
 	   			//STEP 4: Execute a query
 	   		}
@@ -43,7 +43,7 @@ public class DBConnection {
 	   			e.printStackTrace();
 	   		}
 	   		
-	   		System.out.println("Connection closed");	   	
+	   		System.out.println("Database connection terminated.");
 	   	}
 	   	
 }

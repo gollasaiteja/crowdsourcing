@@ -29,7 +29,7 @@
 			    	<h3 class="panel-title">Client Registration Form <small>MTL Works</small></h3>
 			 	</div>
 			 	<div class="panel-body">
-			    	<form role="form" method="post" action="DisplayUsers">
+			    	<form role="form" method="post" action="SignupClient">
 			    		<div class="row">
 			    			<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">
