@@ -6,10 +6,10 @@
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<title>MTL Works</title>
 	</head>
 	
@@ -17,8 +17,8 @@
 		  <div class="wrapper">
 		    <form class="form-signin">       
 		      <h2 class="form-signin-heading">Please login</h2>
-		      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-		      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
+		      <input type="text" class="form-control" name="username" placeholder="Your Email Address" required="true" autofocus="" />
+		      <input type="password" class="form-control" name="password" placeholder="Your Password" required="true"/>      
 		      <label class="checkbox">
 		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
 		      </label>

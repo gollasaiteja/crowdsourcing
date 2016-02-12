@@ -8,9 +8,9 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<title>MTL Works</title>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<title>MTL Works: New Client</title>
 	</head>
 	
 	<body>
@@ -63,19 +63,19 @@
 			    		</div>
 			    			
 						<div class="form-group">
-        					<input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
+        					<input type="text" class="form-control" name="card_holder_name" id="card-holder-name" placeholder="Card Holder's Name">
         				</div>
       
       					<div class="form-group">
-        					<input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
+        					<input type="text" class="form-control" name="card_number" id="card-number" placeholder="Debit/Credit Card Number">
         				</div>
 
 						<div class="form-group row">
-        					<label class="col-sm-5 control-label" for="expiry-month">Expiration Date</label>
+        					<label class="col-sm-5 control-label" for="expiry_month">Expiration Date</label>
         					<div class="col-sm-7">
           						<div class="row">
             						<div class="col-xs-6">
-              							<select class="form-control col-sm-3" name="expiry-month" id="expiry-month">
+              							<select class="form-control col-sm-3" name="expiry_month" id="expiry-month">
                 							<option>Month</option>
 							                <option value="01">Jan (01)</option>
 							                <option value="02">Feb (02)</option>
@@ -93,7 +93,7 @@
             						</div>
             						
             						<div class="col-xs-6">
-              							<select class="form-control col-sm-4" name="expiry-year">
+              							<select class="form-control col-sm-4" name="expiry_year">
 							                <option value="13">2013</option>
 							                <option value="14">2014</option>
 							                <option value="15">2015</option>
