@@ -29,24 +29,25 @@ public class SignupWorker extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
-		String email =request.getParameter("email");
-		String password =request.getParameter("password");
-		String skill =request.getParameter("skill");
-		String location =request.getParameter("location");
-		String experience =request.getParameter("experience");
-		String rate =request.getParameter("rate");
-		String availability =request.getParameter("availabilty");
-		String credibility =request.getParameter("credibility");
-		int type=0;
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String skill = request.getParameter("skill");
+		String location = request.getParameter("location");
+		String experience = request.getParameter("experience");
+		String rate = request.getParameter("rate");
+		String availability = request.getParameter("availabilty");
+		int type = 0;
+		System.out.println(firstName + lastName + email + password + skill + location + experience + rate + availability + type);
 		
 		try{
 			// Establish Connection
 			DBConnection obj = new DBConnection();
 			Connection conn = null;
 			conn = obj.DBConnect();
-			
+			System.out.println("1");
 			// SQL Query
-			PreparedStatement pst = conn.prepareStatement("insert into workers(first_name, last_name, email, password, skill, location, experience, rate, availability, credibility, type) values(?,?,?,?,?,?,?,?,?,?,?) ");
+			PreparedStatement pst = conn.prepareStatement("insert into test.workers(first_name, last_name, email, password, skill, location, experience, rate, availability, type)" + "values(?,?,?,?,?,?,?,?,?,?)");
+			System.out.println("2");
 			pst.setString(1,firstName);
 			pst.setString(2,lastName);
 			pst.setString(3,email);
@@ -56,8 +57,10 @@ public class SignupWorker extends HttpServlet {
 			pst.setString(7,experience);
 			pst.setString(8,rate);
 			pst.setString(9,availability);
-			pst.setString(10,credibility);
+			pst.setInt(10,type);
 			int result = pst.executeUpdate();
+			System.out.println("3");
+			System.out.println(result);
 			
 			if(result==1){
 				System.out.println("Data inserted succesfully.");
@@ -70,6 +73,7 @@ public class SignupWorker extends HttpServlet {
 		}
 		catch(Exception e){
 			System.out.println("Someting went wrong.");
+			System.err.println(e.getMessage());
 		}
 	}
 
