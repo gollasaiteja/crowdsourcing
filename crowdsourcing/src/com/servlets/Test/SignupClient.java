@@ -29,13 +29,15 @@ public class SignupClient extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
-		String email =request.getParameter("email");
-		String passwordConfirmation =request.getParameter("password_confirmation");
-		String cardHolderName =request.getParameter("card_holder_name");
-		String expiryMonth =request.getParameter("expiry_month");
-		String expiryYear =request.getParameter("expiry_year");
-		String cardNumber =request.getParameter("card_number");
-		String ccv =request.getParameter("ccv");
+		String email = request.getParameter("email");
+		String passwordConfirmation = request.getParameter("password_confirmation");
+		String cardHolderName = request.getParameter("card_holder_name");
+		String cardNumber = request.getParameter("card_number");
+		String expiryMonth = request.getParameter("expiry_month");
+		String expiryYear = request.getParameter("expiry_year");
+		String cvv = request.getParameter("cvv");
+		int type = 1;
+		System.out.println(firstName + lastName + email + passwordConfirmation + cardHolderName + cardNumber + expiryMonth + expiryYear + cvv + type);
 		
 		try{
 			// Establish Connection
@@ -43,8 +45,13 @@ public class SignupClient extends HttpServlet {
 			Connection conn = null;
 			conn = obj.DBConnect();
 			
+			System.out.println("1");
+			
 			// SQL Query
-			PreparedStatement pst = conn.prepareStatement("insert into clients(first_name, last_name, email, password_confirmation, card_holder_name, card_number, expiry_month, expiry_year, ccv, type) values(?,?,?,?,?,?,?,?,?,?) ");
+			PreparedStatement pst = conn.prepareStatement("insert into test.clients(first_name, last_name, email, password, card_holder_name, card_number, expiry_month, expiry_year, cvv, type)" + "values(?,?,?,?,?,?,?,?,?,?) ");
+			
+			System.out.println("2");
+			
 			pst.setString(1,firstName);
 			pst.setString(2,lastName);
 			pst.setString(3,email);
@@ -53,8 +60,12 @@ public class SignupClient extends HttpServlet {
 			pst.setString(6,cardNumber);
 			pst.setString(7,expiryMonth);
 			pst.setString(8,expiryYear);
-			pst.setString(9,ccv);
+			pst.setString(9,cvv);
+			pst.setInt(10,type);
 			int result = pst.executeUpdate();
+			
+			System.out.println("3");
+			System.out.println(result);
 			
 			if(result==1){
 				System.out.println("Data inserted succesfully.");
@@ -67,6 +78,7 @@ public class SignupClient extends HttpServlet {
 		}
 		catch(Exception e){
 			System.out.println("Someting went wrong.");
+			System.err.println(e.getMessage());
 		}
 	}
 

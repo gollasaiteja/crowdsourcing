@@ -16,7 +16,6 @@
 	</head>
 	
 	<body>
-		
 		<div class="container">
 			<div class="masthead">
         		<h1>MTL Works</h1>
