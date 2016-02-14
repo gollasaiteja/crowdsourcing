@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SignupClient
@@ -64,12 +66,17 @@ public class SignupClient extends HttpServlet {
 			pst.setInt(10,type);
 			int result = pst.executeUpdate();
 			
-			System.out.println("3");
-			System.out.println(result);
-			
 			if(result==1){
 				System.out.println("Data inserted succesfully.");
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
+	            HttpSession session = request.getSession();
+	            session.setAttribute("email", email);
+	            //setting session to expiry in 30 mins
+	            session.setMaxInactiveInterval(30*60);
+	            Cookie user = new Cookie("email", email);
+	            user.setMaxAge(30*60);
+	            response.addCookie(user);
+	            // response.sendRedirect("LoginSuccess.jsp");
+	            RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
 	            requestDispatcher.forward(request, response);
 			}
 			else{
