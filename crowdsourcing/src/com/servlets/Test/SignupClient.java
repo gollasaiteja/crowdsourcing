@@ -41,7 +41,7 @@ public class SignupClient extends HttpServlet {
 		int type = 1;
 		System.out.println(firstName + lastName + email + passwordConfirmation + cardHolderName + cardNumber + expiryMonth + expiryYear + cvv + type);
 		
-		try{
+		try{			
 			// Establish Connection
 			DBConnection obj = new DBConnection();
 			Connection conn = null;
