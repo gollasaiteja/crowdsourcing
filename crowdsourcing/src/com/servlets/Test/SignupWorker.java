@@ -30,12 +30,14 @@ public class SignupWorker extends HttpServlet {
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
 		String email =request.getParameter("email");
-		String passwordConfirmation =request.getParameter("password_confirmation");
-		String cardHolderName =request.getParameter("card_holder_name");
-		String expiryMonth =request.getParameter("expiry_month");
-		String expiryYear =request.getParameter("expiry_year");
-		String cardNumber =request.getParameter("card_number");
-		String ccv =request.getParameter("ccv");
+		String password =request.getParameter("password");
+		String skill =request.getParameter("skill");
+		String location =request.getParameter("location");
+		String experience =request.getParameter("experience");
+		String rate =request.getParameter("rate");
+		String availability =request.getParameter("availabilty");
+		String credibility =request.getParameter("credibility");
+		int type=0;
 		
 		try{
 			// Establish Connection
@@ -44,21 +46,22 @@ public class SignupWorker extends HttpServlet {
 			conn = obj.DBConnect();
 			
 			// SQL Query
-			PreparedStatement pst = conn.prepareStatement("insert into clients(first_name, last_name, email, password_confirmation, card_holder_name, card_number, expiry_month, expiry_year, ccv, type) values(?,?,?,?,?,?,?,?,?,?) ");
+			PreparedStatement pst = conn.prepareStatement("insert into workers(first_name, last_name, email, password, skill, location, experience, rate, availability, credibility, type) values(?,?,?,?,?,?,?,?,?,?,?) ");
 			pst.setString(1,firstName);
 			pst.setString(2,lastName);
 			pst.setString(3,email);
-			pst.setString(4,passwordConfirmation);
-			pst.setString(5,cardHolderName);
-			pst.setString(6,cardNumber);
-			pst.setString(7,expiryMonth);
-			pst.setString(8,expiryYear);
-			pst.setString(9,ccv);
+			pst.setString(4,password);
+			pst.setString(5,skill);
+			pst.setString(6,location);
+			pst.setString(7,experience);
+			pst.setString(8,rate);
+			pst.setString(9,availability);
+			pst.setString(10,credibility);
 			int result = pst.executeUpdate();
 			
 			if(result==1){
 				System.out.println("Data inserted succesfully.");
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-worker.jsp");
 	            requestDispatcher.forward(request, response);
 			}
 			else{
