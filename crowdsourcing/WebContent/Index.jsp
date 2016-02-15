@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -43,7 +42,7 @@
           <h2>Hello from MTL Works!</h2>
           <p >We aim to help people do their remote projects. You can explore the projects and features. </p>
           <p></p>
-          <p><a class="btn btn-primary" href="#" role="button">Explore Projects &raquo;</a></p>
+          <p><a class="btn btn-primary" href="browse-projects.jsp" role="button">Explore Projects &raquo;</a></p>
         </div>
         <div class="col-lg-4">
           <h2>Clients</h2>

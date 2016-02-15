@@ -10,10 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Login
- */
+**/
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -21,45 +23,72 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	// Default constructor
-    public Login() {
-        // TODO Auto-generated constructor stub
+    public Login(){
+        
     }
 
 	//@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String name =request.getParameter("name");
-		System.out.println(name);
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String type = request.getParameter("type");
 		
-		try{
-			
+		// Check console if everything is retrieved from previous page.
+		System.out.println(email + password + type);
+		
+		try{			
 			// Establish Connection
 			DBConnection obj = new DBConnection();
 			Connection conn = null;
 			conn = obj.DBConnect();
 			
 			// SQL Query
-			PreparedStatement pst = conn.prepareStatement("insert into sample(name) values(?) ");
-			pst.setString(1,name);
-			int result = pst.executeUpdate();
+			PreparedStatement login = conn.prepareStatement("select from test.users(email, password, type)" + "where(email=?,password=?,type=?) ");
 			
-			if(result==1){
-				System.out.println("Data insertedsuccesfully");
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("sample.jsp");
+			login.setString(1,email);
+			login.setString(2,password);
+			login.setString(3,type);
+			
+			ResultSet result = login.executeQuery();
+			
+			while(result.next())
+			{
+				String dbEmail = result.getString("email");
+				String dbPassword = result.getString("password");
+				String dbType = result.getString("type");
+				//request.setAttribute("email",formEmail );
+				
+				if(email == dbEmail && password == dbPassword && type == dbType){
+				// HTTP session
+				HttpSession session = request.getSession();
+	            session.setAttribute("email", email);
+	            session.setAttribute("password", password);
+	            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
+	            
+	            Cookie userEmail = new Cookie("email", email);
+	            Cookie userPassword = new Cookie("password", password);
+	            userEmail.setMaxAge(30*60);
+	            userPassword.setMaxAge(30*60);
+	            response.addCookie(userEmail);
+	            response.addCookie(userPassword);
+	            
+	            RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
 	            requestDispatcher.forward(request, response);
-			}
-			else{
-				System.out.println("Not inserted");
+				}
+				     
+				else{
+					System.out.println("Mismatch");
+				}
 			}
 		}
 		catch(Exception e){
-			System.out.println("Someting went wrong");
+			System.out.println("Something went wrong. Please contact system admin.");
+			System.err.println(e.getMessage());
 		}
-
 	}
 
 	// @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		doGet(request, response);
 	}
-	
 }
