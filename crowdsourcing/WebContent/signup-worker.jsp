@@ -8,6 +8,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/signup-worker.js"></script>
