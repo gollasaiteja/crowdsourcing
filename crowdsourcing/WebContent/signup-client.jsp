@@ -10,6 +10,24 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+		<script>
+		// just for the demos, avoids form submit
+				jQuery.validator.setDefaults({
+				  debug: true,
+				  success: "valid"
+				});
+				$( "#signupClient" ).validate({
+				  rules: {
+				    field: {
+				      required: true,
+				      creditcard: true
+				    }
+				  }
+				});
+		</script>
 		<title>MTL Works: New Client</title>
 	</head>
 	
@@ -29,7 +47,7 @@
 			    	<h3 class="panel-title">Client Registration Form <small>MTL Works</small></h3>
 			 	</div>
 			 	<div class="panel-body">
-			    	<form role="form" method="post" action="SignupClient">
+			    	<form role="form" method="post" id="signupClient" action="SignupClient">
 			    		<div class="row">
 			    			<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">

@@ -1,7 +1,6 @@
 package com.servlets.Test;
 import com.crowdsourcing.DBConnection.*;
 import java.sql.*;
-import java.sql.Connection;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -38,12 +37,11 @@ public class SignupWorker extends HttpServlet {
 		String availability = request.getParameter("availabilty");
 		int type = 0;
 		System.out.println(firstName + lastName + email + password + skill + location + experience + rate + availability + type);
-		
+		DBConnection obj = new DBConnection();
+		Connection conn = null;
 		try{
-			// Establish Connection
-			DBConnection obj = new DBConnection();
-			Connection conn = null;
 			conn = obj.DBConnect();
+			// Establish Connection
 			System.out.println("1");
 			// SQL Query
 			PreparedStatement pst = conn.prepareStatement("insert into test.workers(first_name, last_name, email, password, skill, location, experience, rate, availability, type)" + "values(?,?,?,?,?,?,?,?,?,?)");
@@ -61,11 +59,32 @@ public class SignupWorker extends HttpServlet {
 			int result = pst.executeUpdate();
 			System.out.println("3");
 			System.out.println(result);
+			try{
+				if(null != pst){
+					pst.close();
+				}
+			}
+			catch(SQLException e){
+				e.printStackTrace();
+			}
 			
+			PreparedStatement pst1 = conn.prepareStatement("insert into test.users( email, password, type)" + "values(?,?,?)");
+			pst1.setString(1,email);
+			pst1.setString(2,password); 
+			pst1.setInt(3,type);
+			result = pst1.executeUpdate();
+			try{
+				if(null != pst){
+					pst1.close();
+				}
+			}
+			catch(SQLException e){
+				e.printStackTrace();
+			}
 			if(result==1){
 				System.out.println("Data inserted succesfully.");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-worker.jsp");
-	            requestDispatcher.forward(request, response);
+				requestDispatcher.forward(request, response);
 			}
 			else{
 				System.out.println("Not inserted");
@@ -75,6 +94,17 @@ public class SignupWorker extends HttpServlet {
 			System.out.println("Someting went wrong.");
 			System.err.println(e.getMessage());
 		}
+		finally{
+			if(null != conn){
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
 	}
 
 	// @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

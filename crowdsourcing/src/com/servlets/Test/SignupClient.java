@@ -39,52 +39,58 @@ public class SignupClient extends HttpServlet {
 		String expiryYear = request.getParameter("expiry_year");
 		String cvv = request.getParameter("cvv");
 		int type = 1;
+		
+		// Check console if everything is retrieved from previous page.
 		System.out.println(firstName + lastName + email + passwordConfirmation + cardHolderName + cardNumber + expiryMonth + expiryYear + cvv + type);
 		
-		try{
+		try{			
 			// Establish Connection
 			DBConnection obj = new DBConnection();
 			Connection conn = null;
 			conn = obj.DBConnect();
 			
-			System.out.println("1");
-			
 			// SQL Query
-			PreparedStatement pst = conn.prepareStatement("insert into test.clients(first_name, last_name, email, password, card_holder_name, card_number, expiry_month, expiry_year, cvv, type)" + "values(?,?,?,?,?,?,?,?,?,?) ");
+			PreparedStatement sognupClient = conn.prepareStatement("insert into test.clients(first_name, last_name, email, password, card_holder_name, card_number, expiry_month, expiry_year, cvv, type)" + "values(?,?,?,?,?,?,?,?,?,?) ");
 			
-			System.out.println("2");
-			
-			pst.setString(1,firstName);
-			pst.setString(2,lastName);
-			pst.setString(3,email);
-			pst.setString(4,passwordConfirmation);
-			pst.setString(5,cardHolderName);
-			pst.setString(6,cardNumber);
-			pst.setString(7,expiryMonth);
-			pst.setString(8,expiryYear);
-			pst.setString(9,cvv);
-			pst.setInt(10,type);
-			int result = pst.executeUpdate();
+			sognupClient.setString(1,firstName);
+			sognupClient.setString(2,lastName);
+			sognupClient.setString(3,email);
+			sognupClient.setString(4,passwordConfirmation);
+			sognupClient.setString(5,cardHolderName);
+			sognupClient.setString(6,cardNumber);
+			sognupClient.setString(7,expiryMonth);
+			sognupClient.setString(8,expiryYear);
+			sognupClient.setString(9,cvv);
+			sognupClient.setInt(10,type);
+			int result = sognupClient.executeUpdate();
 			
 			if(result==1){
 				System.out.println("Data inserted succesfully.");
-	            HttpSession session = request.getSession();
+	            
+				// HTTP session
+				HttpSession session = request.getSession();
 	            session.setAttribute("email", email);
-	            //setting session to expiry in 30 mins
-	            session.setMaxInactiveInterval(30*60);
-	            Cookie user = new Cookie("email", email);
-	            user.setMaxAge(30*60);
-	            response.addCookie(user);
-	            // response.sendRedirect("LoginSuccess.jsp");
+	            session.setAttribute("user", firstName);
+	            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
+	            
+	            Cookie userEmail = new Cookie("email", email);
+	            Cookie userFirst = new Cookie("user", firstName);
+	            userEmail.setMaxAge(30*60);
+	            userFirst.setMaxAge(30*60);
+	            response.addCookie(userEmail);
+	            response.addCookie(userFirst);
+	            
 	            RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
 	            requestDispatcher.forward(request, response);
 			}
 			else{
-				System.out.println("Not inserted");
+				System.out.println("Database operation unsuccessful.");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("registration-error.jsp");
+	            requestDispatcher.forward(request, response);
 			}
 		}
 		catch(Exception e){
-			System.out.println("Someting went wrong.");
+			System.out.println("Something went wrong. Please contact system admin.");
 			System.err.println(e.getMessage());
 		}
 	}
