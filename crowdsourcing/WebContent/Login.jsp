@@ -20,11 +20,13 @@
 		      <h2 class="form-signin-heading">MTL Works</h2>
 		      <input type="text" class="form-control" name="email" placeholder="Email Address" required="true" autofocus="" />
 		      <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
-		      <input type="hidden" name="option" value="" id="btn-input" />
-				<div class="btn-group" data-toggle="buttons-radio">  
-				  <button id="btn-one" type="button" data-toggle="button" name="type" value="1" class="btn btn-secondary">I'm a Client</button>
-				  <button id="btn-two" type="button" data-toggle="button" name="type" value="0" class="btn btn-secondary">I'm a Freelancer</button>
+		      
+		      <input name="type" type="hidden" id="alignment" value="" />
+				<div class="btn-group alignment" data-toggle="buttons-checkbox">
+				    <button type="button" class="btn" data-value="1">Client</button>
+				    <button type="button" class="btn" data-value="0">Worker</button>
 				</div>
+		      
 		      <label class="checkbox">
 		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
 		      </label>

@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
 			conn = obj.DBConnect();
 			
 			// SQL Query
-			PreparedStatement login = conn.prepareStatement("select from test.users(email, password, type)" + "where(email=?,password=?,type=?) ");
+			PreparedStatement login = conn.prepareStatement("select from test.users(email, password, type)" + "where(email=?,password=?,type=?)");
 			
 			login.setString(1,email);
 			login.setString(2,password);

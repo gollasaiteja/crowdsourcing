@@ -1,15 +1,9 @@
+$(".alignment .btn").click(function() {
+    // whenever a button is clicked, set the hidden helper
+    $("#alignment").val($(this).text());
+});
 
-$('.btn-group').button();
-
-var btns = ['btn-one', 'btn-two'];
-var input = document.getElementById('btn-input');
-for(var i = 0; i < btns.length; i++) {
-  document.getElementById(btns[i]).addEventListener('click', function() {
-    input.value = this.value;
-  });
-}
-
-function workerRegistration() {
+function workerRegistration(){
 	var hasErrors = false;
 	var emailId = document.getElementById("email").value;
 	if(emailId.indexOf("@") == -1 || emailId.indexOf(".") == -1){
@@ -21,9 +15,11 @@ function workerRegistration() {
 	else return true;
 }
 
+// Duplicate email check for worker
 $(document).ready(function(){
 	$("#email").blur(validateEmail);
-	});
+});
+
 function emailValidationSuccess(resp){
 	if(!resp){
 		$("#email").css("border-color","red")
@@ -32,16 +28,47 @@ function emailValidationSuccess(resp){
 		$("#email").css("border-color","black")
 	}
 }
+
 function emailValidationFailure(resp){
 	console.log(resp);
 }
+
 function validateEmail(evt){
-		$.ajax({
-			  url: 'EmailValidationServlet',
-			  data: {
-				'email' :this.value  
-			  },
-			  success: emailValidationSuccess,
-			  failure: emailValidationFailure
-			});
+	$.ajax({
+		url: 'EmailValidationServlet',
+		data: {
+			'email' :this.value  
+		},
+		success: emailValidationSuccess,
+		failure: emailValidationFailure
+	});
+}
+
+//Duplicate email check for client
+$(document).ready(function(){
+	$("#email").blur(validateEmail);
+});
+
+function emailValidationSuccess(resp){
+	if(!resp){
+		$("#email").css("border-color","red")
+	}
+	else {
+		$("#email").css("border-color","black")
+	}
+}
+
+function emailValidationFailure(resp){
+	console.log(resp);
+}
+
+function validateEmail(evt){
+	$.ajax({
+		url: 'EmailValidationServlet',
+		data: {
+			'email' :this.value  
+		},
+		success: emailValidationSuccess,
+		failure: emailValidationFailure
+	});
 }

@@ -64,7 +64,7 @@
 			    		</div>
 
 			    		<div class="form-group">
-			    			<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+			    			<input type="email" name="email" id="clientEmail" class="form-control input-sm" placeholder="Email Address">
 			    		</div>
 
 			    		<div class="row">

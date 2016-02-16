@@ -1,7 +1,6 @@
 package com.servlets.Test;
 import com.crowdsourcing.DBConnection.*;
 import java.sql.*;
-import java.sql.Connection;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -50,21 +49,35 @@ public class SignupClient extends HttpServlet {
 			conn = obj.DBConnect();
 			
 			// SQL Query
-			PreparedStatement sognupClient = conn.prepareStatement("insert into test.clients(first_name, last_name, email, password, card_holder_name, card_number, expiry_month, expiry_year, cvv, type)" + "values(?,?,?,?,?,?,?,?,?,?) ");
+			PreparedStatement signupClient = conn.prepareStatement("insert into test.clients(first_name, last_name, email, password, card_holder_name, card_number, expiry_month, expiry_year, cvv, type)" + "values(?,?,?,?,?,?,?,?,?,?) ");
 			
-			sognupClient.setString(1,firstName);
-			sognupClient.setString(2,lastName);
-			sognupClient.setString(3,email);
-			sognupClient.setString(4,passwordConfirmation);
-			sognupClient.setString(5,cardHolderName);
-			sognupClient.setString(6,cardNumber);
-			sognupClient.setString(7,expiryMonth);
-			sognupClient.setString(8,expiryYear);
-			sognupClient.setString(9,cvv);
-			sognupClient.setInt(10,type);
-			int result = sognupClient.executeUpdate();
+			signupClient.setString(1,firstName);
+			signupClient.setString(2,lastName);
+			signupClient.setString(3,email);
+			signupClient.setString(4,passwordConfirmation);
+			signupClient.setString(5,cardHolderName);
+			signupClient.setString(6,cardNumber);
+			signupClient.setString(7,expiryMonth);
+			signupClient.setString(8,expiryYear);
+			signupClient.setString(9,cvv);
+			signupClient.setInt(10,type);
+			int result1 = signupClient.executeUpdate();
 			
-			if(result==1){
+			PreparedStatement insertUser = conn.prepareStatement("insert into test.users( email, password, type)" + "values(?,?,?)");
+			insertUser.setString(1,email);
+			insertUser.setString(2,passwordConfirmation); 
+			insertUser.setInt(3,type);
+			int result2 = insertUser.executeUpdate();
+			try{
+				if(null != insertUser){
+					insertUser.close();
+				}
+			}
+			catch(SQLException e){
+				e.printStackTrace();
+			}
+			
+			if(result1 == 1 && result2 == 1){
 				System.out.println("Data inserted succesfully.");
 	            
 				// HTTP session

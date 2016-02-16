@@ -29,7 +29,7 @@
 		String sessionID = null;
 		Cookie[] cookies = request.getCookies();
 		
-		if(cookies !=null){
+		if(cookies != null){
 			for(Cookie cookie : cookies){
 		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
 		    	if(cookie.getName().equals("user")) userFirst = cookie.getValue();
