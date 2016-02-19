@@ -26,7 +26,12 @@
 				    <button type="button" class="btn" data-value="1">Client</button>
 				    <button type="button" class="btn" data-value="0">Worker</button>
 				</div>
-		      
+		      <script>
+		      	$(".alignment .btn").click(function() {
+		    		// whenever a button is clicked, set the hidden helper
+		    	    $("#alignment").val($(this).text());
+		    	});
+		      </script>
 		      <label class="checkbox">
 		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
 		      </label>

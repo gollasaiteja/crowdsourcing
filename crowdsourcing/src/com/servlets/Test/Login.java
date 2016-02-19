@@ -31,7 +31,11 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String type = request.getParameter("type");
+		String userType = request.getParameter("type");
+		
+		String type = "1";
+		if(userType == "Client"){type = "1";}
+		else{type = "0";}
 		
 		// Check console if everything is retrieved from previous page.
 		System.out.println(email + password + type);
@@ -56,24 +60,23 @@ public class Login extends HttpServlet {
 				String dbEmail = result.getString("email");
 				String dbPassword = result.getString("password");
 				String dbType = result.getString("type");
-				//request.setAttribute("email",formEmail );
 				
 				if(email == dbEmail && password == dbPassword && type == dbType){
-				// HTTP session
-				HttpSession session = request.getSession();
-	            session.setAttribute("email", email);
-	            session.setAttribute("password", password);
-	            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
-	            
-	            Cookie userEmail = new Cookie("email", email);
-	            Cookie userPassword = new Cookie("password", password);
-	            userEmail.setMaxAge(30*60);
-	            userPassword.setMaxAge(30*60);
-	            response.addCookie(userEmail);
-	            response.addCookie(userPassword);
-	            
-	            RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
-	            requestDispatcher.forward(request, response);
+					// HTTP session
+					HttpSession session = request.getSession();
+		            session.setAttribute("email", email);
+		            session.setAttribute("password", password);
+		            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
+		            
+		            Cookie userEmail = new Cookie("email", email);
+		            Cookie userPassword = new Cookie("password", password);
+		            userEmail.setMaxAge(30*60);
+		            userPassword.setMaxAge(30*60);
+		            response.addCookie(userEmail);
+		            response.addCookie(userPassword);
+		            
+		            RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
+		            requestDispatcher.forward(request, response);
 				}
 				     
 				else{

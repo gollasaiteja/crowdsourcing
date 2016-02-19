@@ -32,7 +32,7 @@
       <!-- Jumbotron -->
       <div class="jumbotron">
       	<h1>Let's do it together!</h1>
-        <p class="lead">Montreal Works is a great place to get your works done.</p>
+        <p class="lead">MTL Works is a great place to get your works done.</p>
         <p><a class="btn btn-lg btn-success" href="login.jsp" role="button">Log in</a></p>
       </div>
 
