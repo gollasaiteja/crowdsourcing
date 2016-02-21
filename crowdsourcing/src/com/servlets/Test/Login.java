@@ -24,7 +24,7 @@ public class Login extends HttpServlet {
     
 	// Default constructor
     public Login(){
-        
+    	
     }
 
 	//@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,9 +33,9 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		String userType = request.getParameter("type");
 		
-		String type = "1";
-		if(userType == "Client"){type = "1";}
-		else{type = "0";}
+		System.out.println(userType);
+		String type = "NULL";
+		type = userType;
 		
 		// Check console if everything is retrieved from previous page.
 		System.out.println(email + password + type);
@@ -46,8 +46,12 @@ public class Login extends HttpServlet {
 			Connection conn = null;
 			conn = obj.DBConnect();
 			
+			
+			
+			
+			
 			// SQL Query
-			PreparedStatement login = conn.prepareStatement("select from test.users(email, password, type)" + "where(email=?,password=?,type=?)");
+			PreparedStatement login = conn.prepareStatement(" select * from test.users where email=? and password=? and type=? ");
 			
 			login.setString(1,email);
 			login.setString(2,password);
@@ -61,8 +65,11 @@ public class Login extends HttpServlet {
 				String dbPassword = result.getString("password");
 				String dbType = result.getString("type");
 				
-				if(email == dbEmail && password == dbPassword && type == dbType){
+				if(dbEmail!= null && dbPassword!= null && dbType!= null){
 					// HTTP session
+					System.out.println(email + password + type);
+					System.out.println(dbEmail + dbPassword + dbType);
+					
 					HttpSession session = request.getSession();
 		            session.setAttribute("email", email);
 		            session.setAttribute("password", password);
@@ -75,12 +82,22 @@ public class Login extends HttpServlet {
 		            response.addCookie(userEmail);
 		            response.addCookie(userPassword);
 		            
-		            RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
-		            requestDispatcher.forward(request, response);
+		            String homeType;
+		            homeType = type;
+		            if(type == "1"){
+		            	RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
+		            	requestDispatcher.forward(request, response);
+		            }
+		            else{
+		            	RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-worker.jsp");
+		            	requestDispatcher.forward(request, response);
+		            }
 				}
 				     
 				else{
 					System.out.println("Mismatch");
+					System.out.println(dbEmail + dbPassword + dbType);
+					System.out.println(email + password + type);
 				}
 			}
 		}

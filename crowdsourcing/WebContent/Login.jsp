@@ -20,18 +20,12 @@
 		      <h2 class="form-signin-heading">MTL Works</h2>
 		      <input type="text" class="form-control" name="email" placeholder="Email Address" required="true" autofocus="" />
 		      <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
-		      
-		      <input name="type" type="hidden" id="alignment" value="" />
-				<div class="btn-group alignment" data-toggle="buttons-checkbox">
-				    <button type="button" class="btn" data-value="1">Client</button>
-				    <button type="button" class="btn" data-value="0">Worker</button>
-				</div>
-		      <script>
-		      	$(".alignment .btn").click(function() {
-		    		// whenever a button is clicked, set the hidden helper
-		    	    $("#alignment").val($(this).text());
-		    	});
-		      </script>
+		      <label for="client"> 
+		      	<input type="radio" checked="checked" name="type" value="1" id="client" />I'm a Client
+		      </label><br />
+			  <label for="worker">
+			  	<input type="radio" name="type" value="0" id="worker" />I'm a Freelancer
+			  </label><br />
 		      <label class="checkbox">
 		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
 		      </label>
