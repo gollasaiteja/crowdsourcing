@@ -17,7 +17,7 @@
 		<%
 		String emailAtt = null; String firstAtt = null;
 		if(session.getAttribute("email") == null || session.getAttribute("user") == null){
-		   response.sendRedirect("login.jsp");
+		   response.sendRedirect("Login.jsp");
 		}
 		else{ 
 			emailAtt = (String) session.getAttribute("email");
