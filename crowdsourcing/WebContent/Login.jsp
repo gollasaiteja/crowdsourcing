@@ -21,10 +21,10 @@
 		      <input type="text" class="form-control" name="email" placeholder="Email Address" required="true" autofocus="" />
 		      <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
 		      <label for="client"> 
-		      	<input type="radio" checked="checked" name="type" value="1" id="client" />I'm a Client
+		      	<input type="radio" checked="checked" name="type" value="1" id="client" />  I'm a Client
 		      </label><br />
 			  <label for="worker">
-			  	<input type="radio" name="type" value="0" id="worker" />I'm a Freelancer
+			  	<input type="radio" name="type" value="0" id="worker" />  I'm a Freelancer
 			  </label><br />
 		      <label class="checkbox">
 		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
