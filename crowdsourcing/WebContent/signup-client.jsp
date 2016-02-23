@@ -15,19 +15,53 @@
 		<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
 		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 		<script>
-		// just for the demos, avoids form submit
-				jQuery.validator.setDefaults({
-				  debug: true,
-				  success: "valid"
-				});
-				$( "#signupClient" ).validate({
-				  rules: {
-				    field: {
-				      required: true,
-				      creditcard: true
-				    }
-				  }
-				});
+		$(document).ready(function () {
+
+		    $('#signupClient').validate({ // initialize the plugin
+		        rules: {
+		        	first_name: {
+		                required: true,
+		               		     },
+		        	last_name: {
+		                required: true,
+		               		     },
+		             password: {
+		  		        required: true,
+		  		        minlength: 6,
+		  		               	 },
+		        	card_number: {
+		                required: true,
+		                maxlength: 16,
+		                regex: "(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})",
+		            //http://www.regular-expressions.info/creditcard.html
+		         		        },
+		        	card_holder_name: {
+		                required: true,
+		               		     },
+		             cvv: {
+		  		         required: true,
+		  		         maxlength: 3,
+		  		               	 }             		     
+		        },
+		            
+		         messages: {
+		        	
+		        	 card_holder_name: {
+			                required: "Please enter your card holder name",
+			               		     },
+			             cvv: {
+			  		         required: "Please enter your cvv number",
+			  		         maxlength:"Please enter 3 digit number",
+			  		               	 }, 
+		        	 card_number: {
+		                required: "Please enter your card number",
+		                maxlength: "Please enter 16 digit card number",
+		                regex: "Invalid credit card number",
+		            }
+		        }
+		    })
+		    });
+	
 		</script>
 		<title>MTL Works: New Client</title>
 	</head>
