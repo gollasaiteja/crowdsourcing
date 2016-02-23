@@ -15,16 +15,18 @@
 	</head>
 	<body>
 		<%
-		String emailAtt = null; String firstAtt = null;
-		if(session.getAttribute("email") == null || session.getAttribute("user") == null){
-		   response.sendRedirect("Login.jsp");
+		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
+		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
+		   response.sendRedirect("login.jsp");
 		}
-		else{ 
+		else{
 			emailAtt = (String) session.getAttribute("email");
-			firstAtt = (String) session.getAttribute("user");
+			passwordAtt = (String) session.getAttribute("password");
+			firstAtt = (String) session.getAttribute("userFirst");
 		}
 		
 		String userEmail = null;
+		String userPassword = null;
 		String userFirst = null;
 		String sessionID = null;
 		Cookie[] cookies = request.getCookies();
@@ -32,7 +34,8 @@
 		if(cookies != null){
 			for(Cookie cookie : cookies){
 		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    	if(cookie.getName().equals("user")) userFirst = cookie.getValue();
+		    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
+		    	if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}
 		}
@@ -48,18 +51,17 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand" href="Index.jsp">MTL Works</a>
+		          <a class="navbar-brand" href="index.jsp">MTL Works</a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="Index.jsp">Home</a></li>
+		            <li class="active"><a href="index.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
             		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="../navbar/">Default</a></li>
 		            <li><a href="../navbar-static-top/"><%=userEmail %></a></li>
 		            <li class="active"><a href="./"><%=userFirst %> <span class="sr-only">(current)</span></a></li>
 		          </ul>

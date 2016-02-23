@@ -6,9 +6,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SignupWorker
@@ -56,9 +58,10 @@ public class SignupWorker extends HttpServlet {
 			pst.setString(8,rate);
 			pst.setString(9,availability);
 			pst.setInt(10,type);
-			int result = pst.executeUpdate();
-			System.out.println("3");
-			System.out.println(result);
+			int result1 = pst.executeUpdate();
+			//System.out.println("3");
+			//System.out.println(result1);
+			
 			try{
 				if(null != pst){
 					pst.close();
@@ -72,7 +75,7 @@ public class SignupWorker extends HttpServlet {
 			pst1.setString(1,email);
 			pst1.setString(2,password); 
 			pst1.setInt(3,type);
-			result = pst1.executeUpdate();
+			int result2 = pst1.executeUpdate();
 			try{
 				if(null != pst){
 					pst1.close();
@@ -81,8 +84,20 @@ public class SignupWorker extends HttpServlet {
 			catch(SQLException e){
 				e.printStackTrace();
 			}
-			if(result==1){
+			if(result1 == 1 && result2 == 1){
 				System.out.println("Data inserted succesfully.");
+				// HTTP session
+				HttpSession session = request.getSession();
+	            session.setAttribute("email", email);
+	            session.setAttribute("user", firstName);
+	            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
+	            
+	            Cookie userEmail = new Cookie("email", email);
+	            Cookie userFirst = new Cookie("user", firstName);
+	            userEmail.setMaxAge(30*60);
+	            userFirst.setMaxAge(30*60);
+	            response.addCookie(userEmail);
+	            response.addCookie(userFirst);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-worker.jsp");
 				requestDispatcher.forward(request, response);
 			}
