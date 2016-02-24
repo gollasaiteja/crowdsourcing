@@ -62,8 +62,8 @@
             		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="../navbar-static-top/"><%=userEmail %></a></li>
-		            <li class="active"><a href="./"><%=userFirst %> <span class="sr-only">(current)</span></a></li>
+		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
+		            <li><a href="logout.jsp">Log Out</a></li>
 		          </ul>
 		        </div>
 		      </div>
@@ -74,9 +74,12 @@
 		      <!-- Main component for a primary marketing message or call to action -->
 		      <div class="jumbotron">
 		        <h1>Hello <%=userFirst %>!</h1>
-		        <p>Welcome</p>
+		        <p>You can create a new project, and edit your profile.</p>
 		        <p>
-		          <a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">Post a New Task &raquo;</a>
+		   			<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a>
+		        </p>
+		        <p>
+		   			<a class="btn btn-lg btn-primary" href="edit-profile-client.jsp" role="button">Edit Profile &raquo;</a>
 		        </p>
 		      </div>
 		
