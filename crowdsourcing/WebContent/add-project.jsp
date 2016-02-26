@@ -82,54 +82,63 @@
         		</nav>
       		</div>
 
-      <div class="jumbotron">
-      	<h1>MTL Works: New Project</h1>
+      <div>
+      	<h1>New Project</h1>
       </div>
-		
-		
+
       <div class="row centered-form">
-       	<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+       	<div class="col-xs-8">
         	<div class="panel panel-default">
         		<div class="panel-heading">
 			    	<h3 class="panel-title"><small>MTL Works</small></h3>
 			 	</div>
 			 	<div class="panel-body">
-			    	<form role="form" method="post" id="addProject" action="addProject">
+			    	<form role="form" method="post" id="AddProject" action="AddProject">
 			    		<div class="row">
-			    			<div class="col-xs-6 col-sm-6 col-md-6">
+			    			<div class="col-xs-12 col-sm-12 col-md-12">
 			    				<div class="form-group">
 			                		<input type="text" name="project_name" id="project_name" class="form-control input-sm" placeholder="Project Name">
 			    				</div>
 			    			</div>
 			    			
-			    			<div class="col-xs-6 col-sm-6 col-md-6">
+			    			<div class="col-xs-12 col-sm-12 col-md-12">
 			    				<div class="form-group">
-			    					<input type="textarea" name="project_description" id="project_description" class="form-control input-sm" placeholder="Project Description">
+			    					<textarea type="textarea" rows="10" name="project_description" id="project_description" class="form-control input-sm" placeholder="Project Description"></textarea>
 			    				</div>
 			    			</div>
-			    		</div>
 			    		
-			    		<label for="project_skill"> 
+			    		<div class="col-xs-12 col-sm-12 col-md-12">
+			    		<div class="form-group">
+			    		<label for="project_skill">Choose a Skill Category:</label> 
 		      				<input type="radio" checked="checked" name="project_skill" value="writing" id="project_skill" /> Writing
 		      				<input type="radio" name="project_skill" value="design" id="project_skill" /> Design
 		      				<input type="radio" name="project_skill" value="writing" id="project_skill" /> Programming
 		      				<input type="radio" name="project_skill" value="marketing" id="project_skill" /> Marketing
-		      			</label><br />
-			    			
+		      			</div>
+		      			</div>
+			    		
+			    		<div class="col-xs-12 col-sm-12 col-md-12">	
 						<div class="form-group">
         					<input type="text" class="form-control" name="project_availability" id="project_availability" placeholder="How many hours per week do you need?">
         				</div>
+        				</div>
       					
+      					<div class="col-xs-12 col-sm-12 col-md-12">
 				      	<div class="form-group">
 				          	<input type="text" class="form-control" name="project_location" id="project_location" placeholder="Location (optional)">
 				      	</div>
+				      	</div>
 				      	
+				      	<div class="col-xs-12 col-sm-12 col-md-12">
 				      	<div class="form-group">
 				          	<input type="text" class="form-control" name="project_rate" id="project_rate" placeholder="Hourly rate for the project">
 				      	</div>
-			    			
-			    		<input type="submit" value="Create Project" class="btn btn-info btn-block">
+				      	</div>
 			    		
+			    		<div class="col-xs-4 col-sm-6 col-md-6">	
+			    		<input type="submit" value="Create Project" class="btn btn-info btn-block">
+			    		</div>
+			    		</div>
 			    	</form>
 			    </div>
 	    	</div>

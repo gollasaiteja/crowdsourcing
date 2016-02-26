@@ -62,19 +62,6 @@ public class AddProject extends HttpServlet {
 			}
 		}
 		
-		// HTTP session
-		HttpSession newsession = request.getSession();
-        newsession.setAttribute("email", userEmail);
-        newsession.setAttribute("user", userFirst);
-        newsession.setMaxInactiveInterval(30*60); //session expires in 30 minutes
-        
-        Cookie userEmailC = new Cookie("email", userEmail);
-        Cookie userFirstC = new Cookie("user", userFirst);
-        userEmailC.setMaxAge(30*60);
-        userFirstC.setMaxAge(30*60);
-        response.addCookie(userEmailC);
-        response.addCookie(userFirstC);
-		
 		DBConnection obj = new DBConnection();
 		Connection conn = null;
 		
@@ -82,14 +69,15 @@ public class AddProject extends HttpServlet {
 			conn = obj.DBConnect(); // Establish Connection
 			
 			// SQL Query
-			PreparedStatement insertProject = conn.prepareStatement("insert into test.projects(name, description, skill, availability, location, rate)" + "values(?,?,?,?,?,?)");
+			PreparedStatement insertProject = conn.prepareStatement("insert into test.projects(name, description, skill, availability, location, rate, client)" + "values(?,?,?,?,?,?,?)");
 			System.out.println("2");
 			insertProject.setString(1,pName);
 			insertProject.setString(2,pDescription);
 			insertProject.setString(3,pSkill);
 			insertProject.setString(4,pAvailability);
-			insertProject.setString(5,pRate);
-			insertProject.setString(6,pLocation);
+			insertProject.setString(5,pLocation);
+			insertProject.setString(6,pRate);
+			insertProject.setString(7,userEmail);
 			
 			int result1 = insertProject.executeUpdate();
 			
@@ -104,7 +92,21 @@ public class AddProject extends HttpServlet {
 			
 			if(result1 == 1){
 				System.out.println("Data inserted succesfully.");
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-worker.jsp");
+				
+				// HTTP session
+				HttpSession newsession = request.getSession();
+		        newsession.setAttribute("email", userEmail);
+		        newsession.setAttribute("user", userFirst);
+		        newsession.setMaxInactiveInterval(30*60); //session expires in 30 minutes
+		        
+		        Cookie userEmailC = new Cookie("email", userEmail);
+		        Cookie userFirstC = new Cookie("user", userFirst);
+		        userEmailC.setMaxAge(30*60);
+		        userFirstC.setMaxAge(30*60);
+		        response.addCookie(userEmailC);
+		        response.addCookie(userFirstC);
+				
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
 				requestDispatcher.forward(request, response);
 			}
 			else{

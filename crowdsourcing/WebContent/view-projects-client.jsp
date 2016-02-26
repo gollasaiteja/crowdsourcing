@@ -76,11 +76,7 @@
 		        <h1>Hello <%=userFirst %>!</h1>
 		        <p>You can create a new project, and edit your profile.</p>
 		        <p>
-		        	<form role="form" method="post" id="ViewProjectsClient" action="ViewProjectsClient">
-		        	<div>
-		        	<input type="submit" value="Create Project" class="btn btn-lg btn-primary">
-		        	</div>
-		        	</form>
+		   			<a class="btn btn-lg btn-primary" href="view-projects-client.jsp" role="button">View Your Projects &raquo;</a>
 		        </p>
 		        <p>
 		   			<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a>
