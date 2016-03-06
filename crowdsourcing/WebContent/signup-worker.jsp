@@ -12,6 +12,43 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/signup-worker.js"></script>
+		<script>
+		$(document).ready(function () {
+
+		    $('#signup-worker').validate({ // initialize the plugin
+		        rules: {
+		        	first_name: {
+		                required: true,
+		               		     },
+		        	last_name: {
+		                required: true,
+		               		     },
+		             password: {
+		  		        required: true,
+		  		        minlength: 6,
+		  		               	 },
+		  		               location: {
+		             required: true,
+		               		     },
+		           	experience: {
+		  		         required: true,
+		  		                }, 
+		            rate: {
+		 		  		         required: true,
+		  		                },
+		            availabilty: {
+			 		  		         required: true,
+			  		                },
+		        },
+		            
+		         messages: {
+		        	
+		        	 
+		            
+		        }
+		    })
+		    });
+		</script>
 		<title>MTL Works: New Worker</title>
 	</head>
 	
@@ -57,17 +94,15 @@
 			    				</div>
 			    			</div>
 			    			</div>
-			    			
-			    	<%-- 	<div class="col-xs-6 col-sm-6 col-md-6">
-			    				<div class="form-group">
-			    					<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
-			    				</div>
-			    			</div>
-			    		</div> --%>
-			    			
-						<div class="form-group">
-        					<input type="text" class="form-control" name="skill" id="skill" placeholder="skill">
-        				</div>
+			    			    			
+			    		<div class="form-group">
+			    		<label for="skill">Choose a Skill Category:</label> 
+		      				<input type="radio" checked="checked" name="skill" value="writing" id="skill" /> Writing
+		      				<input type="radio" name="skill" value="design" id="skill" /> Design
+		      				<input type="radio" name="skill" value="writing" id="skill" /> Programming
+		      				<input type="radio" name="skill" value="marketing" id="skill" /> Marketing
+		      			</div>
+		      		
       
       					<div class="form-group">
         					<input type="text" class="form-control" name="location" id="location" placeholder="location">
@@ -81,11 +116,7 @@
 			    		<div class="form-group">
         					<input type="text" class="form-control" name="availabilty" id="availablity" placeholder="availabilty">
         				</div>
-        			
-			    <%-- 		<div class="form-group">
-        					<input type="text" class="form-control" name="credibility" id="credibility" placeholder="credibility">
-        				</div> --%>
-        				
+               				
 			    		<input type="submit" value="Register" class="btn btn-info btn-block">
 			    		
 			    	</form>

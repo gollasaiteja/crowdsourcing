@@ -59,8 +59,7 @@ public class SignupWorker extends HttpServlet {
 			pst.setString(9,availability);
 			pst.setInt(10,type);
 			int result1 = pst.executeUpdate();
-			//System.out.println("3");
-			//System.out.println(result1);
+			
 			
 			try{
 				if(null != pst){

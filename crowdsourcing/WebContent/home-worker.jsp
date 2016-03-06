@@ -79,7 +79,7 @@
 		          <a class="btn btn-lg btn-primary" href="browse-projects.jsp" role="button">Browse Projects &raquo;</a>
 		        </p>
 		        <p>
-		        <form role="form" method="post" id="editworker_select" action="EditWorkerSelect">
+		        <form role="form" method="post" id="editworker_select" action="edit-profile-worker.jsp">
 		        <div class="row">
 		        <div class="col-xs-3 col-sm-3 col-md-3">
 		        <input type="submit" value="Edit Profile &raquo" class="btn btn-lg btn-primary">

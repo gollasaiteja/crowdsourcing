@@ -1,6 +1,7 @@
 package com.servlets.Test;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.crowdsourcing.DBConnection.*;
+import com.crowdsourcing.dto.WorkerDetails;
+
 import java.sql.*;
-import java.sql.Connection;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,9 +51,45 @@ public class EditWorkerSelect extends HttpServlet {
 			emailAtt = (String) session.getAttribute("email");
 			passwordAtt = (String) session.getAttribute("password");
 			firstAtt = (String) session.getAttribute("userFirst");
+			// Opening connection to DB to fetch user details
+			DBConnection obj = new DBConnection();
+			// SQL Query
+			try {
+				Connection conn = obj.DBConnect();
+				PreparedStatement workerDetailspreparedStmt = conn.prepareStatement("select * from test.workers where email=?");
+				workerDetailspreparedStmt.setString(1,emailAtt);
+				ResultSet workerDetailsResultSet = workerDetailspreparedStmt.executeQuery();
+				WorkerDetails workerDetails = null;
+				while(workerDetailsResultSet.next()){
+					workerDetails = new WorkerDetails();
+					workerDetails.setFirstName(workerDetailsResultSet.getString(2));
+					workerDetails.setLastName(workerDetailsResultSet.getString(3));
+					workerDetails.setEmail(workerDetailsResultSet.getString(4));
+					workerDetails.setSkill(workerDetailsResultSet.getString(6));
+					workerDetails.setLocation(workerDetailsResultSet.getString(7));
+					workerDetails.setExperience(workerDetailsResultSet.getString(9));
+					workerDetails.setRate(workerDetailsResultSet.getString(10));
+					workerDetails.setAvailability(workerDetailsResultSet.getString(11));
+				}
+				response.setContentType("application/json");
+				PrintWriter out = response.getWriter();
+				out.println(workerDetails);
+				out.flush();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			String dbEmail = "null";
+			String dbPassword = "null";
+			String dbType = "null";
 		}
 		
-		String userEmail = null;
+		/*String userEmail = null;
 		String userPassword = null;
 		String userFirst = null;
 		String sessionID = null;
@@ -64,7 +103,7 @@ public class EditWorkerSelect extends HttpServlet {
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}
 		}
-	System.out.println(userEmail+ userPassword+ userFirst+ sessionID );	
+	System.out.println(userEmail+ userPassword+ userFirst+ sessionID );*/
 		
 	}
 
