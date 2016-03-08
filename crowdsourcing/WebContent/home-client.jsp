@@ -78,7 +78,8 @@
 		        <p>
 		        	<form role="form" method="post" id="ViewProjectsClient" action="ViewProjectsClient">
 		        	<div>
-		        	<input type="submit" value="Create Project" class="btn btn-lg btn-primary">
+		        	<input type="hidden" name="email" value="<%=userEmail %>">
+		        	<input type="submit" value="My Projects &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
 		        	</form>
 		        </p>
@@ -86,7 +87,11 @@
 		   			<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a>
 		        </p>
 		        <p>
-		   			<a class="btn btn-lg btn-primary" href="edit-profile-client.jsp" role="button">Edit Profile &raquo;</a>
+		        	<form role="form" method="post" id="EditProfileClient" action="EditProfileClient">
+		        	<div>
+		        	<input type="submit" value="Edit Profile &raquo;" class="btn btn-lg btn-primary">
+		        	</div>
+		        	</form>
 		        </p>
 		      </div>
 		

@@ -70,7 +70,6 @@ public class AddProject extends HttpServlet {
 			
 			// SQL Query
 			PreparedStatement insertProject = conn.prepareStatement("insert into test.projects(name, description, skill, availability, location, rate, client)" + "values(?,?,?,?,?,?,?)");
-			System.out.println("2");
 			insertProject.setString(1,pName);
 			insertProject.setString(2,pDescription);
 			insertProject.setString(3,pSkill);

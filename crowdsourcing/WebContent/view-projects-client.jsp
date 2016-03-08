@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import ="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -71,13 +73,24 @@
 		
 		    <div class="container">
 		
-		      <!-- Main component for a primary marketing message or call to action -->
 		      <div class="jumbotron">
-		        <h1>Hello <%=userFirst %>!</h1>
-		        <p>You can create a new project, and edit your profile.</p>
-		        <p>
-		   			<a class="btn btn-lg btn-primary" href="view-projects-client.jsp" role="button">View Your Projects &raquo;</a>
-		        </p>
+		        <h3><%=userFirst %></h3>
+		        <p>Your projects:</p>
+		        	<% 
+         			ArrayList rows = new ArrayList();
+         			if (request.getAttribute("projectList") != null){
+             			rows = (ArrayList) request.getAttribute("projectList");
+         			}
+         			%>
+         			<ol>
+         		    	<c:forEach items="${projectList}" var="project">
+         		    		<li>
+	         		    		<c:forEach var="info" items="${project}">
+	         		    			${info}
+	    						</c:forEach>
+    						</li>         		    	
+         		    	</c:forEach>
+         			</ol>
 		        <p>
 		   			<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a>
 		        </p>
