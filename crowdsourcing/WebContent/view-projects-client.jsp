@@ -87,18 +87,16 @@
 	         		    		<c:forEach var="title" items="${project[1]}">
 	         		    			${title}
 	    						</c:forEach>
-	    						<u>
 	    						<c:forEach var="link" items="${project[0]}">
 	         		    			<form role="form" method="post" action="ViewProject">
 			        					<div>
-			        						<input type="hidden" name="project_id" value="${link}">
+			        						<input type="hidden" name="project_id" value="${link}">			        						
 			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
 			        						<input type="hidden" name="email" value="<%=userEmail %>">		        					
 			        						<input type="submit" value="Open Project &raquo;" class="btn btn-secondary">
 			        					</div>
 		        					</form>
 		        				</c:forEach>
-	    						</u>
 	    						</span>
     						</li>     		    	
          		    	</c:forEach>

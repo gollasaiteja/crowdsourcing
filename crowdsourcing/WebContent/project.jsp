@@ -2,21 +2,7 @@
 <%@ page import ="java.util.ArrayList" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<title>Client Projects</title>
-		<meta charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
-	</head>
-	<body>
-		<%
+<%
 		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
 		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
 		   response.sendRedirect("login.jsp");
@@ -42,6 +28,21 @@
 			}
 		}
 		%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>Project</title>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
+	</head>
+	<body>
 		<meta name="sessionID" content="<%=sessionID %>">
 		    <nav class="navbar navbar-default navbar-fixed-top">
 		      <div class="container">

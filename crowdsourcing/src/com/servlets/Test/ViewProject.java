@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class ViewProject
-**/
+/** Servlet implementation class ViewProject **/
 
 @WebServlet("/ViewProject")
 public class ViewProject extends HttpServlet {
@@ -43,10 +41,10 @@ public class ViewProject extends HttpServlet {
 			conn = obj.DBConnect();
 			
 			// SQL Query
-			PreparedStatement projectDetails = conn.prepareStatement(" select name,description,skill,availability,location,rate,credibility,status_client,status_worker,assigned_worker from test.projects where id=? ");
-			projectDetails.setString(1,projectID);
+			PreparedStatement project = conn.prepareStatement(" select name,description,skill,availability,location,rate,credibility,status_client,status_worker,assigned_worker from test.projects where id=? ");
+			project.setString(1,projectID);
 			
-			ResultSet Project = projectDetails.executeQuery();
+			ResultSet Project = project.executeQuery();
 			ArrayList Rows = new ArrayList();
 			String dbName = "null";
 			String dbDescription = "null";
@@ -54,6 +52,7 @@ public class ViewProject extends HttpServlet {
 			String dbAvailability = "null";
 			String dbLocation = "null";
 			String dbRate = "null";
+			String dbCredibility = "null";
 			String dbStatusClient = "null";
 			String dbStatusWorker = "null";
 			String dbAssignedWorker = "null";
@@ -65,6 +64,7 @@ public class ViewProject extends HttpServlet {
 				dbAvailability = Project.getString("availability");
 				dbLocation = Project.getString("location");
 				dbRate = Project.getString("rate");
+				dbCredibility = Project.getString("credibility");
 				dbStatusClient = Project.getString("status_client");
 				dbStatusWorker = Project.getString("status_worker");
 				dbAssignedWorker = Project.getString("assigned_worker");
@@ -76,6 +76,7 @@ public class ViewProject extends HttpServlet {
 			    	row.add(Project.getString("availability"));
 			    	row.add(Project.getString("location"));
 			    	row.add(Project.getString("rate"));
+			    	row.add(Project.getString("credibility"));
 			    	row.add(Project.getString("status_client"));
 			    	row.add(Project.getString("status_worker"));
 			    	row.add(Project.getString("assigned_worker"));
@@ -95,7 +96,7 @@ public class ViewProject extends HttpServlet {
 	            response.addCookie(userEmail);
 	            response.addCookie(userFirst);
 			}
-			request.setAttribute("projectList", Rows);
+			request.setAttribute("project", Rows);
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/project.jsp");
 			requestDispatcher.forward(request,response);	
 		}
