@@ -114,7 +114,7 @@
         					<input type="text" class="form-control" name="rate" id="rate" placeholder="rate">
         				</div>
 			    		<div class="form-group">
-        					<input type="text" class="form-control" name="availabilty" id="availablity" placeholder="availabilty">
+        					<input type="text" class="form-control" name="availability" id="availability" placeholder="availability">
         				</div>
                				
 			    		<input type="submit" value="Register" class="btn btn-info btn-block">

@@ -8,8 +8,9 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
+
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/signup-worker.js"></script>
 		<script type="text/javascript" src="js/edit-profile-worker.js"></script>
@@ -59,7 +60,7 @@
 			    	<h3 class="panel-title">Edit Profile <small>MTL Works</small></h3>
 			 	</div>
 			 	<div class="panel-body">
-			    	<form role="form" method="post" action="home-worker">
+			    	<form role="form" method="post" action="UpdateWorker">
 			    		<div class="row">
 			    			<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">
@@ -74,7 +75,7 @@
 			    			</div>
 			    		</div>
 
-			    		<div class="form-group">
+			    	<%-- 	<div class="form-group">
 			    			<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
 			    		</div>
 
@@ -84,7 +85,7 @@
 			    					<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
 			    				</div>
 			    			</div>
-			    			</div>
+			    			</div> --%>
 			    			    			
 			    		<div class="form-group">
 			    		<label for="skill">Choose a Skill Category:</label> 
@@ -105,7 +106,7 @@
         					<input type="text" class="form-control" name="rate" id="rate" placeholder="rate">
         				</div>
 			    		<div class="form-group">
-        					<input type="text" class="form-control" name="availabilty" id="availablity" placeholder="availabilty">
+        					<input type="text" class="form-control" name="availability" id="availability" placeholder="availability">
         				</div>
                				
 			    		<input type="submit" value="Update" class="btn btn-info btn-block">

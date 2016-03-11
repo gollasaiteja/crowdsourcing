@@ -36,7 +36,7 @@ public class SignupWorker extends HttpServlet {
 		String location = request.getParameter("location");
 		String experience = request.getParameter("experience");
 		String rate = request.getParameter("rate");
-		String availability = request.getParameter("availabilty");
+		String availability = request.getParameter("availability");
 		int type = 0;
 		System.out.println(firstName + lastName + email + password + skill + location + experience + rate + availability + type);
 		DBConnection obj = new DBConnection();

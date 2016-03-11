@@ -22,10 +22,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 /**
  * Servlet implementation class EditWorkerSelect
  */
-@WebServlet("/EditWorkerSelect")
+@WebServlet(description = "Populates the worker details", urlPatterns = { "/EditWorkerSelect" })
 public class EditWorkerSelect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,7 +43,6 @@ public class EditWorkerSelect extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		HttpSession session = request.getSession();
 		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
 		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
@@ -71,9 +72,10 @@ public class EditWorkerSelect extends HttpServlet {
 					workerDetails.setRate(workerDetailsResultSet.getString(10));
 					workerDetails.setAvailability(workerDetailsResultSet.getString(11));
 				}
-				response.setContentType("application/json");
 				PrintWriter out = response.getWriter();
-				out.println(workerDetails);
+				response.setContentType("application/json");
+				JSONObject jsonObject = new JSONObject(workerDetails);
+				out.println(jsonObject);
 				out.flush();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -82,29 +84,7 @@ public class EditWorkerSelect extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			String dbEmail = "null";
-			String dbPassword = "null";
-			String dbType = "null";
 		}
-		
-		/*String userEmail = null;
-		String userPassword = null;
-		String userFirst = null;
-		String sessionID = null;
-		Cookie[] cookies = request.getCookies();
-		
-		if(cookies != null){
-			for(Cookie cookie : cookies){
-		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
-		    	if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
-		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			}
-		}
-	System.out.println(userEmail+ userPassword+ userFirst+ sessionID );*/
-		
 	}
 
 	/**
