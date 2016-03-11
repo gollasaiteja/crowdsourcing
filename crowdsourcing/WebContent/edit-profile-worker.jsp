@@ -17,7 +17,7 @@
 		
 </head>
 <body>
-<input type="hidden" id="hiddenEmail" value="<%=session.getAttribute("email") %>"/>
+
 <%
 		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
 		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
@@ -43,6 +43,7 @@
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}
 		}
+		
 		%>
 		
 		<div class="container">
@@ -108,7 +109,7 @@
 			    		<div class="form-group">
         					<input type="text" class="form-control" name="availability" id="availability" placeholder="availability">
         				</div>
-               				
+               			<input type="hidden" name="email" value="<%=userEmail %>"/>	
 			    		<input type="submit" value="Update" class="btn btn-info btn-block">
 			    		
 			    	</form>

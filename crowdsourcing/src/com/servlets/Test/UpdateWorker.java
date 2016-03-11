@@ -43,16 +43,8 @@ public class UpdateWorker extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
-		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
-		   response.sendRedirect("login.jsp");
-		}
-		else{
-			//emailAtt = (String) session.getAttribute("email");
-			//passwordAtt = (String) session.getAttribute("password");
-			//firstAtt = (String) session.getAttribute("userFirst");
 		
+		String email = request.getParameter("email");
 			String firstName = request.getParameter("first_name");
 			String lastName = request.getParameter("last_name");
 			String skill = request.getParameter("skill");
@@ -69,14 +61,16 @@ public class UpdateWorker extends HttpServlet {
 			System.out.println("1");
 			
 				
-			PreparedStatement pst = conn.prepareStatement("update test.workers(first_name, last_name, skill, location, experience, rate, availability)" + "values(?,?,?,?,?,?,?)");
+			PreparedStatement pst = conn.prepareStatement("update test.workers set first_name=?, "
+					+ "last_name=?, skill=?, location=?, experience=?, rate=?, availability=? where email=?"); 
 			pst.setString(1,firstName);
 			pst.setString(2,lastName);
-			pst.setString(5,skill);
-			pst.setString(6,location);
-			pst.setString(7,experience);
-			pst.setString(8,rate);
-			pst.setString(9,availability);
+			pst.setString(3,skill);
+			pst.setString(4,location);
+			pst.setString(5,experience);
+			pst.setString(6,rate);
+			pst.setString(7,availability);
+			pst.setString(8,email);
 	
 			int result = pst.executeUpdate();
 			
@@ -93,11 +87,11 @@ public class UpdateWorker extends HttpServlet {
 				System.out.println("Data inserted succesfully.");
 				// HTTP session
 				HttpSession session1 = request.getSession();
-	            session1.setAttribute("email", emailAtt);
+	            session1.setAttribute("email", email);
 	            session1.setAttribute("user", firstName);
 	            session1.setMaxInactiveInterval(30*60); //session expires in 30 minutes
 	            
-	            Cookie userEmail = new Cookie("email", emailAtt);
+	            Cookie userEmail = new Cookie("email", email);
 	            Cookie userFirst = new Cookie("user", firstName);
 	            userEmail.setMaxAge(30*60);
 	            userFirst.setMaxAge(30*60);
@@ -122,4 +116,3 @@ public class UpdateWorker extends HttpServlet {
 }
 	}
 
-}
