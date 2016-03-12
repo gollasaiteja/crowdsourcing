@@ -41,10 +41,10 @@ public class ViewProject extends HttpServlet {
 			conn = obj.DBConnect();
 			
 			// SQL Query
-			PreparedStatement project = conn.prepareStatement(" select name,description,skill,availability,location,rate,credibility,status_client,status_worker,assigned_worker from test.projects where id=? ");
-			project.setString(1,projectID);
+			PreparedStatement getProject = conn.prepareStatement(" select name,description,skill,availability,location,rate,credibility,status_client,status_worker,assigned_worker from test.projects where id=? ");
+			getProject.setString(1,projectID);
 			
-			ResultSet Project = project.executeQuery();
+			ResultSet project = getProject.executeQuery();
 			ArrayList Rows = new ArrayList();
 			String dbName = "null";
 			String dbDescription = "null";
@@ -57,29 +57,31 @@ public class ViewProject extends HttpServlet {
 			String dbStatusWorker = "null";
 			String dbAssignedWorker = "null";
 			
-			while(Project.next()){
-				dbName = Project.getString("name");
-				dbDescription = Project.getString("description");
-				dbSkill = Project.getString("skill");
-				dbAvailability = Project.getString("availability");
-				dbLocation = Project.getString("location");
-				dbRate = Project.getString("rate");
-				dbCredibility = Project.getString("credibility");
-				dbStatusClient = Project.getString("status_client");
-				dbStatusWorker = Project.getString("status_worker");
-				dbAssignedWorker = Project.getString("assigned_worker");
+			while(project.next()){
+				dbName = project.getString("name");
+				dbDescription = project.getString("description");
+				dbSkill = project.getString("skill");
+				dbAvailability = project.getString("availability");
+				dbLocation = project.getString("location");
+				dbRate = project.getString("rate");
+				dbCredibility = project.getString("credibility");
+				dbStatusClient = project.getString("status_client");
+				dbStatusWorker = project.getString("status_worker");
+				dbAssignedWorker = project.getString("assigned_worker");
 				
 				ArrayList row = new ArrayList();
 			    for (int i = 1; i <= 1 ; i++){
-			    	row.add(Project.getString("name"));
-			    	row.add(Project.getString("description"));
-			    	row.add(Project.getString("availability"));
-			    	row.add(Project.getString("location"));
-			    	row.add(Project.getString("rate"));
-			    	row.add(Project.getString("credibility"));
-			    	row.add(Project.getString("status_client"));
-			    	row.add(Project.getString("status_worker"));
-			    	row.add(Project.getString("assigned_worker"));
+			    	row.add(project.getString("name"));
+			    	row.add(project.getString("description"));
+			    	row.add(project.getString("skill"));
+			    	row.add(project.getString("availability"));
+			    	row.add(project.getString("location"));
+			    	row.add(project.getString("rate"));
+			    	row.add(project.getString("credibility"));
+			    	row.add(project.getString("status_client"));
+			    	row.add(project.getString("status_worker"));
+			    	row.add(project.getString("assigned_worker"));
+			    	row.add(projectID);
 			    }
 			    Rows.add(row);
 				

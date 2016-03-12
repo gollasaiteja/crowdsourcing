@@ -76,26 +76,52 @@
 		        <h3><%=userFirst %></h3>
 		        <p>Your projects:</p>
 		        	<% 
-         			ArrayList rows = new ArrayList();
-         			if (request.getAttribute("projectList") != null){
-             			rows = (ArrayList) request.getAttribute("projectList");
-         			}
+	         			ArrayList rows = new ArrayList();
+	         			if (request.getAttribute("project") != null){
+	             			rows = (ArrayList) request.getAttribute("project");
+	         			}
          			%>
          			<ol>
-         		    	<c:forEach items="${projectList}" var="project">
+         		    	<c:forEach items="${project}" var="projectInfo">
          		    		<li>
 	         		    		<span>
-	         		    		<c:forEach var="title" items="${project[1]}">
-	         		    			${title}
+	         		    		<c:forEach items="${projectInfo[0]}" var="pTitle">
+	         		    			${pTitle}
 	    						</c:forEach>
-	    						<u>
-	    						<c:forEach var="link" items="${project[0]}">
-	         		    			<form role="form" method="post" action="ViewProject">
+	    						<c:forEach items="${projectInfo[1]}" var="pDescription">
+	         		    			${pDescription}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[2]}" var="pSkill">
+	         		    			${pSkill}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[3]}" var="pAvailability">
+	         		    			${pAvailability}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[4]}" var="pLocation">
+	         		    			${pLocation}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[5]}" var="pRate">
+	         		    			${pRate}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[6]}" var="pCredibility">
+	         		    			${pCredibility}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[7]}" var="pStatusClient">
+	         		    			${pStatusClient}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
+	         		    			${pStatusWorker}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[9]}" var="pAssignedWorker">
+	         		    			${pAssignedWorker}
+	    						</c:forEach>
+	    						<c:forEach items="${projectInfo[10]}" var="pID">
+	         		    			<form role="form" method="post" action="ViewRecommendation">
 			        					<div>
-			        						<input type="hidden" name="project_id" value="${link}">
+			        						<input type="hidden" name="project_id" value="${pID}">
 			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
 			        						<input type="hidden" name="email" value="<%=userEmail %>">		        					
-			        						<input type="submit" value="Open Project &raquo;" class="btn btn-secondary">
+			        						<input type="submit" value="Get Recommendation &raquo;" class="btn btn-secondary">
 			        					</div>
 		        					</form>
 		        				</c:forEach>
