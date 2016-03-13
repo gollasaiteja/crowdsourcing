@@ -26,9 +26,9 @@
 			  <label for="worker">
 			  	<input type="radio" name="type" value="0" id="worker" />  I'm a Freelancer
 			  </label><br />
-		      <!--<label class="checkbox">
+		      <%-- <label class="checkbox">
 		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-		      </label>-->
+		      </label> --%>
 		      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
 		    </form>
   		</div>
