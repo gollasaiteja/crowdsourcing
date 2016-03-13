@@ -81,40 +81,57 @@
 	             			rows = (ArrayList) request.getAttribute("project");
 	         			}
          			%>
-         			<ol>
+         			<ul>
          		    	<c:forEach items="${project}" var="projectInfo">
-         		    		<li>
-	         		    		<span>
+							<li>
 	         		    		<c:forEach items="${projectInfo[0]}" var="pTitle">
 	         		    			${pTitle}
 	    						</c:forEach>
+	    					</li>	
 	    						<c:forEach items="${projectInfo[1]}" var="pDescription">
 	         		    			${pDescription}
 	    						</c:forEach>
+	    					<li>
 	    						<c:forEach items="${projectInfo[2]}" var="pSkill">
 	         		    			${pSkill}
 	    						</c:forEach>
+	    					</li>
+	    					<li>
 	    						<c:forEach items="${projectInfo[3]}" var="pAvailability">
 	         		    			${pAvailability}
 	    						</c:forEach>
+	    					</li>
+	    					<li>	
 	    						<c:forEach items="${projectInfo[4]}" var="pLocation">
 	         		    			${pLocation}
 	    						</c:forEach>
+	    					</li>
+	    					<li>	
 	    						<c:forEach items="${projectInfo[5]}" var="pRate">
 	         		    			${pRate}
 	    						</c:forEach>
+	    					<li>	
 	    						<c:forEach items="${projectInfo[6]}" var="pCredibility">
 	         		    			${pCredibility}
 	    						</c:forEach>
+	    					</li>
+	    					<li>	
 	    						<c:forEach items="${projectInfo[7]}" var="pStatusClient">
 	         		    			${pStatusClient}
 	    						</c:forEach>
+	    					</li>
+	    					<li>	
 	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
 	         		    			${pStatusWorker}
 	    						</c:forEach>
+	    					</li>
+	    					<li>	
 	    						<c:forEach items="${projectInfo[9]}" var="pAssignedWorker">
 	         		    			${pAssignedWorker}
 	    						</c:forEach>
+	    					<li>
+	    					</li>
+	    					<li>	
 	    						<c:forEach items="${projectInfo[10]}" var="pID">
 	         		    			<form role="form" method="post" action="ViewRecommendation">
 			        					<div>
@@ -125,13 +142,10 @@
 			        					</div>
 		        					</form>
 		        				</c:forEach>
-	    						</u>
-	    						</span>
     						</li>     		    	
          		    	</c:forEach>
-         			</ol>
+         			</ul>
 		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
-		        <p><a class="btn btn-lg btn-primary" href="edit-profile-client.jsp" role="button">Edit Profile &raquo;</a></p>
 		      </div>
 		  </div>
 	</body>

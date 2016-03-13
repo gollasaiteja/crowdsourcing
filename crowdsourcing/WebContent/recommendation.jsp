@@ -74,64 +74,59 @@
 		    <div class="container">
 		      <div class="jumbotron">
 		        <h3><%=userFirst %></h3>
-		        <p>Your projects:</p>
+		        <p>The following contractors are recommended for your project:</p>
 		        	<% 
 	         			ArrayList rows = new ArrayList();
 	         			if (request.getAttribute("recommendation") != null){
 	             			rows = (ArrayList) request.getAttribute("recommendation");
 	         			}
          			%>
-         			<ol>
+         			<ul>
          		    	<c:forEach items="${recommendation}" var="recommendedWorker">
-         		    		<li>
-	         		    		<span>
-	         		    		<c:forEach items="${recommendedWorker[0]}" var="wID">
-	         		    			${wID}
+	    					<li>
+	    						<c:forEach items="${recommendedWorker[1]}" var="wFirstName">
+	         		    			${wFirstName}
 	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[1]}" var="pDescription">
-	         		    			${pDescription}
+	    					</li>
+	    					<li>
+	    						<c:forEach items="${recommendedWorker[2]}" var="wLastName">
+	         		    			${wLastName}
 	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[2]}" var="pSkill">
-	         		    			${pSkill}
+	    					</li>
+	    					<li>
+	    						<c:forEach items="${recommendedWorker[3]}" var="wEmail">
+	         		    			${wEmail}
 	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[3]}" var="pAvailability">
-	         		    			${pAvailability}
+	    					</li>
+	    					<li>
+	    						<c:forEach items="${recommendedWorker[4]}" var="wLocation">
+	         		    			${wLocation}
 	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[4]}" var="pLocation">
-	         		    			${pLocation}
+	    					</li>
+	    					<li>
+	    						<c:forEach items="${recommendedWorker[5]}" var="wRate">
+	         		    			${wRate}
 	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[5]}" var="pRate">
-	         		    			${pRate}
+	    					</li>
+	    					<li>
+	    						<c:forEach items="${recommendedWorker[6]}" var="wAvailability">
+	         		    			${wAvailability}
 	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[6]}" var="pCredibility">
-	         		    			${pCredibility}
-	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[7]}" var="pStatusClient">
-	         		    			${pStatusClient}
-	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
-	         		    			${pStatusWorker}
-	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[9]}" var="pAssignedWorker">
-	         		    			${pAssignedWorker}
-	    						</c:forEach>
-	    						<c:forEach items="${projectInfo[10]}" var="pID">
-	         		    			<form role="form" method="post" action="ViewRecommendation">
+	    					</li>
+	    					<li>
+	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
+	         		    			<form role="form" method="post" action="AssignWorker">
 			        					<div>
-			        						<input type="hidden" name="project_id" value="${pID}">
+			        						<input type="hidden" name="worker_id" value="${wID}">
 			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
 			        						<input type="hidden" name="email" value="<%=userEmail %>">		        					
-			        						<input type="submit" value="Get Recommendation &raquo;" class="btn btn-secondary">
+			        						<input type="submit" value="Select Worker &raquo;" class="btn btn-secondary">
 			        					</div>
 		        					</form>
 		        				</c:forEach>
-	    						</u>
-	    						</span>
-    						</li>     		    	
+	    					</li>     		    	
          		    	</c:forEach>
-         			</ol>
-		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
-		        <p><a class="btn btn-lg btn-primary" href="edit-profile-client.jsp" role="button">Edit Profile &raquo;</a></p>
+         			</ul>
 		      </div>
 		  </div>
 	</body>
