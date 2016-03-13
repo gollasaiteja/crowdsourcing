@@ -87,7 +87,7 @@
 		   			<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a>
 		        </p>
 		        <p>
-		        	<form role="form" method="post" id="EditProfileClient" action="EditProfileClient">
+		        	<form role="form" method="post" id="EditProfileClient" action="edit-profile-client.jsp">
 		        	<div>
 		        	<input type="submit" value="Edit Profile &raquo;" class="btn btn-lg btn-primary">
 		        	</div>

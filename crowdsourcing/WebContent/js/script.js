@@ -72,3 +72,21 @@ function validateEmail(evt){
 		failure: emailValidationFailure
 	});
 }
+
+$(document).ready(function(){
+	$.ajax({
+        type: "GET",
+        url: 'EditClientSelect',
+        success: function(response){
+        	
+        	$("#first_name").val(response.firstName);
+        	$("#last_name").val(response.lastName);
+        	$("#password").val(response.password);
+        	$("#card-holder-name").val(response.cardHolderName);
+        	$("#card-number").val(response.cardNumber);
+        	$("#expiry-month").val(response.expiryMonth);
+        	$("#expiry_year").val(response.expiryYear);
+        	$("#cvv").val(response.cvv);
+        }
+        });
+     });

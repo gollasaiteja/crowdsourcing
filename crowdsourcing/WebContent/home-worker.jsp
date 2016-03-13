@@ -73,7 +73,7 @@
 		
 		      <!-- Main component for a primary marketing message or call to action -->
 		      <div class="jumbotron">
-		        <h1>Hello <%=userFirst %>!</h1>
+		        <h1>Hello <%=(String)session.getAttribute("userFirst")%>!</h1>
 		        <p>Welcome</p>
 		        <p>
 		          <a class="btn btn-lg btn-primary" href="browse-projects.jsp" role="button">Browse Projects &raquo;</a>

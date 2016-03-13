@@ -108,11 +108,11 @@
 			    				</div>
 			    			</div>
 			    			
-			    			<div class="col-xs-6 col-sm-6 col-md-6">
+			    	<%--		<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">
 			    					<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
 			    				</div>
-			    			</div>
+			    			</div>  --%>
 			    		</div>
 			    			
 						<div class="form-group">
@@ -147,9 +147,7 @@
             						
             						<div class="col-xs-6">
               							<select class="form-control col-sm-4" name="expiry_year">
-							                <option value="13">2013</option>
-							                <option value="14">2014</option>
-							                <option value="15">2015</option>
+							               
 							                <option value="16">2016</option>
 							                <option value="17">2017</option>
 							                <option value="18">2018</option>
