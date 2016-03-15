@@ -97,21 +97,24 @@
 	         		    			Location: ${wLocation} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[5]}" var="wRate">
-	         		    			Hourly Rate: ${wRate} </br>
+	         		    			Hourly Rate: CAD ${wRate} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[6]}" var="wAvailability">
-	         		    			Weekly Availability: ${wAvailability} </br>
+	         		    			Weekly Availability: ${wAvailability} hours/week </br>
 	    						</c:forEach>
-	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
-	         		    			<form role="form" method="post" action="AssignWorker">
-			        					<div>
-			        						<input type="hidden" name="worker_id" value="${wID}">
-			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
-			        						<input type="hidden" name="email" value="<%=userEmail %>">		        					
-			        						<input type="submit" value="Assign Project &raquo;" class="btn btn-secondary">
-			        					</div>
-		        					</form>
-		        				</c:forEach>
+	    						<c:forEach items="${recommendedWorker[7]}" var="pID">
+		    						<c:forEach items="${recommendedWorker[0]}" var="wID">
+		         		    			<form role="form" method="post" action="AssignWorker">
+				        					<div>
+				        						<input type="hidden" name="worker_id" value="${wID}">
+				        						<input type="hidden" name="project_id" value="${pID}">
+				        						<input type="hidden" name="user_first" value="<%=userFirst %>">
+				        						<input type="hidden" name="email" value="<%=userEmail %>">
+				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-secondary">
+				        					</div>
+			        					</form>
+			        				</c:forEach>
+			        			</c:forEach>	
 	    					</li>     		    	
          		    	</c:forEach>
          			</ul>

@@ -80,6 +80,7 @@ public class ViewRecommendation extends HttpServlet {
 			    	row.add(worker.getString("location"));
 			    	row.add(worker.getString("rate"));
 			    	row.add(worker.getString("availability"));
+			    	row.add(projectID);
 			    }
 			    Rows.add(row);
 				
