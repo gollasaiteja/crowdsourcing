@@ -32,7 +32,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Project</title>
+		<title>Projects by <%=userFirst %></title>
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,42 +85,30 @@
          		    	<c:forEach items="${recommendation}" var="recommendedWorker">
 	    					<li>
 	    						<c:forEach items="${recommendedWorker[1]}" var="wFirstName">
-	         		    			${wFirstName}
+	         		    			Name: ${wFirstName}
 	    						</c:forEach>
-	    					</li>
-	    					<li>
 	    						<c:forEach items="${recommendedWorker[2]}" var="wLastName">
-	         		    			${wLastName}
+	         		    			${wLastName} </br>
 	    						</c:forEach>
-	    					</li>
-	    					<li>
 	    						<c:forEach items="${recommendedWorker[3]}" var="wEmail">
-	         		    			${wEmail}
+	         		    			Email: ${wEmail} </br>
 	    						</c:forEach>
-	    					</li>
-	    					<li>
 	    						<c:forEach items="${recommendedWorker[4]}" var="wLocation">
-	         		    			${wLocation}
+	         		    			Location: ${wLocation} </br>
 	    						</c:forEach>
-	    					</li>
-	    					<li>
 	    						<c:forEach items="${recommendedWorker[5]}" var="wRate">
-	         		    			${wRate}
+	         		    			Hourly Rate: ${wRate} </br>
 	    						</c:forEach>
-	    					</li>
-	    					<li>
 	    						<c:forEach items="${recommendedWorker[6]}" var="wAvailability">
-	         		    			${wAvailability}
+	         		    			Weekly Availability: ${wAvailability} </br>
 	    						</c:forEach>
-	    					</li>
-	    					<li>
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
 	         		    			<form role="form" method="post" action="AssignWorker">
 			        					<div>
 			        						<input type="hidden" name="worker_id" value="${wID}">
 			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
 			        						<input type="hidden" name="email" value="<%=userEmail %>">		        					
-			        						<input type="submit" value="Select Worker &raquo;" class="btn btn-secondary">
+			        						<input type="submit" value="Assign Project &raquo;" class="btn btn-secondary">
 			        					</div>
 		        					</form>
 		        				</c:forEach>

@@ -116,16 +116,6 @@
 	    						</c:forEach>
 	    					</li>
 	    					<li>	
-	    						<c:forEach items="${projectInfo[7]}" var="pStatusClient">
-	         		    			${pStatusClient}
-	    						</c:forEach>
-	    					</li>
-	    					<li>	
-	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
-	         		    			${pStatusWorker}
-	    						</c:forEach>
-	    					</li>
-	    					<li>	
 	    						<c:forEach items="${projectInfo[9]}" var="pAssignedWorker">
 	         		    			${pAssignedWorker}
 	    						</c:forEach>
@@ -142,7 +132,17 @@
 			        					</div>
 		        					</form>
 		        				</c:forEach>
-    						</li>     		    	
+    						</li>
+    						<li>	
+	    						<c:forEach items="${projectInfo[7]}" var="pStatusClient">
+	         		    			${pStatusClient}
+	    						</c:forEach>
+	    					</li>
+	    					<li>	
+	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
+	         		    			${pStatusWorker}
+	    						</c:forEach>
+	    					</li>     		    	
          		    	</c:forEach>
          			</ul>
 		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
