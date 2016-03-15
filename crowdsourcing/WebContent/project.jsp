@@ -83,13 +83,11 @@
          			%>
          			<ul>
          		    	<c:forEach items="${project}" var="projectInfo">
-							<li>
 	         		    		<c:forEach items="${projectInfo[0]}" var="pTitle">
-	         		    			${pTitle}
-	    						</c:forEach>
-	    					</li>	
+	         		    			Project Title: ${pTitle}
+	    						</c:forEach></br>	
 	    						<c:forEach items="${projectInfo[1]}" var="pDescription">
-	         		    			${pDescription}
+	         		    			Project Description: ${pDescription} </br>
 	    						</c:forEach>
 	    					<li>
 	    						<c:forEach items="${projectInfo[2]}" var="pSkill">
