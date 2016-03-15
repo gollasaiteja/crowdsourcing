@@ -46,31 +46,28 @@ function validateEmail(evt){
 
 //Duplicate email check for client
 $(document).ready(function(){
-	$("#email").blur(validateEmail);
-});
-
+	$("#clientEmail").blur(validateEmail);
+	});
 function emailValidationSuccess(resp){
 	if(!resp){
-		$("#email").css("border-color","red")
+		$("#clientEmail").css("border-color","red")
 	}
 	else {
-		$("#email").css("border-color","black")
+		$("#clientEmail").css("border-color","black")
 	}
 }
-
 function emailValidationFailure(resp){
 	console.log(resp);
 }
-
 function validateEmail(evt){
-	$.ajax({
-		url: 'EmailValidationServlet',
-		data: {
-			'email' :this.value  
-		},
-		success: emailValidationSuccess,
-		failure: emailValidationFailure
-	});
+		$.ajax({
+			  url: 'EmailValidationServletClient',
+			  data: {
+				'email' :this.value  
+			  },
+			  success: emailValidationSuccess,
+			  failure: emailValidationFailure
+			});
 }
 
 $(document).ready(function(){
