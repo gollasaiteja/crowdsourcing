@@ -77,72 +77,92 @@
 		        <p>Your projects:</p>
 		        	<% 
 	         			ArrayList rows = new ArrayList();
+		        	
 	         			if (request.getAttribute("project") != null){
 	             			rows = (ArrayList) request.getAttribute("project");
 	         			}
+	         			String updatedClientStatus = null;
+	         			if (request.getAttribute("statusClient") != null){
+	             			updatedClientStatus = (String) request.getAttribute("statusClient");
+	         			}
          			%>
-         			<ul>
+         			<ol>
          		    	<c:forEach items="${project}" var="projectInfo">
 	         		    		<c:forEach items="${projectInfo[0]}" var="pTitle">
 	         		    			Project Title: ${pTitle}
-	    						</c:forEach></br>	
+	    						</c:forEach> </br>	
 	    						<c:forEach items="${projectInfo[1]}" var="pDescription">
 	         		    			Project Description: ${pDescription} </br>
 	    						</c:forEach>
-	    					<li>
+	    					
 	    						<c:forEach items="${projectInfo[2]}" var="pSkill">
 	         		    			${pSkill}
-	    						</c:forEach>
-	    					</li>
-	    					<li>
+	    						</c:forEach> </br>
+	    					
+	    					
 	    						<c:forEach items="${projectInfo[3]}" var="pAvailability">
 	         		    			${pAvailability}
-	    						</c:forEach>
-	    					</li>
-	    					<li>	
+	    						</c:forEach> </br>
+	    						
 	    						<c:forEach items="${projectInfo[4]}" var="pLocation">
 	         		    			${pLocation}
-	    						</c:forEach>
-	    					</li>
-	    					<li>	
+	    						</c:forEach> </br>
+	    						
 	    						<c:forEach items="${projectInfo[5]}" var="pRate">
 	         		    			${pRate}
-	    						</c:forEach>
-	    					<li>	
+	    						</c:forEach> </br>
+	    						
 	    						<c:forEach items="${projectInfo[6]}" var="pCredibility">
 	         		    			${pCredibility}
-	    						</c:forEach>
-	    					</li>
-	    					<li>	
+	    						</c:forEach> </br>
+	    						
 	    						<c:forEach items="${projectInfo[9]}" var="pAssignedWorker">
 	         		    			${pAssignedWorker}
-	    						</c:forEach>
-	    					<li>
-	    					</li>
+	    						</c:forEach> </br>
+	    					
 	    					<li>	
 	    						<c:forEach items="${projectInfo[10]}" var="pID">
 	         		    			<form role="form" method="post" action="ViewRecommendation">
 			        					<div>
 			        						<input type="hidden" name="project_id" value="${pID}">
 			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
-			        						<input type="hidden" name="email" value="<%=userEmail %>">		        					
+			        						<input type="hidden" name="email" value="<%=userEmail %>">		
+			        						        					
 			        						<input type="submit" value="Get Recommendation &raquo;" class="btn btn-secondary">
 			        					</div>
 		        					</form>
-		        				</c:forEach>
-    						</li>
-    						<li>	
+		        				</c:forEach> 
+    							<li>
 	    						<c:forEach items="${projectInfo[7]}" var="pStatusClient">
-	         		    			${pStatusClient}
-	    						</c:forEach>
-	    					</li>
-	    					<li>	
+	         		    			Client Status <%= updatedClientStatus %>
+	         		    			<form method="post" action="UpdateStatusClient">
+	         		    			<input type="hidden" name="project_id" value="${pID}">
+	         		    			<input type="hidden" name="firstName" value="<%=userFirst %>">
+	         		    			<input type="hidden" name="email" value="<%=userEmail %>">
+	         		    			<select name= "clientStatus">
+                                    <option value="0">Not Assigned</option>
+                                    <option value="1">Assigned</option>
+                                    <option value="2">Completed</option>
+                                    </select>
+                                    <input type="submit" value="Update">
+	         		    			</form>
+	    						</c:forEach> 
+	    						</li>
+	    						<li>
 	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
-	         		    			${pStatusWorker}
+	         		    		Worker Status
+	         		    		<form>
+	         		    			<select name="pStatusWorker">
+                                    <option value="0">Not Assigned</option>
+                                    <option value="1">Assigned</option>
+                                    <option value="2">Completed</option>
+                                    </select>
+                                    <input type="submit" value="Update">
+	         		    			</form>
 	    						</c:forEach>
 	    					</li>     		    	
          		    	</c:forEach>
-         			</ul>
+         			</ol>
 		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
 		      </div>
 		  </div>

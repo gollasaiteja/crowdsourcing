@@ -63,7 +63,7 @@ public class UpdateClient extends HttpServlet {
 		
 			
 		PreparedStatement pst = conn.prepareStatement("update test.clients set first_name=?, "
-				+ "last_name=?, password=?, card_holder_name=?, card_number=?, cvv=?, expiry_month=?, expiry_year where email=?"); 
+				+ "last_name=?, password=?, card_holder_name=?, card_number=?, cvv=?, expiry_month=?, expiry_year=? where email=?"); 
 		pst.setString(1,firstName);
 		pst.setString(2,lastName);
 		pst.setString(3,password);
