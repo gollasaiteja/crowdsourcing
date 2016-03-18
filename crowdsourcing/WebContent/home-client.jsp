@@ -1,5 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
+<%
+	String emailAtt = null; String firstAtt = null; String passwordAtt = null;
+	if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
+		response.sendRedirect("login.jsp");
+	}
+	else{
+		emailAtt = (String) session.getAttribute("email");
+		passwordAtt = (String) session.getAttribute("password");
+		firstAtt = (String) session.getAttribute("userFirst");
+	}
+	
+	String userEmail = null;
+	String userPassword = null;
+	String userFirst = null;
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+		
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		    if(cookie.getName().equals("email")) userEmail = cookie.getValue();
+		    if(cookie.getName().equals("password")) userPassword = cookie.getValue();
+		    if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
+		    if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+		}
+	}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -14,35 +41,8 @@
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 	</head>
 	<body>
-		<%
-		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
-		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
-		   response.sendRedirect("login.jsp");
-		}
-		else{
-			emailAtt = (String) session.getAttribute("email");
-			passwordAtt = (String) session.getAttribute("password");
-			firstAtt = (String) session.getAttribute("userFirst");
-		}
-		
-		String userEmail = null;
-		String userPassword = null;
-		String userFirst = null;
-		String sessionID = null;
-		Cookie[] cookies = request.getCookies();
-		
-		if(cookies != null){
-			for(Cookie cookie : cookies){
-		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
-		    	if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
-		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			}
-		}
-		%>
 		<meta name="sessionID" content="<%=sessionID %>">
-		<!-- Fixed navbar -->
-		    <nav class="navbar navbar-default navbar-fixed-top">
+			<nav class="navbar navbar-default navbar-fixed-top">
 		      <div class="container">
 		        <div class="navbar-header">
 		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -59,7 +59,6 @@
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
-            		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
@@ -70,10 +69,8 @@
 		    </nav>
 		
 		    <div class="container">
-		
-		      <!-- Main component for a primary marketing message or call to action -->
-		      <div class="jumbotron">
-		        <h1>Hello <%=userFirst %>!</h1>
+				<div class="jumbotron">
+		        <h1>Hello <%=userEmail %>!</h1>
 		        <p>You can create a new project, and edit your profile.</p>
 		        <p>
 		        	<form role="form" method="post" id="ViewProjectsClient" action="ViewProjectsClient">
@@ -93,8 +90,7 @@
 		        	</div>
 		        	</form>
 		        </p>
-		      </div>
-		
-		    </div> <!-- /container -->
+			</div>
+		</div>
 	</body>
 </html>

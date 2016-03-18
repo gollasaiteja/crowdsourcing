@@ -80,15 +80,14 @@
 		        </p>
 		        <p>
 		        <form role="form" method="post" id="editworker_select" action="edit-profile-worker.jsp">
-		        <div class="row">
-		        <div class="col-xs-3 col-sm-3 col-md-3">
-		        <input type="submit" value="Edit Profile &raquo" class="btn btn-lg btn-primary">
-		        </div>
-		        </div>
+			        <div class="row">
+			        <div class="col-xs-3 col-sm-3 col-md-3">
+			        <input type="submit" value="Edit Profile &raquo" class="btn btn-lg btn-primary">
+			        </div>
+			        </div>
 		        </form>
 		        </p>
 		      </div>
-		
-		    </div> <!-- /container -->
+		      </div> <!-- /container -->
 </body>
 </html>

@@ -93,14 +93,8 @@
 	    						<c:forEach items="${recommendedWorker[3]}" var="wEmail">
 	         		    			Email: ${wEmail} </br>
 	    						</c:forEach>
-	    						<c:forEach items="${recommendedWorker[4]}" var="wLocation">
-	         		    			Location: ${wLocation} </br>
-	    						</c:forEach>
-	    						<c:forEach items="${recommendedWorker[5]}" var="wRate">
-	         		    			Hourly Rate: CAD ${wRate} </br>
-	    						</c:forEach>
-	    						<c:forEach items="${recommendedWorker[6]}" var="wAvailability">
-	         		    			Weekly Availability: ${wAvailability} hours/week </br>
+	    						<c:forEach items="${recommendedWorker[4]}" var="wCredibility">
+	         		    			Credibility: ${wCredibility} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[7]}" var="pID">
 		    						<c:forEach items="${recommendedWorker[0]}" var="wID">
