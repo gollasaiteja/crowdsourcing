@@ -55,7 +55,7 @@
         		</nav>
       		</div>
 
-      <div class="jumbotron">
+      <div class="jumbotron homeback">
       	<h1>Let's do it together</h1>
         <p class="lead">MTL Works is a great resource for remote work.</p>
         <p><a class="btn btn-lg btn-success" href="login.jsp" role="button">Log in</a></p>

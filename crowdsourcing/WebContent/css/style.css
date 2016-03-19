@@ -7,7 +7,7 @@ body {
 }
 
 .navbar{min-height:auto !important;}
-.jumbotron{background-image: url("../images/mtlworks.jpg");}
+.homeback{background-image: url("../images/mtl.png");}
 
 .wrapper {
   margin-top: 80px;

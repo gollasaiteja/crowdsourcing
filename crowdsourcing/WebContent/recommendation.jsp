@@ -41,6 +41,8 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script></script>
 	</head>
 	<body>
 		<meta name="sessionID" content="<%=sessionID %>">
@@ -101,6 +103,19 @@
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
 		         		    			<form role="form" method="post" action="AssignWorker">
+				        					<script>
+												function sendMail(){
+													var link = "mailto:${recommendedWorker[3]}"
+													+ "sa.priom@gmail.com"
+													+ "&subject=" + escape("This is my subject")
+													+ "&body=" + escape(document.getElementById('raven').value);
+													window.location.href = link;
+												}
+											</script>
+				        					<div>
+				        						<textarea id="raven">Lorem ipsum...</textarea>
+												<button onclick="sendMail(); return false">Send</button>
+				        					</div>
 				        					<div>
 				        						<input type="hidden" name="worker_id" value="${wID}">
 				        						<input type="hidden" name="project_id" value="${pID}">
