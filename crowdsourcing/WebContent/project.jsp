@@ -86,7 +86,7 @@
 	             			updatedClientStatus = (String) request.getAttribute("statusClient");
 	         			}
          			%>
-         			<ol>
+         			<ul>
          		    	<c:forEach items="${project}" var="projectInfo">
 	         		    		<c:forEach items="${projectInfo[0]}" var="pTitle">
 	         		    			Project Title: ${pTitle}
@@ -120,20 +120,18 @@
 	         		    			${pAssignedWorker}
 	    						</c:forEach> </br>
 	    					
-	    					<li>	
 	    						<c:forEach items="${projectInfo[10]}" var="pID">
 	         		    			<form role="form" method="post" action="ViewRecommendation">
 			        					<div>
 			        						<input type="hidden" name="project_id" value="${pID}">
 			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
-			        						<input type="hidden" name="email" value="<%=userEmail %>">		
-			        						        					
+			        						<input type="hidden" name="email" value="<%=userEmail %>">        					
 			        						<input type="submit" value="Get Recommendation &raquo;" class="btn btn-secondary">
 			        					</div>
 		        					</form>
 		        				</c:forEach> 
-    							<li>
-	    						<c:forEach items="${projectInfo[7]}" var="pStatusClient">
+    							
+    							<c:forEach items="${projectInfo[7]}" var="pStatusClient">
 	         		    			Client Status <%= updatedClientStatus %>
 	         		    			<form method="post" action="UpdateStatusClient">
 	         		    			<input type="hidden" name="project_id" value="${pID}">
@@ -147,8 +145,7 @@
                                     <input type="submit" value="Update">
 	         		    			</form>
 	    						</c:forEach> 
-	    						</li>
-	    						<li>
+	    						
 	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
 	         		    		Worker Status
 	         		    		<form>
@@ -159,10 +156,9 @@
                                     </select>
                                     <input type="submit" value="Update">
 	         		    			</form>
-	    						</c:forEach>
-	    					</li>     		    	
+	    						</c:forEach>     		    	
          		    	</c:forEach>
-         			</ol>
+         			</ul>
 		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
 		      </div>
 		  </div>

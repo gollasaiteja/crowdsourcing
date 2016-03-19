@@ -34,6 +34,7 @@
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="sessionID" content="<%=sessionID %>">
     	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
@@ -41,9 +42,8 @@
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 	</head>
 	<body>
-		<meta name="sessionID" content="<%=sessionID %>">
-			<nav class="navbar navbar-default navbar-fixed-top">
-		      <div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
 		        <div class="navbar-header">
 		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		            <span class="sr-only">Toggle navigation</span>
@@ -61,8 +61,14 @@
             		<li><a href="all-workers.jsp">Workers</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
-		            <li><a href="logout.jsp">Log Out</a></li>
+		            <li><a href="home-client.jsp"><%=userEmail %></a></li>
+		            <li>
+		            	<p class="navbar-btn">
+		            	<form method="post" action="Logout">
+				        	<input type="submit" value="Logout" class="btn btn-default">
+				        </form>
+				        </p>
+		            </li>
 		          </ul>
 		        </div>
 		      </div>
@@ -70,25 +76,23 @@
 		
 		    <div class="container">
 				<div class="jumbotron">
-		        <h1>Hello <%=userEmail %>!</h1>
-		        <p>You can create a new project, and edit your profile.</p>
+		        <h3>Hello <%=userEmail %>!</h3>
+		        <p>You can view your projects. You can also create a new project, and edit your profile.</p>
 		        <p>
-		        	<form role="form" method="post" id="ViewProjectsClient" action="ViewProjectsClient">
+		        <form role="form" method="post" id="ViewProjectsClient" action="ViewProjectsClient">
 		        	<div>
-		        	<input type="hidden" name="email" value="<%=userEmail %>">
-		        	<input type="submit" value="My Projects &raquo;" class="btn btn-lg btn-primary">
+			        	<input type="hidden" name="email" value="<%=userEmail %>">
+			        	<input type="submit" value="My Projects &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
-		        	</form>
+		        </form>
 		        </p>
+		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
 		        <p>
-		   			<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a>
-		        </p>
-		        <p>
-		        	<form role="form" method="post" id="EditProfileClient" action="edit-profile-client.jsp">
+		        <form role="form" method="post" id="EditProfileClient" action="edit-profile-client.jsp">
 		        	<div>
-		        	<input type="submit" value="Edit Profile &raquo;" class="btn btn-lg btn-primary">
+		        		<input type="submit" value="Edit Profile &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
-		        	</form>
+		        </form>
 		        </p>
 			</div>
 		</div>

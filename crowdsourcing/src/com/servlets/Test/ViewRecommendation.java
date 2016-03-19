@@ -54,7 +54,7 @@ public class ViewRecommendation extends HttpServlet{
 				dbProjectAvailability = skill.getString("availability");
 			}
 			
-			PreparedStatement getSkilledWorker = conn.prepareStatement(" select id from test.workers where skill=? ");
+			PreparedStatement getSkilledWorker = conn.prepareStatement(" select id, credibility from test.workers where skill=? order by credibility DESC");
 			getSkilledWorker.setString(1,dbProjectSkill);
 			ResultSet skilledWorker = getSkilledWorker.executeQuery();
 			
@@ -77,7 +77,7 @@ public class ViewRecommendation extends HttpServlet{
 			    	System.out.println("yes");
 			    	String workerID = (String) row1.get(i);
 			    	
-			    	PreparedStatement getcredScores = conn.prepareStatement(" SELECT first_name, last_name, email, credibility from test.workers WHERE id=? ORDER BY credibility DESC");
+			    	PreparedStatement getcredScores = conn.prepareStatement(" SELECT first_name, last_name, email, credibility from test.workers WHERE id=?");
 					getcredScores.setString(1,workerID);
 					ResultSet credScores = getcredScores.executeQuery();
 					String rwFirstName = "null";
@@ -97,6 +97,7 @@ public class ViewRecommendation extends HttpServlet{
 					    	row2.add(rwLastName);
 					    	row2.add(rwEmail);
 					    	row2.add(rwCredScore);
+					    	row2.add(projectID);
 					    }
 					    credRows.add(row2);
 					}

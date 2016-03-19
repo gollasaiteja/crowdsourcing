@@ -78,7 +78,7 @@ public class AssignWorker extends HttpServlet {
 		}
 		
 		catch(SQLException e){
-			System.out.println("UpdateClient.java:110 someting went wrong!");
+			System.out.println("Someting went wrong!");
 			System.err.println(e.getMessage());
 		}
 		catch (ClassNotFoundException e1){

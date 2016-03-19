@@ -96,8 +96,10 @@
 	    						<c:forEach items="${recommendedWorker[4]}" var="wCredibility">
 	         		    			Credibility: ${wCredibility} </br>
 	    						</c:forEach>
-	    						<c:forEach items="${recommendedWorker[7]}" var="pID">
-		    						<c:forEach items="${recommendedWorker[0]}" var="wID">
+	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
+	    							
+	    						</c:forEach>
+	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
 		         		    			<form role="form" method="post" action="AssignWorker">
 				        					<div>
 				        						<input type="hidden" name="worker_id" value="${wID}">
@@ -107,7 +109,6 @@
 				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-secondary">
 				        					</div>
 			        					</form>
-			        				</c:forEach>
 			        			</c:forEach>	
 	    					</li>     		    	
          		    	</c:forEach>

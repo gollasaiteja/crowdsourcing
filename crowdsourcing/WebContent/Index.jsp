@@ -1,5 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
+<%
+	String emailAtt = null; String firstAtt = null; String passwordAtt = null;
+	if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
+		response.sendRedirect("login.jsp");
+	}
+	else{
+		emailAtt = (String) session.getAttribute("email");
+		passwordAtt = (String) session.getAttribute("password");
+		firstAtt = (String) session.getAttribute("userFirst");
+	}
+	
+	String userEmail = null;
+	String userPassword = null;
+	String userFirst = null;
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+		
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		    if(cookie.getName().equals("email")) userEmail = cookie.getValue();
+		    if(cookie.getName().equals("password")) userPassword = cookie.getValue();
+		    if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
+		    if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+		}
+	}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -24,16 +51,14 @@
             			<li><a href="all-projects.jsp">Projects</a></li>
             			<li><a href="all-clients.jsp">Clients</a></li>
             			<li><a href="all-workers.jsp">Workers</a></li>
-            			<li><a href="about-mtlworks.jsp">About</a></li>
           			</ul>
         		</nav>
       		</div>
 
-      <!-- Jumbotron -->
       <div class="jumbotron">
-      	<h1>Let's do it together!</h1>
+      	<h1>Let's do it together</h1>
         <p class="lead">MTL Works is a great place to get your works done.</p>
-        <p><a class="btn btn-lg btn-success" href="Login.jsp" role="button">Log in</a></p>
+        <p><a class="btn btn-lg btn-success" href="login.jsp" role="button">Log in</a></p>
       </div>
 
       <!-- Example row of columns -->
@@ -50,15 +75,15 @@
           <p><a class="btn btn-primary" href="signup-client.jsp" role="button">Sign Up as Client &raquo;</a></p>
        </div>
         <div class="col-lg-4">
-          <h2>Workers</h2>
-          <p>As worker anyone can apply to projects. The client who posted the tasks approves one application.</p>
-          <p><a class="btn btn-primary" href="signup-worker.jsp" role="button">Sign Up as Worker &raquo;</a></p>
+          <h2>Freelancers</h2>
+          <p>As freelancer you can set your skill, hourly, rate. The better work you do you get more credibility score and rank higher while being recommended.</p>
+          <p><a class="btn btn-primary" href="signup-worker.jsp" role="button">Sign Up as Freelancer &raquo;</a></p>
         </div>
       </div>
 
       <!-- Site footer -->
       <footer class="footer">
-        <p>&copy; 2015 Company, Inc.</p>
+        <p>&copy; 2016 Company, Inc.</p>
       </footer>
 
     </div> <!-- /container -->
