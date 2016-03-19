@@ -45,7 +45,7 @@
 		<div class="container">
 			<div class="masthead">
         		<h1>MTL Works</h1>
-        		<nav>
+        		<nav class="navbar navbar-default">
           			<ul class="nav nav-justified">
             			<li class="active"><a href="#">Home</a></li>
             			<li><a href="all-projects.jsp">Projects</a></li>
@@ -57,7 +57,7 @@
 
       <div class="jumbotron">
       	<h1>Let's do it together</h1>
-        <p class="lead">MTL Works is a great place to get your works done.</p>
+        <p class="lead">MTL Works is a great resource for remote work.</p>
         <p><a class="btn btn-lg btn-success" href="login.jsp" role="button">Log in</a></p>
       </div>
 
@@ -76,14 +76,14 @@
        </div>
         <div class="col-lg-4">
           <h2>Freelancers</h2>
-          <p>As freelancer you can set your skill, hourly, rate. The better work you do you get more credibility score and rank higher while being recommended.</p>
+          <p>As freelancer with better work you get more credibility score and rank higher in recommendation lists.</p>
           <p><a class="btn btn-primary" href="signup-worker.jsp" role="button">Sign Up as Freelancer &raquo;</a></p>
         </div>
       </div>
 
       <!-- Site footer -->
       <footer class="footer">
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>&copy; 2016 Winter, INSE 6260</p>
       </footer>
 
     </div> <!-- /container -->
