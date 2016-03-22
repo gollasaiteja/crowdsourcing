@@ -17,50 +17,51 @@ import javax.servlet.http.HttpSession;
 import com.crowdsourcing.DBConnection.DBConnection;
 
 /**
- * Servlet implementation class UpdateStatusClient
+ * Servlet implementation class UpdateStatusWorker
  */
-@WebServlet("/UpdateStatusClient")
-public class UpdateStatusClient extends HttpServlet {
+@WebServlet("/UpdateStatusWorker")
+public class UpdateStatusWorker extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateStatusClient() {
+    public UpdateStatusWorker() {
         super();
-        // TODO Auto-generated constructor stub
+      
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String email = request.getParameter("email");
-		String statusClient = request.getParameter("clientStatus");
-		String firstName =request.getParameter("firstName");
-		String projectId =request.getParameter("project_Id");
+	    String email = request.getParameter("email");
+		String statusWorker = request.getParameter("workerStatus");
+		String firstName = request.getParameter("firstName");
+		String projectId = request.getParameter("projectId");
+		System.out.println(email);
+		System.out.println(firstName);
 		
 		DBConnection obj = new DBConnection();
 		Connection conn = null;
 		
 		try{
 			conn = obj.DBConnect();
-			System.out.println(email);
-			System.out.println(statusClient);
+			
+			System.out.println(statusWorker);
+			System.out.println(projectId);
 			
 				
-			PreparedStatement pst = conn.prepareStatement("update test.projects set status_client=? where client=?"); 
-			pst.setString(1,statusClient); 
-			pst.setString(2,email);
+			PreparedStatement pst = conn.prepareStatement("update test.projects set status_worker=? where id=?"); 
+			pst.setString(1,statusWorker); 
+			pst.setString(2,projectId);
 			
 			int result = pst.executeUpdate();
 			
@@ -79,7 +80,7 @@ public class UpdateStatusClient extends HttpServlet {
 				// HTTP session
 				HttpSession session1 = request.getSession();
 	            session1.setAttribute("email", email);
-	            session1.setAttribute("user", firstName);
+	         //   session1.setAttribute("user", firstName);
 	            session1.setMaxInactiveInterval(30*60); //session expires in 30 minutes
 	            
 	            Cookie userEmail = new Cookie("email", email);
@@ -90,22 +91,16 @@ public class UpdateStatusClient extends HttpServlet {
 	            response.addCookie(userFirst);
 	            request.setAttribute("email", email);
 	            request.setAttribute("projectId", projectId);
-	            request.setAttribute("statusClient", statusClient);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
+	            request.setAttribute("statusWorker", statusWorker);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-worker.jsp");
 				requestDispatcher.forward(request, response);
-			
-			
-			
-			
-			
-			// request.setAttribute("statusClient", statusClient);
 		
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
-		System.out.println("UpdateClientStatus.java:62 someting went wrong!");
+		System.out.println("UpdateWorkerStatus.java:100 someting went wrong!");
 		System.err.println(e.getMessage());
 		e.printStackTrace();
 	} 
@@ -113,6 +108,6 @@ public class UpdateStatusClient extends HttpServlet {
 			
 		}
 
-}
 	}
-	
+
+}

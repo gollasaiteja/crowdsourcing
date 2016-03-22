@@ -62,8 +62,8 @@
             		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="../navbar-static-top/"><%=userEmail %></a></li>
-		            <li class="active"><a href="./"><%=userFirst %> <span class="sr-only">(current)</span></a></li>
+		            <li><a href="../navbar-static-top/"><%=(String)session.getAttribute("email") %></a></li>
+		            <li class="active"><a href="./"><%=(String)session.getAttribute("userFirst") %> <span class="sr-only">(current)</span></a></li>
 		          </ul>
 		        </div>
 		      </div>
@@ -77,6 +77,16 @@
 		        <p>Welcome</p>
 		        <p>
 		          <a class="btn btn-lg btn-primary" href="browse-projects.jsp" role="button">Browse Projects &raquo;</a>
+		        </p>
+		        <p>
+		        <form role="form" method="post"  action="ViewWorkerProject">
+			        <div class="row">
+			        <div class="col-xs-3 col-sm-3 col-md-3">
+			        <input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>" class="btn btn-lg btn-primary">
+			        <input type="submit" value="My Projects &raquo" class="btn btn-lg btn-primary">
+			        </div>
+			        </div>
+		        </form>
 		        </p>
 		        <p>
 		        <form role="form" method="post" id="editworker_select" action="edit-profile-worker.jsp">
