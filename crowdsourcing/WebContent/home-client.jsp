@@ -73,7 +73,6 @@
 		        </div>
 		      </div>
 		    </nav>
-		
 		    <div class="container">
 				<div class="jumbotron">
 		        <h3>Hello <%=userEmail %>!</h3>
