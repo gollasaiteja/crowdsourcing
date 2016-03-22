@@ -89,37 +89,29 @@
          			<ul>
          		    	<c:forEach items="${project}" var="projectInfo">
 	         		    		<c:forEach items="${projectInfo[0]}" var="pTitle">
-	         		    			Project Title: ${pTitle}
+	         		    			<b>Project Title:</b> ${pTitle}
 	    						</c:forEach> </br>	
 	    						<c:forEach items="${projectInfo[1]}" var="pDescription">
-	         		    			Project Description: ${pDescription} </br>
-	    						</c:forEach>
-	    					
+	         		    			<b>Project Description:</b> ${pDescription} </br>
+	    						</c:forEach> </br>
 	    						<c:forEach items="${projectInfo[2]}" var="pSkill">
-	         		    			${pSkill}
+	         		    			Required Skill: ${pSkill}
 	    						</c:forEach> </br>
-	    					
-	    					
-	    						<c:forEach items="${projectInfo[3]}" var="pAvailability">
-	         		    			${pAvailability}
+								<c:forEach items="${projectInfo[3]}" var="pAvailability">
+	         		    			Required Availability: ${pAvailability} hours/week
 	    						</c:forEach> </br>
-	    						
 	    						<c:forEach items="${projectInfo[4]}" var="pLocation">
-	         		    			${pLocation}
+	         		    			Location: ${pLocation}
 	    						</c:forEach> </br>
-	    						
 	    						<c:forEach items="${projectInfo[5]}" var="pRate">
-	         		    			${pRate}
+	         		    			Hourly Rate: CAD ${pRate} 
 	    						</c:forEach> </br>
-	    						
 	    						<c:forEach items="${projectInfo[6]}" var="pCredibility">
-	         		    			${pCredibility}
+	         		    			Credibility Score: ${pCredibility}
 	    						</c:forEach> </br>
-	    						
 	    						<c:forEach items="${projectInfo[9]}" var="pAssignedWorker">
 	         		    			${pAssignedWorker}
 	    						</c:forEach> </br>
-	    					
 	    						<c:forEach items="${projectInfo[10]}" var="pID">
 	         		    			<form role="form" method="post" action="ViewRecommendation">
 			        					<div>
