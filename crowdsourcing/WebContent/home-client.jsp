@@ -7,7 +7,6 @@
 	}
 	else{
 		emailAtt = (String) session.getAttribute("email");
-		passwordAtt = (String) session.getAttribute("password");
 		firstAtt = (String) session.getAttribute("userFirst");
 	}
 	
@@ -20,7 +19,6 @@
 	if(cookies != null){
 		for(Cookie cookie : cookies){
 		    if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    if(cookie.getName().equals("password")) userPassword = cookie.getValue();
 		    if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
 		    if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 		}
@@ -85,7 +83,15 @@
 		        	</div>
 		        </form>
 		        </p>
-		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
+		        <p>
+		        <form role="form" method="post" action="AddProjectEligibility">
+		        	<div>
+		        		<input type="hidden" name="email" value="<%=userEmail %>">
+		        		<input type="hidden" name="userFirst" value="<%=userFirst %>">
+		        		<input type="submit" value="New Project &raquo;" class="btn btn-lg btn-primary">
+		        	</div>
+		        </form>
+		        <a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
 		        <p>
 		        <form role="form" method="post" id="EditProfileClient" action="edit-profile-client.jsp">
 		        	<div>
