@@ -44,10 +44,10 @@
 	<body>
 		<div class="container">
 			<div class="masthead">
-        		<h1>MTL Works</h1>
+        		<h1><a class="btn btn-lg btn-success" href="index.jsp" role="button">MTL WORKS</a></h1>
         		<nav class="navbar navbar-default">
           			<ul class="nav nav-justified">
-            			<li class="active"><a href="#">Home</a></li>
+            			<li class="active"><a href="index.jsp">Home</a></li>
             			<li><a href="all-projects.jsp">Projects</a></li>
             			<li><a href="all-clients.jsp">Clients</a></li>
             			<li><a href="all-workers.jsp">Workers</a></li>
@@ -58,7 +58,7 @@
       <div class="jumbotron homeback">
       	<h1>Let's do it together</h1>
         <p class="lead">MTL Works is a great resource for remote work.</p>
-        <p><a class="btn btn-lg btn-success" href="login.jsp" role="button">Log in</a></p>
+        <p><a class="btn btn-lg btn-primary" href="login.jsp" role="button">Log in</a></p>
       </div>
 
       <!-- Example row of columns -->
@@ -67,7 +67,7 @@
           <h2>Hello from MTL Works!</h2>
           <p >We aim to help people do their remote projects. You can explore the projects and features. </p>
           <p></p>
-          <p><a class="btn btn-primary" href="browse-projects.jsp" role="button">Explore Projects &raquo;</a></p>
+          <p><a class="btn btn-primary" href="all-projects.jsp" role="button">Explore Projects &raquo;</a></p>
         </div>
         <div class="col-lg-4">
           <h2>Clients</h2>
