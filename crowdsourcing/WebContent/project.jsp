@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import ="java.util.ArrayList" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -88,71 +89,74 @@
          			%>
          			<ul>
          		    	<c:forEach items="${project}" var="projectInfo">
-	         		    		<c:forEach items="${projectInfo[0]}" var="pTitle">
-	         		    			<b>Project Title:</b> ${pTitle}
-	    						</c:forEach> </br>	
-	    						<c:forEach items="${projectInfo[1]}" var="pDescription">
-	         		    			<b>Project Description:</b> ${pDescription} </br>
-	    						</c:forEach> </br>
-	    						<c:forEach items="${projectInfo[2]}" var="pSkill">
-	         		    			Required Skill: ${pSkill}
-	    						</c:forEach> </br>
-								<c:forEach items="${projectInfo[3]}" var="pAvailability">
-	         		    			Required Availability: ${pAvailability} hours/week
-	    						</c:forEach> </br>
-	    						<c:forEach items="${projectInfo[4]}" var="pLocation">
-	         		    			Location: ${pLocation}
-	    						</c:forEach> </br>
-	    						<c:forEach items="${projectInfo[5]}" var="pRate">
-	         		    			Hourly Rate: CAD ${pRate} 
-	    						</c:forEach> </br>
-	    						<c:forEach items="${projectInfo[6]}" var="pCredibility">
-	         		    			Credibility Score: ${pCredibility}
-	    						</c:forEach> </br>
-	    						<c:forEach items="${projectInfo[9]}" var="pAssignedWorker">
-	         		    			${pAssignedWorker}
-	    						</c:forEach> </br>
-	    						<c:forEach items="${projectInfo[10]}" var="pID">
+	         		    			<b>Project Title:</b> ${projectInfo[0]}</br>
+	         		    			<b>Project Description:</b> ${projectInfo[1]} </br>
+	         		    			Required Skill: ${projectInfo[2]}</br>
+	         		    			Required Availability: ${projectInfo[3]} hours/week</br>
+	         		    			Location: ${projectInfo[4]}</br>
+	         		    			Hourly Rate: CAD ${projectInfo[5]} 
+	    						
 	         		    			<form role="form" method="post" action="ViewRecommendation">
-			        					<div>
-			        						<input type="hidden" name="project_id" value="${pID}">
-			        						<input type="hidden" name="user_first" value="<%=userFirst %>">
-			        						<input type="hidden" name="email" value="<%=userEmail %>">        					
-			        						<input type="submit" value="Get Recommendation &raquo;" class="btn btn-secondary">
-			        					</div>
+			        				<div>
+			        				<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
+			        				<input type="hidden" name="user_first" value="<%=userFirst %>">
+			        				<input type="hidden" name="email" value="<%=userEmail %>">        					
+			        				<input type="submit" value="Get Recommendation &raquo;" class="btn btn-lg btn-primary">
+			        				</div>
 		        					</form>
-		        				</c:forEach> 
+    							</br>
     							
-    							<c:forEach items="${projectInfo[7]}" var="pStatusClient">
-	         		    			Client Status <%= updatedClientStatus %>
+    							<c:if test="${ projectInfo[9] != null}">
+	         		    			Client Status : 
+	         		    			<c:choose>
+		         		    			<c:when test="${projectInfo[7] == 0}">Not Assigned</c:when>
+		         		    			<c:when test="${projectInfo[7] == 1}">Assigned</c:when>
+		         		    			<c:when test="${projectInfo[7] == 2}">Completed</c:when>
+	         		    			</c:choose>
 	         		    			<form method="post" action="UpdateStatusClient">
-	         		    			<input type="hidden" name="project_id" value="${pID}">
+	         		    			<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
 	         		    			<input type="hidden" name="firstName" value="<%=userFirst %>">
 	         		    			<input type="hidden" name="email" value="<%=userEmail %>">
 	         		    			<select name= "clientStatus">
-                                    <option value="0">Not Assigned</option>
-                                    <option value="1">Assigned</option>
-                                    <option value="2">Completed</option>
+	                                    <option value="0" <c:if test="${projectInfo[7] == 0}">selected</c:if> >Not Assigned</option>
+	                                    <option value="1" <c:if test="${projectInfo[7] == 1}">selected</c:if>  >Assigned</option>
+	                                    <option value="2" <c:if test="${projectInfo[7] == 2}">selected</c:if>  >Completed</option>
+                                    </select>
+                                    <input type="submit" value="Update">
+                                    
+	         		    			</form>
+    							</c:if>
+	    						</br>
+	    					
+	         		    	
+	         		    	<c:if test="${ projectInfo[7] == '2' && projectInfo[8] == '2' }">
+	    						Credibility Score: 
+	         		    		<form method="post" action="AssignCredibility">
+	         		    		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
+	         		    		<input type="hidden" name="firstName" value="<%=(String)session.getAttribute("userFirst") %>">
+	         		    		<input type="hidden" name="wId" value="${projectInfo[9]}">
+	         		    		<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
+	         		    			<select name="Credibility">
+	         		    			<option value="0">0</option>
+                                    <option value="0.1">0.1</option>
+                                    <option value="0.2">0.2</option>
+                                    <option value="0.3">0.3</option>
+                                    <option value="0.4">0.4</option>
+                                    <option value="0.5">0.5</option>
+                                    <option value="0.6">0.6</option>
+                                    <option value="0.7">0.7</option>
+                                    <option value="0.8">0.8</option>
+                                    <option value="0.9">0.9</option>
+                                    <option value="1.0">1.0</option>
                                     </select>
                                     <input type="submit" value="Update">
 	         		    			</form>
-	    						</c:forEach> 
-	    						
-	    						<c:forEach items="${projectInfo[8]}" var="pStatusWorker">
-	         		    		Worker Status
-	         		    		<form>
-	         		    			<select name="pStatusWorker">
-                                    <option value="0">Not Assigned</option>
-                                    <option value="1">Assigned</option>
-                                    <option value="2">Completed</option>
-                                    </select>
-                                    <input type="submit" value="Update">
-	         		    			</form>
-	    						</c:forEach>     		    	
-         		    	</c:forEach>
-         			</ul>
-		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
-		      </div>
-		  </div>
+	         		    	</c:if>
+         		    	        </c:forEach>
+         			            </br>
+		                            <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
+		                       </ul>
+		                       </div>
+		                       </div>
 	</body>
 </html>

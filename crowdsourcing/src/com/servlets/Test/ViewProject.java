@@ -69,8 +69,9 @@ public class ViewProject extends HttpServlet {
 				dbStatusWorker = project.getString("status_worker");
 				dbAssignedWorker = project.getString("assigned_worker");
 				
-				ArrayList row = new ArrayList();
+				ArrayList<String>row = null;
 			    for (int i = 1; i <= 1 ; i++){
+			    	row = new ArrayList<String>();
 			    	row.add(project.getString("name"));
 			    	row.add(project.getString("description"));
 			    	row.add(project.getString("skill"));
@@ -82,8 +83,8 @@ public class ViewProject extends HttpServlet {
 			    	row.add(project.getString("status_worker"));
 			    	row.add(project.getString("assigned_worker"));
 			    	row.add(projectID);
+			    	Rows.add(row);
 			    }
-			    Rows.add(row);
 				
 				// HTTP session
 				HttpSession session = request.getSession();
@@ -99,6 +100,7 @@ public class ViewProject extends HttpServlet {
 	            response.addCookie(userFirst);
 			}
 			request.setAttribute("project", Rows);
+			request.setAttribute("pID", projectID);
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/project.jsp");
 			requestDispatcher.forward(request,response);	
 		}

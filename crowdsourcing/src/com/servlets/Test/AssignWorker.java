@@ -34,6 +34,7 @@ public class AssignWorker extends HttpServlet {
 		String clientFirst = request.getParameter("user_first");
 		String email = request.getParameter("email");
 		
+		
 		DBConnection obj = new DBConnection();
 		Connection conn = null;
 	
@@ -43,6 +44,7 @@ public class AssignWorker extends HttpServlet {
 			PreparedStatement pst = conn.prepareStatement("update test.projects set assigned_worker=? where id=?");
 			pst.setString(1,workerID);
 			pst.setString(2,projectID);
+			System.out.println(workerID);
 			
 			int result = pst.executeUpdate();
 			

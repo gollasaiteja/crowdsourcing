@@ -102,7 +102,7 @@
          		    	</c:forEach>
          			</ol>
 		        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
-		        <p><a class="btn btn-lg btn-primary" href="edit-profile-client.jsp" role="button">Edit Profile &raquo;</a></p>
+		        
 		      </div>
 		  </div>
 	</body>

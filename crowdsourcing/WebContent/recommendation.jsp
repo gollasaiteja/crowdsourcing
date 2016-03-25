@@ -104,7 +104,7 @@
 	         		    			Credibility: ${wCredibility} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
-	    							
+	    							Worker ID: ${wID} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
 		         		    			<form role="form" method="post" action="AssignWorker">
