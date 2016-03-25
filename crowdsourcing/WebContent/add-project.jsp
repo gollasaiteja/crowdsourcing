@@ -70,17 +70,16 @@
 		<div class="container">
 		
 		<div class="masthead">
-        		<h1>MTL Works</h1>
-        		<nav>
+        		<h1><button type="button" class="btn btn-lg btn-success">MTL Works</button></h1>
+        		<nav class="navbar navbar-default">
           			<ul class="nav nav-justified">
             			<li class="active"><a href="#">Home</a></li>
             			<li><a href="all-projects.jsp">Projects</a></li>
             			<li><a href="all-clients.jsp">Clients</a></li>
             			<li><a href="all-workers.jsp">Workers</a></li>
-            			<li><a href="about-mtlworks.jsp">About</a></li>
           			</ul>
         		</nav>
-      		</div>
+      </div>
 
       <div>
       	<h1>New Project</h1>

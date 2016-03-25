@@ -49,7 +49,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand" href="index.jsp">MTL Works</a>
+		          <a href="index.jsp"><button type="button" class="btn btn-lg btn-success">MTL Works</button></a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
@@ -91,7 +91,7 @@
 		        		<input type="submit" value="New Project &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
 		        </form>
-		        <a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
+		        <!--<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>-->
 		        <p>
 		        <form role="form" method="post" id="EditProfileClient" action="edit-profile-client.jsp">
 		        	<div>
