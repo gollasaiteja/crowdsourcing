@@ -119,6 +119,8 @@ public class ViewRecommendation extends HttpServlet{
 	            
 	            request.setAttribute("recommendation", credRows);
 			}
+			request.setAttribute("pID", projectID);
+			
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/recommendation.jsp");
             requestDispatcher.forward(request,response);
 		}

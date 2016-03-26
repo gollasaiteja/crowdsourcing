@@ -146,7 +146,7 @@
 				        	</div>
 				        	</div>
 				      	</div>
-			    		<input type="hidden" name="email" value="<%=userEmail %>"/>		
+			    		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email")%>"/>		
 			    		<input type="submit" value="Update" class="btn btn-info btn-block">
 			    		
 			    	</form>

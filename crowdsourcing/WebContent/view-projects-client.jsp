@@ -64,7 +64,14 @@
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
-		            <li><a href="logout.jsp">Log Out</a></li>
+		               	<li>
+		            	<p class="navbar-btn">
+		            	<form method="post" action="Logout">
+				        	<input type="submit" value="Logout" class="btn btn-default">
+				        </form>
+				        </p>
+		            </li>
+				 
 		          </ul>
 		        </div>
 		      </div>

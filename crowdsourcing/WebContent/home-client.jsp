@@ -59,7 +59,7 @@
             		<li><a href="all-workers.jsp">Workers</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="home-client.jsp"><%=userEmail %></a></li>
+		            <li><a href="home-client.jsp"><%=(String)session.getAttribute("email")%></a></li>
 		            <li>
 		            	<p class="navbar-btn">
 		            	<form method="post" action="Logout">
@@ -73,12 +73,12 @@
 		    </nav>
 		    <div class="container">
 				<div class="jumbotron">
-		        <h3>Hello <%=userEmail %>!</h3>
+		        <h3>Hello <%=(String)session.getAttribute("userFirst") %>!</h3>
 		        <p>You can view your projects. You can also create a new project, and edit your profile.</p>
 		        <p>
 		        <form role="form" method="post" id="ViewProjectsClient" action="ViewProjectsClient">
 		        	<div>
-			        	<input type="hidden" name="email" value="<%=userEmail %>">
+			        	<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
 			        	<input type="submit" value="My Projects &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
 		        </form>

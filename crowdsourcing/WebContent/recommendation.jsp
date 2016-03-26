@@ -105,7 +105,7 @@
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
 	    							Worker ID: ${wID} </br>
-	    						</c:forEach>
+	    						
 	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
 		         		    			<form role="form" method="post" action="AssignWorker">
 				        					<script>
@@ -122,13 +122,14 @@
 												<button onclick="sendMail(); return false">Send</button>
 				        					</div>
 				        					<div>
-				        						<input type="hidden" name="worker_id" value="${wID}">
-				        						<input type="hidden" name="project_id" value="${pID}">
+				        						<input type="hidden" name="worker_id" value="<%=request.getAttribute("wID")%>">
+				        						<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
 				        						<input type="hidden" name="user_first" value="<%=userFirst %>">
 				        						<input type="hidden" name="email" value="<%=userEmail %>">
 				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-secondary">
 				        					</div>
 			        					</form>
+			        					</c:forEach>
 			        			</c:forEach>	
 	    					</li>     		    	
          		    	</c:forEach>
