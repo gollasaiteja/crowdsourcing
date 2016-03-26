@@ -106,9 +106,7 @@
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
 	    							Worker ID: ${wID} </br>
 	    						</c:forEach>
-	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
-		         		    			<form role="form" method="post" action="AssignWorker">
-				        					<script>
+	    						<script>
 												function sendMail(){
 													var link = "mailto:${recommendedWorker[3]}"
 													+ "sa.priom@gmail.com"
@@ -120,7 +118,11 @@
 				        					<div>
 				        						<textarea id="raven" placeholder="Write email..."></textarea>
 												<button onclick="sendMail(); return false">Send</button>
+												<a href="mailto:${recommendedWorker[3]}">Send email</a>
 				        					</div>
+				        					
+	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
+		         		    			<form role="form" method="post" action="AssignWorker">
 				        					<div>
 				        						<input type="hidden" name="worker_id" value="${wID}">
 				        						<input type="hidden" name="project_id" value="${pID}">
