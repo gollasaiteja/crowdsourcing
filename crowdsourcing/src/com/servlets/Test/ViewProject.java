@@ -69,6 +69,16 @@ public class ViewProject extends HttpServlet {
 				dbStatusWorker = project.getString("status_worker");
 				dbAssignedWorker = project.getString("assigned_worker");
 				
+				// Must be secured
+				PreparedStatement getPaypalCode = conn.prepareStatement(" select paypal from test.workers where id=? ");
+				getPaypalCode.setString(1,dbAssignedWorker);
+				String dbPaypal = "null";
+				ResultSet paypal = getPaypalCode.executeQuery();
+				
+				while(paypal.next()){
+					dbPaypal = paypal.getString("paypal");
+				}
+				
 				ArrayList<String>row = null;
 			    for (int i = 1; i <= 1 ; i++){
 			    	row = new ArrayList<String>();
@@ -82,8 +92,10 @@ public class ViewProject extends HttpServlet {
 			    	row.add(project.getString("status_client"));
 			    	row.add(project.getString("status_worker"));
 			    	row.add(project.getString("assigned_worker"));
+			    	row.add(dbPaypal);
 			    	row.add(projectID);
 			    	Rows.add(row);
+			    	System.out.println(row);
 			    }
 				
 				// HTTP session

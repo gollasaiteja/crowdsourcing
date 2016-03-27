@@ -60,7 +60,6 @@
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
-            		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>

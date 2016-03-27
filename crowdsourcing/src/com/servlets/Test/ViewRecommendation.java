@@ -77,19 +77,21 @@ public class ViewRecommendation extends HttpServlet{
 			    	System.out.println("yes");
 			    	String workerID = (String) row1.get(i);
 			    	
-			    	PreparedStatement getcredScores = conn.prepareStatement(" SELECT first_name, last_name, email, credibility from test.workers WHERE id=?");
+			    	PreparedStatement getcredScores = conn.prepareStatement(" SELECT first_name, last_name, email, credibility, paypal from test.workers WHERE id=?");
 					getcredScores.setString(1,workerID);
 					ResultSet credScores = getcredScores.executeQuery();
 					String rwFirstName = "null";
 					String rwLastName = "null";
 					String rwEmail = "null";
 					String rwCredScore = "null";
+					String rwPaypal = "null";
 				    
 					while(credScores.next()){
 						rwFirstName = credScores.getString("first_name");
 						rwLastName = credScores.getString("last_name");
 						rwEmail = credScores.getString("email");
 						rwCredScore = credScores.getString("credibility");
+						rwPaypal = credScores.getString("paypal");
 						ArrayList row2 = new ArrayList();
 					    for (int j = 1; j <= 1 ; j++){
 					    	row2.add(workerID);
@@ -97,6 +99,7 @@ public class ViewRecommendation extends HttpServlet{
 					    	row2.add(rwLastName);
 					    	row2.add(rwEmail);
 					    	row2.add(rwCredScore);
+					    	row2.add(rwPaypal);
 					    	row2.add(projectID);
 					    }
 					    credRows.add(row2);

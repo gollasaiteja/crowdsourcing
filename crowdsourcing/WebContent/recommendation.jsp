@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
-	String emailAtt = null; String firstAtt = null; String passwordAtt = null;
+	String emailAtt = null; String firstAtt = null;
 	
 	if(session.getAttribute("email") == null || session.getAttribute("user") == null){
 	   response.sendRedirect("login.jsp");
@@ -14,7 +14,6 @@
 	}
 		
 	String userEmail = null;
-	String userPassword = null;
 	String userFirst = null;
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
@@ -22,7 +21,6 @@
 	if(cookies != null){
 		for(Cookie cookie : cookies){
 	    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-	    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
 	    	if(cookie.getName().equals("user")) userFirst = cookie.getValue();
 	    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 		}
@@ -103,6 +101,8 @@
 	    						<c:forEach items="${recommendedWorker[4]}" var="wCredibility">
 	         		    			Credibility: ${wCredibility} </br>
 	    						</c:forEach>
+	    						
+	    						
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
 	    							Worker ID: ${wID} </br>
 <<<<<<< HEAD

@@ -34,29 +34,26 @@ public class SignupWorker extends HttpServlet {
 		String password = request.getParameter("password");
 		String skill = request.getParameter("skill");
 		String location = request.getParameter("location");
-		String experience = request.getParameter("experience");
+		String paypal = request.getParameter("paypal");
 		String rate = request.getParameter("rate");
 		String availability = request.getParameter("availability");
 		int type = 0;
-		System.out.println(firstName + lastName + email + password + skill + location + experience + rate + availability + type);
+		System.out.println(firstName + lastName + email + password + skill + location + paypal + rate + availability + type);
 		DBConnection obj = new DBConnection();
 		Connection conn = null;
 		try{
 			conn = obj.DBConnect();
-			// Establish Connection
-			System.out.println("1");
-			// SQL Query
-			PreparedStatement pst = conn.prepareStatement("insert into test.workers(first_name, last_name, email, password, skill, location, experience, rate, availability, type)" + "values(?,?,?,?,?,?,?,?,?,?)");
-			System.out.println("2");
+			
+			PreparedStatement pst = conn.prepareStatement("insert into test.workers(first_name, last_name, email, password, skill, location, rate, availability, paypal, type)" + "values(?,?,?,?,?,?,?,?,?,?)");
 			pst.setString(1,firstName);
 			pst.setString(2,lastName);
 			pst.setString(3,email);
 			pst.setString(4,password);
 			pst.setString(5,skill);
 			pst.setString(6,location);
-			pst.setString(7,experience);
-			pst.setString(8,rate);
-			pst.setString(9,availability);
+			pst.setString(7,rate);
+			pst.setString(8,availability);
+			pst.setString(9,paypal);
 			pst.setInt(10,type);
 			int result1 = pst.executeUpdate();
 			
@@ -88,11 +85,11 @@ public class SignupWorker extends HttpServlet {
 				// HTTP session
 				HttpSession session = request.getSession();
 	            session.setAttribute("email", email);
-	            session.setAttribute("user", firstName);
+	            session.setAttribute("userFirst", firstName);
 	            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
 	            
 	            Cookie userEmail = new Cookie("email", email);
-	            Cookie userFirst = new Cookie("user", firstName);
+	            Cookie userFirst = new Cookie("userFirst", firstName);
 	            userEmail.setMaxAge(30*60);
 	            userFirst.setMaxAge(30*60);
 	            response.addCookie(userEmail);

@@ -99,8 +99,10 @@
 	         		    			<b>Project Description:</b> ${projectInfo[1]} </br>
 	         		    			Required Skill: ${projectInfo[2]}</br>
 	         		    			Required Availability: ${projectInfo[3]} hours/week</br>
-	         		    			Location: ${projectInfo[4]}</br>
+	         		    			Client Location: ${projectInfo[4]}</br>
 	         		    			Hourly Rate: CAD ${projectInfo[5]} 
+	         		    			
+	         		    			<!--  if worker status is not 0, 1, 2, he can initiate contact --> 
 	    						
 	         		    			<form role="form" method="post" action="ViewRecommendation">
 			        				<div>
@@ -157,10 +159,19 @@
                                     </select>
                                     <input type="submit" value="Update">
 	         		    			</form>
+	         		    		
+	         		    		Make payment:
+	         		    		${projectInfo[10]}	
 	         		    	</c:if>
          		    	        </c:forEach>
          			            </br>
-		                            <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
+		                    	<form role="form" method="post" action="AddProjectEligibility">
+		        				<div>
+					        		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
+					        		<input type="hidden" name="userFirst" value="<%=(String)session.getAttribute("userFirst") %>">
+					        		<input type="submit" value="Start a new project &raquo;" class="btn btn-lg btn-primary">
+					        	</div>
+		        			</form>
 		                       </ul>
 		                       </div>
 		                       </div>
