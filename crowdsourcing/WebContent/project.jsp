@@ -65,7 +65,7 @@
             		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
+		            <li class="active"><a href="home-client.jsp"><%=(String)session.getAttribute("email") %></a></li>
 		            	<li>
 		            	<p class="navbar-btn">
 		            	<form method="post" action="Logout">
@@ -80,7 +80,7 @@
 		
 		    <div class="container">
 		      <div class="jumbotron">
-		        <h3><%=userFirst %></h3>
+		        <h3><%=(String)session.getAttribute("userFirst") %> !</h3>
 		        <p>Your projects:</p>
 		        	<% 
 	         			ArrayList rows = new ArrayList();
@@ -103,7 +103,8 @@
 	         		    			Hourly Rate: CAD ${projectInfo[5]} 
 	         		    			
 	         		    			<!--  if worker status is not 0, 1, 2, he can initiate contact --> 
-	    						
+	         		    			
+	    						<c:if test="${projectInfo[7] == 0}">
 	         		    			<form role="form" method="post" action="ViewRecommendation">
 			        				<div>
 			        				<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
@@ -112,8 +113,9 @@
 			        				<input type="submit" value="Get Recommendation &raquo;" class="btn btn-lg btn-primary">
 			        				</div>
 		        					</form>
+		        				</c:if>
     							</br>
-    							
+    							</br>
     							<c:if test="${ projectInfo[9] != null}">
 	         		    			Client Status : 
 	         		    			<c:choose>
@@ -159,11 +161,12 @@
                                     </select>
                                     <input type="submit" value="Update">
 	         		    			</form>
-	         		    		
+	         		    		</br>
 	         		    		Make payment:
 	         		    		${projectInfo[10]}	
 	         		    	</c:if>
          		    	        </c:forEach>
+         			            </br>
          			            </br>
 		                    	<form role="form" method="post" action="AddProjectEligibility">
 		        				<div>

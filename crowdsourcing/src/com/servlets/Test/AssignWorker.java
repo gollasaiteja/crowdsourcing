@@ -41,7 +41,7 @@ public class AssignWorker extends HttpServlet {
 		try{
 			conn = obj.DBConnect();
 
-			PreparedStatement pst = conn.prepareStatement("update test.projects set assigned_worker=? where id=?");
+			PreparedStatement pst = conn.prepareStatement("update test.projects set assigned_worker=?,status_client=1 where id=?");
 			pst.setString(1,workerID);
 			pst.setString(2,projectID);
 			System.out.println(workerID);

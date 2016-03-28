@@ -102,18 +102,11 @@
 	         		    			Credibility: ${wCredibility} </br>
 	    						</c:forEach>
 	    						
-	    						
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
 	    							Worker ID: ${wID} </br>
-<<<<<<< HEAD
-	    						
-	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
-		         		    			<form role="form" method="post" action="AssignWorker">
-				        					<script>
-=======
 	    						</c:forEach>
-	    						<script>
->>>>>>> origin/master
+	    						
+				        					<script>
 												function sendMail(){
 													var link = "mailto:${recommendedWorker[3]}"
 													+ "sa.priom@gmail.com"
@@ -128,20 +121,21 @@
 												<a href="mailto:${recommendedWorker[3]}">Send email</a>
 				        					</div>
 				        					
-	    						<c:forEach items="${recommendedWorker[5]}" var="pID">
+	    						
 		         		    			<form role="form" method="post" action="AssignWorker">
 				        					<div>
-				        						<input type="hidden" name="worker_id" value="<%=request.getAttribute("wID")%>">
+				        						<input type="hidden" name="worker_id" value="${recommendedWorker[0]}">
 				        						<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
 				        						<input type="hidden" name="user_first" value="<%=userFirst %>">
 				        						<input type="hidden" name="email" value="<%=userEmail %>">
 				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-secondary">
 				        					</div>
 			        					</form>
-			        					</c:forEach>
+			        					
 			        			</c:forEach>	
 	    					</li>     		    	
-         		    	</c:forEach>
+         		    	
+         		    	
          			</ul>
 		      </div>
 		  </div>

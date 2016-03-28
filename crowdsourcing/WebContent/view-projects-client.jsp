@@ -62,7 +62,7 @@
             		<li><a href="all-workers.jsp">Workers</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
+		            <li class="active"><a href="home-client.jsp"><%=(String)session.getAttribute("email") %></a></li>
 		               	<li>
 		            	<p class="navbar-btn">
 		            	<form method="post" action="Logout">
@@ -78,7 +78,7 @@
 		
 		    <div class="container">
 		      <div class="jumbotron">
-		        <h3><%=userFirst %></h3>
+		        <h3><%=(String)session.getAttribute("userFirst") %> !</h3>
 		        <p>Your projects:</p>
 		        	<% 
          			ArrayList rows = new ArrayList();

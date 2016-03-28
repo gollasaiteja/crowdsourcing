@@ -48,7 +48,7 @@ public class ViewRecommendation extends HttpServlet{
 			String dbProjectRate = "null";
 			String dbProjectAvailability = "null";
 			
-			while(skill.next()){
+			if(skill.next()){
 				dbProjectSkill = skill.getString("skill");
 				dbProjectRate = skill.getString("rate");
 				dbProjectAvailability = skill.getString("availability");
@@ -76,7 +76,7 @@ public class ViewRecommendation extends HttpServlet{
 					System.out.println(row1.get(i));
 			    	System.out.println("yes");
 			    	String workerID = (String) row1.get(i);
-			    	
+			    	request.setAttribute("wID",workerID);
 			    	PreparedStatement getcredScores = conn.prepareStatement(" SELECT first_name, last_name, email, credibility, paypal from test.workers WHERE id=?");
 					getcredScores.setString(1,workerID);
 					ResultSet credScores = getcredScores.executeQuery();
@@ -108,10 +108,6 @@ public class ViewRecommendation extends HttpServlet{
 			    System.out.println(credRows);
 			    
 			    // HTTP session
-				HttpSession session = request.getSession();
-	            session.setAttribute("email", clientEmail);
-	            session.setAttribute("user", clientFirstName);
-	            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
 	            
 	            Cookie cookieEmail = new Cookie("email", clientEmail);
 	            Cookie cookieUserFirst = new Cookie("user", clientFirstName);

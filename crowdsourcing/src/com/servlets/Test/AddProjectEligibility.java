@@ -26,18 +26,15 @@ public class AddProjectEligibility extends HttpServlet{
 
 	//@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String clientEmail = request.getParameter("email");
-		String clientFirstName = request.getParameter("userFirst");
+		HttpSession session = request.getSession();
+		String clientEmail = (String)session.getAttribute("email");
+		String clientFirstName = (String)session.getAttribute("userFirst");
 		
 		try{			
 			// Establish Connection
 			DBConnection obj = new DBConnection();
 			Connection conn = null;
 			conn = obj.DBConnect();
-			
-			HttpSession session = request.getSession();
-            session.setAttribute("email", clientEmail);
-            session.setAttribute("user", clientFirstName);
             session.setMaxInactiveInterval(30*60);
             
             Cookie cookieEmail = new Cookie("email", clientEmail);
