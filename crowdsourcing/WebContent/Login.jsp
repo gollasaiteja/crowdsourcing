@@ -11,13 +11,13 @@
     	<script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-		<title>MTL Works</title>
+		<title>MTL Works | Login</title>
 	</head>
 	
 	<body>
 		  <div class="wrapper">
 		    <form class="form-signin" method="post" action="Login">       
-		      <h2 class="form-signin-heading">MTL Works</h2>
+		      <h2><a class="btn btn-lg btn-default" href="index.jsp" role="button">MTL WORKS</a></h2>
 		      <input type="text" class="form-control" name="email" placeholder="Email Address" required="true" autofocus="" />
 		      <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
 		      <label for="client"> 
@@ -26,9 +26,6 @@
 			  <label for="worker">
 			  	<input type="radio" name="type" value="0" id="worker" />  I'm a Freelancer
 			  </label><br />
-		      <%-- <label class="checkbox">
-		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-		      </label> --%>
 		      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
 		    </form>
   		</div>

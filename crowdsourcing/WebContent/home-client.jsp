@@ -28,7 +28,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title>Client Home</title>
+		<title><%=(String)session.getAttribute("userFirst") %> | Home</title>
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,11 +49,11 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="index.jsp"><button type="button" class="btn btn-lg btn-success">MTL Works</button></a>
+		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="index.jsp">Home</a></li>
+		            <li><a href="index.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
@@ -74,12 +74,12 @@
 		    <div class="container">
 				<div class="jumbotron">
 		        <h3>Hello <%=(String)session.getAttribute("userFirst") %>!</h3>
-		        <p>You can view your projects. You can also create a new project, and edit your profile.</p>
+		        <p>Welcome home. You can view your current projects, create a new project, and also edit your profile here.</p>
 		        <p>
 		        <form role="form" method="post" id="ViewProjectsClient" action="ViewProjectsClient">
 		        	<div>
 			        	<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
-			        	<input type="submit" value="My Projects &raquo;" class="btn btn-lg btn-primary">
+			        	<input type="submit" value="View My Projects &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
 		        </form>
 		        </p>
@@ -88,14 +88,15 @@
 		        	<div>
 		        		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
 		        		<input type="hidden" name="userFirst" value="<%=userFirst %>">
-		        		<input type="submit" value="New Project &raquo;" class="btn btn-lg btn-primary">
+		        		<input type="submit" value="Create New Project &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
 		        </form>
-		        <!--<a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>-->
+		        </br>
+		        <hr>
 		        <p>
 		        <form role="form" method="post" id="EditProfileClient" action="edit-profile-client.jsp">
 		        	<div>
-		        		<input type="submit" value="Edit Profile &raquo;" class="btn btn-lg btn-primary">
+		        		<input type="submit" value="Edit My Profile &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
 		        </form>
 		        </p>
