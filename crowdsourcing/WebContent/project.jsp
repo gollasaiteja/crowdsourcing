@@ -96,7 +96,8 @@
 	         		    	<b>Required Skill:</b> ${projectInfo[2]}</br>
 	         		    	<b>Required Availability:</b> ${projectInfo[3]} hours/week</br>
 	         		    	<b>Client Location:</b> ${projectInfo[4]}</br>
-	         		    	<b>Hourly Rate:</b> CAD ${projectInfo[5]}</br> 
+	         		    	<b>Hourly Rate:</b> CAD ${projectInfo[5]}</br></br> 
+	         		    	
 	         		    			
 	         		    	<!--  if worker status is not 0, 1, 2, he can initiate contact --> 
 	         		    	<c:if test="${projectInfo[7] == 0}">

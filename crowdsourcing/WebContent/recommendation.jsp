@@ -44,8 +44,8 @@
 		<script></script>
 	</head>
 	<body>
-		    <nav class="navbar navbar-default navbar-fixed-top">
-		      <div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
 		        <div class="navbar-header">
 		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		            <span class="sr-only">Toggle navigation</span>
@@ -53,23 +53,23 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand" href="index.jsp">MTL Works</a>
+		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="index.jsp">Home</a></li>
+		            <li><a href="index.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
+		            <li><a href="home-client.jsp"><%=(String)session.getAttribute("email")%></a></li>
 		            <li>
-		            <p class="navbar-btn">
+		            	<p class="navbar-btn">
 		            	<form method="post" action="Logout">
 				        	<input type="submit" value="Logout" class="btn btn-default">
-				    	</form>
-				    </p>
+				        </form>
+				        </p>
 		            </li>
 		          </ul>
 		        </div>
@@ -78,8 +78,8 @@
 		
 		    <div class="container">
 		      <div class="jumbotron">
-		        <h3><%=userFirst %></h3>
-		        <p>The following contractors are recommended for your project:</p>
+		      	<br>
+		        <p><%=(String)session.getAttribute("userFirst") %>, the following freelancers are recommended for your project:</p>
 		        	<% 
 	         			ArrayList rows = new ArrayList();
 	         			if (request.getAttribute("recommendation") != null){
@@ -90,49 +90,39 @@
          		    	<c:forEach items="${recommendation}" var="recommendedWorker">
 	    					<li>
 	    						<c:forEach items="${recommendedWorker[1]}" var="wFirstName">
-	         		    			Name: ${wFirstName}
+	         		    			<b>Name:</b> ${wFirstName}
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[2]}" var="wLastName">
 	         		    			${wLastName} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[3]}" var="wEmail">
-	         		    			Email: ${wEmail} </br>
+	         		    			<b>Email:</b> ${wEmail} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[4]}" var="wCredibility">
-	         		    			Credibility: ${wCredibility} </br>
+	         		    			<b>Total Credibility Score:</b> ${wCredibility} </br>
 	    						</c:forEach>
 	    						
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
-	    							Worker ID: ${wID} </br>
+	    							<!--  Worker ID: ${wID} </br>-->
 	    						</c:forEach>
-	    						
-				        					<script>
-												function sendMail(){
-													var link = "mailto:${recommendedWorker[3]}"
-													+ "sa.priom@gmail.com"
-													+ "&subject=" + escape("New message from ${wFirstName} via MTL Works")
-													+ "&body=" + escape(document.getElementById('raven').value);
-													window.location.href = link;
-												}
-											</script>
+	    						<br>
 				        					<div>
-				        						<textarea id="raven" placeholder="Write email..."></textarea>
-												<button onclick="sendMail(); return false">Send</button>
-												<a href="mailto:${recommendedWorker[3]}">Send email</a>
+												<a href="mailto:${recommendedWorker[3]}" class="btn btn-info">Send email &raquo;</a>
 				        					</div>
 				        					
-	    						
+										<br>	    						
 		         		    			<form role="form" method="post" action="AssignWorker">
 				        					<div>
 				        						<input type="hidden" name="worker_id" value="${recommendedWorker[0]}">
 				        						<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
-				        						<input type="hidden" name="user_first" value="<%=userFirst %>">
-				        						<input type="hidden" name="email" value="<%=userEmail %>">
-				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-secondary">
+				        						<input type="hidden" name="user_first" value="<%=(String)session.getAttribute("userFirst") %>">
+				        						<input type="hidden" name="email" value="<%=(String)session.getAttribute("email")%>">
+				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-info">
 				        					</div>
 			        					</form>
 			        					
-			        			</c:forEach>	
+			        			</c:forEach>
+			        			<br><hr>	
 	    					</li>     		    	
          		    	
          		    	

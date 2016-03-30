@@ -9,7 +9,6 @@
 		}
 		else{
 			emailAtt = (String) session.getAttribute("email");
-			passwordAtt = (String) session.getAttribute("password");
 			firstAtt = (String) session.getAttribute("userFirst");
 		}
 		
@@ -22,7 +21,6 @@
 		if(cookies != null){
 			for(Cookie cookie : cookies){
 		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
 		    	if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}
@@ -33,6 +31,7 @@
 <html>
 	<head>
 		<title>Project</title>
+		<meta name="sessionID" content="<%=sessionID %>">
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +42,7 @@
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 	</head>
 <body>
-<meta name="sessionID" content="<%=sessionID %>">
+
 		    <nav class="navbar navbar-default navbar-fixed-top">
 		      <div class="container">
 		        <div class="navbar-header">
@@ -64,7 +63,7 @@
             		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="home-client.jsp"><%=userEmail %></a></li>
+		            <li><a href="home-worker.jsp"><%=userEmail %></a></li>
 		            <li><a href="logout.jsp">Log Out</a></li>
 		          </ul>
 		        </div>
@@ -84,35 +83,38 @@
 	         			}
 	         			%>
 	         		
-	         			<ul>
-         		    	<c:forEach items="${workerprojects}" var="projectInfo">
-         		    
+	         			<c:forEach items="${workerprojects}" var="projectInfo">
+         		    		<ul>
 	         		    		<c:forEach items="${projectInfo[1]}" var="pTitle">
-	         		    			Project Title: ${pTitle}
+	         		    			<b>Project Title:</b> ${pTitle}
 	    						</c:forEach> </br>	
 	    						<c:forEach items="${projectInfo[2]}" var="pDescription">
-	         		    			Project Description: ${pDescription} 
+	         		    			<b>Project Description:</b> ${pDescription} 
 	         		    		</c:forEach> </br>
 	    						<c:forEach items="${projectInfo[3]}" var="pSkill">
-	         		    			Project Skill: ${pSkill} 
+	         		    			<b>Project Skill:</b> ${pSkill} 
 	         		    		</c:forEach> </br>
 	           		    		
 	         		    		<c:forEach items="${projectInfo[4]}" var="Credibility">
-	         		    			Project Credibility: ${Credibility} 
+	         		    			<b>Project Credibility:</b> ${Credibility} 
 	         		    		</c:forEach> </br>
 	         		    		<c:forEach items="${projectInfo[5]}" var="StatusClient">
-	         		    			Project StatusClient: ${StatusClient} 
+	         		    			<b>Client Status:</b> ${StatusClient} 
 	         		    		</c:forEach> </br>
 	         		    		
 	         		    		
 	         		    		<c:forEach items="${projectInfo[6]}" var="pStatusWorker">
-		         		    	Worker Status
+		         		    		<b>Worker Status:</b> 
+		         		    		<c:choose>
+		         		    			<c:when test="${projectInfo[6] == 0}">Not Assigned</c:when>
+		         		    			<c:when test="${projectInfo[6] == 1}">Assigned</c:when>
+		         		    			<c:when test="${projectInfo[6] == 2}">Completed</c:when>
+	         		    			</c:choose>
 		         		    	</c:forEach> </br>	
+	         		    		
 	         		    		<c:forEach items="${projectInfo[0]}" var="pId">
-	         		    			Project ID: ${pId}
-	    						
+	         		    			<!--  Project ID: ${pId}-->
 	    					  		<form method="post" action="UpdateStatusWorker">
-		         		    		
 		         		    		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
 		         		    		<input type="hidden" name="firstName" value="<%=(String)session.getAttribute("userFirst") %>">
 		         		    		<input type="hidden" name="projectId" value="${pId}">
@@ -122,13 +124,13 @@
 	                                    <option value="1">Assigned</option>
 	                                    <option value="2">Completed</option>
 	                                    </select>
-	                                    <input type="submit" value="Update">
+	                                    <input type="submit" value="Update Status &raquo;" class="btn btn-sm btn-info">
 		         		    			</form>
-		    						</c:forEach>     		    	
+		    						</c:forEach>
+		    					</ul>
+		    					<br><br>		     		    	
 	         		    	</c:forEach>
-	         			</ul>
-			        <p><a class="btn btn-lg btn-primary" href="add-project.jsp" role="button">New Project &raquo;</a></p>
-			      </div>
+			      		</div>
 			  </div>
 	         		    			
 </body>

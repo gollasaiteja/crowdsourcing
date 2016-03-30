@@ -90,7 +90,7 @@
          		    		<li>
 	         		    		<span>
 	         		    		<c:forEach var="title" items="${project[1]}">
-	         		    			<h3>${title}</h3>
+	         		    			<p>${title}</p>
 	    						</c:forEach>
 	    						<c:forEach var="link" items="${project[0]}">
 	         		    			<form role="form" method="post" action="ViewProject">
