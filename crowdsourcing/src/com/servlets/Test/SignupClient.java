@@ -31,7 +31,7 @@ public class SignupClient extends HttpServlet {
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
 		String email = request.getParameter("email");
-		String passwordConfirmation = request.getParameter("password_confirmation");
+		String password = request.getParameter("password");
 		String cardHolderName = request.getParameter("card_holder_name");
 		String cardNumber = request.getParameter("card_number");
 		String expiryMonth = request.getParameter("expiry_month");
@@ -40,7 +40,7 @@ public class SignupClient extends HttpServlet {
 		int type = 1;
 		
 		// Check console if everything is retrieved from previous page.
-		System.out.println(firstName + lastName + email + passwordConfirmation + cardHolderName + cardNumber + expiryMonth + expiryYear + cvv + type);
+		System.out.println(firstName + lastName + email + password + cardHolderName + cardNumber + expiryMonth + expiryYear + cvv + type);
 		
 		try{			
 			// Establish Connection
@@ -54,7 +54,7 @@ public class SignupClient extends HttpServlet {
 			signupClient.setString(1,firstName);
 			signupClient.setString(2,lastName);
 			signupClient.setString(3,email);
-			signupClient.setString(4,passwordConfirmation);
+			signupClient.setString(4,password);
 			signupClient.setString(5,cardHolderName);
 			signupClient.setString(6,cardNumber);
 			signupClient.setString(7,expiryMonth);
@@ -65,7 +65,7 @@ public class SignupClient extends HttpServlet {
 			
 			PreparedStatement insertUser = conn.prepareStatement("insert into test.users( email, password, type)" + "values(?,?,?)");
 			insertUser.setString(1,email);
-			insertUser.setString(2,passwordConfirmation); 
+			insertUser.setString(2,password); 
 			insertUser.setInt(3,type);
 			int result2 = insertUser.executeUpdate();
 			try{
