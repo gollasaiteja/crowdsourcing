@@ -103,7 +103,7 @@
 			        					<input type="text" class="form-control" name="availability" id="availability" placeholder="30, 30, 35 etc">
 			        				</div>
 			        				<div class="form-group">
-						    			<label for="paypal">Paypal Button Code:</label>
+						    			<label for="paypal">Paypal Business Email:</label>
 			        					<textarea class="form-control" name="paypal" id="paypal" placeholder="Paste paypal code here."></textarea>
 			        				</div>
 			               				

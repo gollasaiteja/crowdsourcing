@@ -134,6 +134,7 @@
 	    					
 	         		    	
 	         		    	<c:if test="${ projectInfo[7] == '2' && projectInfo[8] == '2' }">
+	         		    	<c:if test="${ projectInfo[6] == '0'  }">
 	    						<b>Assign Credibility Score:</b> 
 	         		    		<form method="post" action="AssignCredibility">
 	         		    		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
@@ -155,7 +156,10 @@
                                     </select>
                                     <input type="submit" value="Assign Credibility &raquo;" class="btn btn-sm btn-info">
 	         		    			</form>
+	         		    			</c:if>
 	         		    		</br>
+	         		    		
+	         		    		
 	         		    		<p class="bg-warning">The project is completed according to you and the contractor. Please make payment</p>
 	         		    		
 	         		    		
