@@ -160,6 +160,7 @@
 	         		    		</br>
 	         		    		
 	         		    		
+	         		    		
 	         		    		<p class="bg-warning">The project is completed according to you and the contractor. Please make payment</p>
 	         		    		
 	         		    		
