@@ -19,10 +19,10 @@
 
 		    $('#signupClient').validate({ // initialize the plugin
 		        rules: {
-		        	first_name: {
+		        	project_name: {
 		                required: true,
 		               		     },
-		        	last_name: {
+		        	project_skill: {
 		                required: true,
 		               		     },
 		             password: {
@@ -46,12 +46,11 @@
 		            
 		         messages: {
 		        	
-		        	 card_holder_name: {
-			                required: "Please enter your card holder name",
+		        	 project_name: {
+			                required: "Please enter project name",
 			               		     },
-			             cvv: {
-			  		         required: "Please enter your cvv number",
-			  		         maxlength:"Please enter 3 digit number",
+			             project_skill: {
+			  		         required: "Please select skill",
 			  		               	 }, 
 		        	 card_number: {
 		                required: "Please enter your card number",
@@ -113,6 +112,9 @@
 		      				<input type="radio" name="project_skill" value="design" id="project_skill" /> Design
 		      				<input type="radio" name="project_skill" value="writing" id="project_skill" /> Programming
 		      				<input type="radio" name="project_skill" value="marketing" id="project_skill" /> Marketing
+		      				<input type="radio" name="project_skill" value="translation" id="project_skill" /> Translation
+		      				<input type="radio" name="project_skill" value="engineering" id="project_skill" /> Engineering
+		      				<input type="radio" name="project_skill" value="admin" id="project_skill" /> Admin Support
 		      			</div>
 		      			</div>
 			    		

@@ -36,22 +36,9 @@
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-lg-4">
-          <h2>Hello from MTL Works!</h2>
-          <p >We aim to help people do their remote projects. You can explore the projects and features. </p>
-          <p></p>
-          <p><a class="btn btn-primary" href="all-projects.jsp" role="button">Explore Projects &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>Clients</h2>
-          <p>As client anyone can explore projects and post any new project. The clients track payments and rates projects.</p>
-          <p><a class="btn btn-primary" href="signup-client.jsp" role="button">Sign Up as Client &raquo;</a></p>
-       </div>
-        <div class="col-lg-4">
-          <h2>Freelancers</h2>
-          <p>As freelancer with better work you get more credibility score and rank higher in recommendation lists.</p>
-          <p><a class="btn btn-primary" href="signup-worker.jsp" role="button">Sign Up as Freelancer &raquo;</a></p>
-        </div>
+        Freelancers can select a skill with their profile. This skill is used by system to match projects posted on the website,
+        for which a freelancer may be recommended. The recommendation is based on skill and credibility score accumulated from all
+        previously completed projects.
       </div>
 
       <footer class="footer">
