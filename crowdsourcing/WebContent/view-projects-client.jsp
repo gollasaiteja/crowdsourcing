@@ -98,7 +98,7 @@
 			        						<input type="hidden" name="project_id" value="${link}">			        						
 			        						<input type="hidden" name="user_first" value="<%=(String)session.getAttribute("userFirst") %>">
 			        						<input type="hidden" name="email" value="<%=(String)session.getAttribute("email")%>">		        					
-			        						<input type="submit" value="Open Project &raquo;" class="btn btn-info">
+			        						<input type="submit" value="Open &raquo;" class="btn btn-info">
 			        					</div>
 		        					</form>
 		        					<hr>			

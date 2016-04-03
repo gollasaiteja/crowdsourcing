@@ -18,16 +18,16 @@ import javax.servlet.http.HttpSession;
 import com.crowdsourcing.DBConnection.DBConnection;
 
 /**
- * Servlet implementation class WorkerViewProject
+ * Servlet implementation class ViewProjectsWorker
  */
-@WebServlet("/ViewWorkerProject")
-public class ViewWorkerProject extends HttpServlet {
+@WebServlet("/ViewProjectsWorker")
+public class ViewProjectsWorker extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewWorkerProject() {
+    public ViewProjectsWorker() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -116,7 +116,7 @@ public class ViewWorkerProject extends HttpServlet {
 				}
 				request.setAttribute("workerprojects", Rows);
 				request.setAttribute("pPid", projectId);
-				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/worker-projects.jsp");
+				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/view-projects-worker.jsp");
 				requestDispatcher.forward(request,response);	
 			}
 			catch(Exception e){

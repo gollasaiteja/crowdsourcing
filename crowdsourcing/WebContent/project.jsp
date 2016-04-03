@@ -26,7 +26,7 @@
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}
 		}
-		%>
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -156,14 +156,12 @@
                                     </select>
                                     <input type="submit" value="Assign Credibility &raquo;" class="btn btn-sm btn-info">
 	         		    			</form>
-	         		    			</c:if>
-	         		    		</br>
+	         		    	</c:if>
+	         		    	</br>
 	         		    		
 	         		    		
-	         		    		
+	         		    	<c:if test="${ projectInfo[10] != 'null'}">
 	         		    		<p class="bg-warning">The project is completed according to you and the contractor. Please make payment</p>
-	         		    		
-	         		    		
 	         		    		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 									<input type="hidden" name="cmd" value="_xclick">
 									<input type="hidden" name="business" value="${projectInfo[10]}">
@@ -174,8 +172,13 @@
 									<input type="image" src="https://www.paypalobjects.com/webstatic/logo/logo_paypal_212x56.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 									<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 								</form>
+							</c:if>	
 
-
+							<c:if test="${ projectInfo[10] == 'null'}">
+								<div>
+									<p class="bg-warning">The assigned freelancer does not have business email with account. Please click the button below to send him an email.</p>
+									<a href="mailto:${projectInfo[12]}" class="btn btn-info">Send email &raquo;</a>
+				        		</div>
 								<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 								    <input type="hidden" name="cmd" value="_xclick">
 								    <input type="hidden" name="business" value="XXX">
@@ -191,6 +194,7 @@
 								    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 								    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 								</form>-->
+	         		    	</c:if>
 	         		    		
 	         		    	</c:if>
          				</c:forEach>

@@ -70,13 +70,15 @@ public class ViewProject extends HttpServlet {
 				dbAssignedWorker = project.getString("assigned_worker");
 				
 				// Must be secured
-				PreparedStatement getPaypalCode = conn.prepareStatement(" select paypal from test.workers where id=? ");
+				PreparedStatement getPaypalCode = conn.prepareStatement(" select email, paypal from test.workers where id=? ");
 				getPaypalCode.setString(1,dbAssignedWorker);
 				String dbPaypal = "null";
+				String dbwemail = "null";
 				ResultSet paypal = getPaypalCode.executeQuery();
 				
 				while(paypal.next()){
 					dbPaypal = paypal.getString("paypal");
+					dbwemail = paypal.getString("email");
 				}
 				
 				ArrayList<String>row = null;
@@ -94,6 +96,7 @@ public class ViewProject extends HttpServlet {
 			    	row.add(project.getString("assigned_worker"));
 			    	row.add(dbPaypal);
 			    	row.add(projectID);
+			    	row.add(dbwemail);
 			    	Rows.add(row);
 			    	System.out.println(row);
 			    }
