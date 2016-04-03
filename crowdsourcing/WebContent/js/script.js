@@ -1,3 +1,4 @@
+var hasValidationError = false;
 $(".alignment .btn").click(function() {
     // whenever a button is clicked, set the hidden helper
     $("#alignment").val($(this).text());
@@ -19,6 +20,14 @@ function workerRegistration(){
 $(document).ready(function(){
 	$("#email").blur(validateEmail);
 });
+
+$("#signupClient").submit(formValidation);
+
+function formValidation(){
+	if ( hasValidationError ) {
+		return false;
+	}
+}
 
 function emailValidationSuccess(resp){
 	if(!resp){
@@ -50,10 +59,16 @@ $(document).ready(function(){
 	});
 function emailValidationSuccess(resp){
 	if(!resp){
-		$("#clientEmail").css("border-color","red")
+		$("#clientEmail").css("border-color","red");
+		$("#submitBtn").attr("disabled", true);
+		$("#emailValidationError").html("<p>Email already exists!</p>");
+		hasValidationError = true;
 	}
 	else {
-		$("#clientEmail").css("border-color","black")
+		$("#submitBtn").attr("disabled", false);
+		$("#clientEmail").css("border-color","black");
+		$("#emailValidationError").html("");
+		hasValidationError = false;
 	}
 }
 function emailValidationFailure(resp){

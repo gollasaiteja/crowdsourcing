@@ -100,7 +100,9 @@
 			    		<div class="form-group">
 			    			<input type="email" name="email" id="clientEmail" class="form-control input-sm" placeholder="Email Address">
 			    		</div>
-
+						<div class="form-group">
+			    			<div id="emailValidationError"></div>
+			    		</div>
 			    		<div class="row">
 			    			<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">
@@ -171,7 +173,7 @@
 				        	</div>
 				      	</div>
 			    			
-			    		<input type="submit" value="Register" class="btn btn-info btn-block">
+			    		<input type="submit" value="Register" id="submitBtn" class="btn btn-info btn-block">
 			    		
 			    	</form>
 			    </div>
