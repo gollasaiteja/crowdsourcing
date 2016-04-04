@@ -69,17 +69,14 @@
 	<body>
 		<div class="container">
 
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-      	<h1>MTL Works: New Client</h1>
-      </div>
+      	<div class="atmiddle"><button type="button" class="btn btn-lg btn-default navbar-btn">MTL WORKS: New Client</button></div>
 		
 		
       <div class="row centered-form">
        	<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-			    	<h3 class="panel-title"><small>MTL Works</small></h3>
+			    	<h3 class="panel-title">Registration Form<small></small></h3>
 			 	</div>
 			 	<div class="panel-body">
 			    	<form role="form" method="post" id="signupClient" action="SignupClient">
@@ -110,11 +107,6 @@
 			    				</div>
 			    			</div>
 			    			
-			    	<%--		<div class="col-xs-6 col-sm-6 col-md-6">
-			    				<div class="form-group">
-			    					<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
-			    				</div>
-			    			</div>  --%>
 			    		</div>
 			    			
 						<div class="form-group">
@@ -126,24 +118,24 @@
         				</div>
 
 						<div class="form-group row">
-        					<label class="col-sm-5 control-label" for="expiry_month">Expiration Date</label>
-        					<div class="col-sm-7">
+        					<label class="col-sm-4 control-label" for="expiry_month">Expires on:</label>
+        					<div class="col-sm-8">
           						<div class="row">
             						<div class="col-xs-6">
               							<select class="form-control col-sm-3" name="expiry_month" id="expiry-month">
                 							<option>Month</option>
-							                <option value="01">Jan (01)</option>
-							                <option value="02">Feb (02)</option>
-							                <option value="03">Mar (03)</option>
-							                <option value="04">Apr (04)</option>
-							                <option value="05">May (05)</option>
-							                <option value="06">June (06)</option>
-							                <option value="07">July (07)</option>
-							                <option value="08">Aug (08)</option>
-							                <option value="09">Sep (09)</option>
-							                <option value="10">Oct (10)</option>
-							                <option value="11">Nov (11)</option>
-							                <option value="12">Dec (12)</option>
+							                <option value="01">Jan</option>
+							                <option value="02">Feb</option>
+							                <option value="03">Mar</option>
+							                <option value="04">Apr</option>
+							                <option value="05">May</option>
+							                <option value="06">June</option>
+							                <option value="07">July</option>
+							                <option value="08">Aug</option>
+							                <option value="09">Sep</option>
+							                <option value="10">Oct</option>
+							                <option value="11">Nov</option>
+							                <option value="12">Dec</option>
 							             </select>
             						</div>
             						

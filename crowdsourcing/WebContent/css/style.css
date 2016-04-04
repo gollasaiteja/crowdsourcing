@@ -6,6 +6,14 @@ body {
   background: #eee !important;
 }
 
+.atmiddle{text-align: center;}
+.projectgrid{    
+	padding: 10px !important;
+    background: white;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+
 .navbar{min-height:auto !important;}
 .homeback{background-image: url("../images/mtl.png"); color:snow !important;}
 

@@ -30,7 +30,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title>Project</title>
+		<title><%=(String)session.getAttribute("userFirst") %>'s Projects</title>
 		<meta name="sessionID" content="<%=sessionID %>">
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,8 +43,8 @@
 	</head>
 <body>
 
-		    <nav class="navbar navbar-default navbar-fixed-top">
-		      <div class="container">
+	<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
 		        <div class="navbar-header">
 		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		            <span class="sr-only">Toggle navigation</span>
@@ -52,29 +52,32 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand" href="index.jsp">MTL Works</a>
+		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="index.jsp">Home</a></li>
+		            <li><a href="index.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
-            		<li><a href="about-mtlworks.jsp">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="home-worker.jsp"><%=userEmail %></a></li>
-		            <li><a href="logout.jsp">Log Out</a></li>
+		            <li><a href="home-client.jsp"><%=(String)session.getAttribute("email")%></a></li>
+		            <li>
+		            	<p class="navbar-btn">
+		            	<form method="post" action="Logout">
+				        	<input type="submit" value="Logout" class="btn btn-default">
+				        </form>
+				        </p>
+		            </li>
 		          </ul>
 		        </div>
 		      </div>
 		    </nav>
 		     <div class="container">
 		      <div class="jumbotron">
-		        <h3><%=(String)session.getAttribute("userFirst") %></h3>
-		        
-		        	
-		        <p>Your projects:</p>
+		        <h3><%=(String)session.getAttribute("userFirst") %>, these projects are currently assinged to you:</h3>
+		        <br>
 		        	<% 
 	         			ArrayList rows = new ArrayList();
 		        	
@@ -82,9 +85,10 @@
 	             			rows = (ArrayList) request.getAttribute("workerprojects");
 	         			}
 	         			%>
-	         		
+	         			<ol>
 	         			<c:forEach items="${workerprojects}" var="projectInfo">
-         		    		<ul>
+         		    		
+         		    		<li class="projectgrid">
 	         		    		<c:forEach items="${projectInfo[1]}" var="pTitle">
 	         		    			<b>Project Title:</b> ${pTitle}
 	    						</c:forEach> </br>	
@@ -127,9 +131,9 @@
 	                                    <input type="submit" value="Update Status &raquo;" class="btn btn-sm btn-info">
 		         		    			</form>
 		    						</c:forEach>
-		    					</ul>
-		    					<br><br>		     		    	
-	         		    	</c:forEach>
+		    					</li>
+		    					<br>		     		    	
+	         		    	</c:forEach></ol>
 			      		</div>
 			  </div>
 	         		    			

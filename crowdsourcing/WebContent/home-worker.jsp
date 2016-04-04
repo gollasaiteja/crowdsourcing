@@ -10,7 +10,6 @@
 	}
 		
 	String userEmail = null;
-	String userPassword = null;
 	String userFirst = null;
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
@@ -26,7 +25,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title> Home</title>
+		<title><%=(String)session.getAttribute("userFirst") %>'s homepage</title>
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,9 +37,8 @@
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 	</head>
 	<body>
-		<!-- Fixed navbar -->
-		    <nav class="navbar navbar-default navbar-fixed-top">
-		      <div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
 		        <div class="navbar-header">
 		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		            <span class="sr-only">Toggle navigation</span>
@@ -48,32 +46,36 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand" href="index.jsp">MTL Works</a>
+		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="index.jsp">Home</a></li>
+		            <li><a href="index.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="../navbar-static-top/"><%=(String)session.getAttribute("email") %></a></li>
-		            <li class="active"><a href="./"><%=(String)session.getAttribute("userFirst") %> <span class="sr-only">(current)</span></a></li>
+		            <li><a href="home-client.jsp"><%=(String)session.getAttribute("email")%></a></li>
+		            <li>
+		            	<p class="navbar-btn">
+		            	<form method="post" action="Logout">
+				        	<input type="submit" value="Logout" class="btn btn-default">
+				        </form>
+				        </p>
+		            </li>
 		          </ul>
 		        </div>
 		      </div>
 		    </nav>
 		
 		    <div class="container">
-		
-		      <!-- Main component for a primary marketing message or call to action -->
 		      <div class="jumbotron">
-		        <h1>Hello <%=(String)session.getAttribute("userFirst")%>!</h1>
-		        <p>Welcome</p>
-		        
+		        <h3>Hello <%=(String)session.getAttribute("userFirst")%>, welcome home!</h3>
+		        <p>You can view your assigned projects and update your progress.</p>
+		        <br>
 		        <p>
-		        <form role="form" method="post"  action="ViewWorkerProject">
+		        <form role="form" method="post"  action="ViewProjectsWorker">
 			        <div class="row">
 			        <div class="col-xs-3 col-sm-3 col-md-3">
 			        <input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>" class="btn btn-lg btn-primary">
@@ -91,9 +93,9 @@
 			        </div>
 		        </form>
 		        </p>
-		        
+		        <br><hr>
 		        <small>
-		          <a class="btn btn-lg btn-primary" href="browse-projects.jsp" role="button">Explore projects Projects &raquo;</a>
+		          <a class="btn btn-lg btn-info" href="browse-projects.jsp" role="button">Explore Projects &raquo;</a>
 		        </small>
 		      </div>
 		      </div>

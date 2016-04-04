@@ -37,13 +37,12 @@ public class AddProject extends HttpServlet {
 		System.out.println(pName + pDescription + pSkill + pAvailability + pRate + pLocation);
 		
 		HttpSession session = request.getSession();
-		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
+		String emailAtt = null; String firstAtt = null;
 		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
 		   response.sendRedirect("login.jsp");
 		}
 		else{
 			emailAtt = (String) session.getAttribute("email");
-			passwordAtt = (String) session.getAttribute("password");
 			firstAtt = (String) session.getAttribute("userFirst");
 		}
 		
@@ -56,7 +55,6 @@ public class AddProject extends HttpServlet {
 		if(cookies != null){
 			for(Cookie cookie : cookies){
 		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
 		    	if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}

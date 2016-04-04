@@ -13,7 +13,6 @@
 	}
 		
 	String userEmail = null;
-	String userPassword = null;
 	String userFirst = null;
 	String sessionID = null;
 	
@@ -78,7 +77,7 @@
 		    <div class="container">
 		      <div class="jumbotron">
 		      	</br>
-		        <h3><%=(String)session.getAttribute("userFirst") %>,here are your projects:</h3>
+		        <h3><%=(String)session.getAttribute("userFirst") %>,here are your projects:</h3><br><hr>
 		        	<% 
          			ArrayList rows = new ArrayList();
          			if (request.getAttribute("projectList") != null){
@@ -87,12 +86,14 @@
          			%>
          			<ol>
          		    	<c:forEach items="${projectList}" var="project">
-         		    		<li>
+         		    		<li class="projectgrid">
 	         		    		<span>
 	         		    		<c:forEach var="title" items="${project[1]}">
 	         		    			<p>${title}</p>
 	    						</c:forEach>
 	    						<c:forEach var="link" items="${project[0]}">
+	         		    		<div class="row">
+	         		    			<div class="col-xs-1 col-sm-1 col-md-1">	
 	         		    			<form role="form" method="post" action="ViewProject">
 			        					<div>
 			        						<input type="hidden" name="project_id" value="${link}">			        						
@@ -101,7 +102,18 @@
 			        						<input type="submit" value="Open &raquo;" class="btn btn-info">
 			        					</div>
 		        					</form>
-		        					<hr>			
+		        					</div>
+		        					<div class="col-xs-1 col-sm-1 col-md-1">
+		        					<form role="form" method="post" action="DeleteProject">
+			        					<div>
+			        						<input type="hidden" name="project_id" value="${link}">			        						
+			        						<input type="hidden" name="user_first" value="<%=(String)session.getAttribute("userFirst") %>">
+			        						<input type="hidden" name="email" value="<%=(String)session.getAttribute("email")%>">		        					
+			        						<input type="submit" value="Delete &raquo;" class="btn btn-danger">
+			        					</div>
+		        					</form>
+		        					</div>
+		        				</div>			
 		        				</c:forEach>
 	    						</span>
     						</li>     		    	

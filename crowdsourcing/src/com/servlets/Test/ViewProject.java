@@ -104,11 +104,11 @@ public class ViewProject extends HttpServlet {
 				// HTTP session
 				HttpSession session = request.getSession();
 	            session.setAttribute("email", email);
-	            session.setAttribute("user", firstName);
+	            session.setAttribute("userFirst", firstName);
 	            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
 	            
 	            Cookie userEmail = new Cookie("email", email);
-	            Cookie userFirst = new Cookie("user", firstName);
+	            Cookie userFirst = new Cookie("userFirst", firstName);
 	            userEmail.setMaxAge(30*60);
 	            userFirst.setMaxAge(30*60);
 	            response.addCookie(userEmail);

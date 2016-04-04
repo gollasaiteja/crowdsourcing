@@ -87,7 +87,7 @@
 		        <form role="form" method="post" action="AddProjectEligibility">
 		        	<div>
 		        		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
-		        		<input type="hidden" name="userFirst" value="<%=userFirst %>">
+		        		<input type="hidden" name="userFirst" value="<%=(String)session.getAttribute("userFirst") %>">
 		        		<input type="submit" value="Create New Project &raquo;" class="btn btn-lg btn-primary">
 		        	</div>
 		        </form>

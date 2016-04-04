@@ -43,14 +43,12 @@
 	
 	<body>
 		<div class="container">
-			<div class="jumbotron">
-			<h2>Freelancer Registration Form</h2>
-      		</div>
+			<div class="atmiddle"><button type="button" class="btn btn-lg btn-default navbar-btn">MTL WORKS: New Freelancer</button></div>
 				<div class="row centered-form">
-			       	<div class="col-xs-12 col-sm-12 col-md-12">
+			       	<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-2 col-md-offset-2">
 			        	<div class="panel panel-default">
 			        		<div class="panel-heading">
-						    	<h3 class="panel-title"><small>MTL Works</small></h3>
+						    	<h3 class="panel-title"><small>Registration Form</small></h3>
 						 	</div>
 						 	<div class="panel-body">
 						    	<form role="form" method="post" action="SignupWorker">
@@ -93,21 +91,23 @@
 					      			</div>
 					      		
 			      
-			      					<div class="form-group">
-			      						<label for="location">Your Location:</label>
+			      					<div class="form-group row">
+			      						<div class="col-xs-4 col-sm-4 col-md-4"><label for="location">Location:</label></div>
+			        					<div class="col-xs-8 col-sm-8 col-md-8">
 			        					<input type="text" class="form-control" name="location" id="location" placeholder="Example: Montreal, Toronto">
+			        					</div>
 			        				</div>
-						    		<div class="form-group">
-						    			<label for="rate">Hourly Rate:</label>
-			        					<input type="text" class="form-control" name="rate" id="rate" placeholder="15, 16.5 etc">
+						    		<div class="form-group row">
+						    			<div class="col-xs-4 col-sm-4 col-md-4"><label for="rate">Hourly Rate:</label></div>
+			        					<div class="col-xs-8 col-sm-8 col-md-8"><input type="text" class="form-control" name="rate" id="rate" placeholder="15, 16.5 etc"></div>
 			        				</div>
-						    		<div class="form-group">
-						    			<label for="availability">Availability per week:</label>
-			        					<input type="text" class="form-control" name="availability" id="availability" placeholder="30, 30, 35 etc">
+						    		<div class="form-group row">
+						    			<div class="col-xs-4 col-sm-4 col-md-4"><label for="availability">Availability per week:</label></div>
+			        					<div class="col-xs-8 col-sm-8 col-md-8"><input type="text" class="form-control" name="availability" id="availability" placeholder="30, 30, 35 etc"></div>
 			        				</div>
-			        				<div class="form-group">
-						    			<label for="paypal">Paypal Business Email:</label>
-			        					<textarea class="form-control" name="paypal" id="paypal" placeholder="Paste paypal code here."></textarea>
+			        				<div class="form-group row">
+						    			<div class="col-xs-4 col-sm-4 col-md-4"><label for="paypal">Paypal Business Email:</label></div>
+			        					<div class="col-xs-8 col-sm-8 col-md-8"><input class="form-control" name="paypal" id="paypal" placeholder="Paste paypal code here."></div>
 			        				</div>
 			               				
 						    		<input type="submit" value="Register" class="btn btn-info btn-block">

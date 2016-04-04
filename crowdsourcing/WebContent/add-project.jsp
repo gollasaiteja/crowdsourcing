@@ -1,8 +1,32 @@
-<%@ page language="java" contentType="text/html;"%>
-
+<%@ page language="java" contentType="text/html;" %>
+<%
+	String emailAtt = null; String firstAtt = null;
+	if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
+		response.sendRedirect("login.jsp");
+	}
+	else{
+		emailAtt = (String) session.getAttribute("email");
+		firstAtt = (String) session.getAttribute("userFirst");
+	}
+		
+	String userEmail = null;
+	String userFirst = null;
+	String sessionID = null;
+	
+	Cookie[] cookies = request.getCookies();
+		
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		    if(cookie.getName().equals("email")) userEmail = cookie.getValue();
+		    if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
+		    if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+		}
+	}
+%>
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>MTL Works: New Project</title>
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,80 +39,61 @@
 		<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
 		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 		<script>
-		$(document).ready(function () {
-
-		    $('#signupClient').validate({ // initialize the plugin
-		        rules: {
-		        	project_name: {
-		                required: true,
-		               		     },
-		        	project_skill: {
-		                required: true,
-		               		     },
-		             password: {
-		  		        required: true,
-		  		        minlength: 6,
-		  		               	 },
-		        	card_number: {
-		                required: true,
-		                maxlength: 16,
-		                regex: "(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})",
-		            //http://www.regular-expressions.info/creditcard.html
-		         		        },
-		        	card_holder_name: {
-		                required: true,
-		               		     },
-		             cvv: {
-		  		         required: true,
-		  		         maxlength: 3,
-		  		               	 }             		     
-		        },
-		            
-		         messages: {
-		        	
-		        	 project_name: {
-			                required: "Please enter project name",
-			               		     },
-			             project_skill: {
-			  		         required: "Please select skill",
-			  		               	 }, 
-		        	 card_number: {
-		                required: "Please enter your card number",
-		                maxlength: "Please enter 16 digit card number",
-		                regex: "Invalid credit card number",
-		            }
-		        }
-		    })
-		    });
-	
+			$(document).ready(function(){
+				$('#AddProject').validate({
+			        rules:{
+			        	project_name:{required: true,},
+			        	project_skill:{required: true,}             		     
+			        },
+			            
+			        messages:{
+			        	project_name:{required: "Please enter project name",},
+				        project_skill:{required: "Please select skill",}, 
+			        }
+			    })
+			});
 		</script>
-		<title>MTL Works: New Project</title>
 	</head>
 	
 	<body>
-		<div class="container">
-		
-		<div class="masthead">
-        		<h1><button type="button" class="btn btn-lg btn-success">MTL Works</button></h1>
-        		<nav class="navbar navbar-default">
-          			<ul class="nav nav-justified">
-            			<li class="active"><a href="#">Home</a></li>
-            			<li><a href="all-projects.jsp">Projects</a></li>
-            			<li><a href="all-clients.jsp">Clients</a></li>
-            			<li><a href="all-workers.jsp">Workers</a></li>
-          			</ul>
-        		</nav>
-      </div>
-
-      <div>
-      	<h1>New Project</h1>
-      </div>
-
-      <div class="row centered-form">
+	<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
+		        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		          <ul class="nav navbar-nav">
+		            <li><a href="index.jsp">Home</a></li>
+		            <li><a href="all-projects.jsp">Projects</a></li>
+            		<li><a href="all-clients.jsp">Clients</a></li>
+            		<li><a href="all-workers.jsp">Workers</a></li>
+		          </ul>
+		          <ul class="nav navbar-nav navbar-right">
+		            <li><a href="home-client.jsp"><%=(String)session.getAttribute("email")%></a></li>
+		            <li>
+		            	<p class="navbar-btn">
+		            	<form method="post" action="Logout">
+				        	<input type="submit" value="Logout" class="btn btn-default">
+				        </form>
+				        </p>
+		            </li>
+		          </ul>
+		        </div>
+		      </div>
+		    </nav>
+	
+	<div class="container">
+		<div class="row centered-form">
        	<div class="col-xs-8">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-			    	<h3 class="panel-title"><small>MTL Works</small></h3>
+			    	<h5 class="panel-title">New project for <%=(String)session.getAttribute("userFirst") %></h5>
 			 	</div>
 			 	<div class="panel-body">
 			    	<form role="form" method="post" id="AddProject" action="AddProject">
