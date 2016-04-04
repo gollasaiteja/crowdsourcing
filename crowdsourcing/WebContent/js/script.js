@@ -29,12 +29,26 @@ function formValidation(){
 	}
 }
 
+$("#signupWorker").submit(formValidation);
+
+function formValidation(){
+	if ( hasValidationError ) {
+		return false;
+	}
+}
+
 function emailValidationSuccess(resp){
 	if(!resp){
-		$("#email").css("border-color","red")
+		$("#email").css("border-color","red");
+		$("#submitBtn").attr("disabled", true);
+		$("#emailValidationError").html("<p>Email already exists!</p>");
+		hasValidationError = true;
 	}
 	else {
-		$("#email").css("border-color","black")
+		$("#submitBtn").attr("disabled", false);
+		$("#email").css("border-color","black");
+		$("#emailValidationError").html("");
+		hasValidationError = false;
 	}
 }
 

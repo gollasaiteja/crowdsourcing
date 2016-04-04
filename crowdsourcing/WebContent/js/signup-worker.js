@@ -1,3 +1,5 @@
+var hasWorkerValidationError=false;
+
 function workerRegistration() {
 	var hasErrors = false;
 	var emailId = document.getElementById("email").value;
@@ -12,16 +14,24 @@ function workerRegistration() {
 
 $(document).ready(function(){
 	$("#email").blur(validateEmail);
+	$("#SignupWorkerForm").submit(function(){
+		if(hasWorkerValidationError){
+			return false;
+		}
 	});
+});
 function emailValidationSuccess(resp){
 	if(!resp){
-		$("#email").css("border-color","red")
+		$("#email").css("border-color","red");
+		$("#submitBtn").attr("disabled", true);
+		$("#emailValidationError").html("<p>Email already exists!</p>");
 	}
 	else {
 		$("#email").css("border-color","black")
 	}
 }
 function emailValidationFailure(resp){
+	hasWorkerValidationError = true;
 	console.log(resp);
 }
 function validateEmail(evt){
