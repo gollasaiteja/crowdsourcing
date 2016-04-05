@@ -76,7 +76,7 @@
 		    </nav>
 		     <div class="container">
 		      <div class="jumbotron">
-		        <h3><%=(String)session.getAttribute("userFirst") %>, these projects are currently assinged to you:</h3>
+		        <h3><%=(String)session.getAttribute("userFirst") %>, these projects are currently assigned to you:</h3>
 		        <br>
 		        	<% 
 	         			ArrayList rows = new ArrayList();
@@ -103,15 +103,20 @@
 	         		    			<b>Project Credibility:</b> ${Credibility} 
 	         		    		</c:forEach> </br>
 	         		    		<c:forEach items="${projectInfo[5]}" var="StatusClient">
-	         		    			<b>Client Status:</b> ${StatusClient} 
+	         		    			<b>Client Status:</b>
+	         		    			<c:choose>
+		         		    			<c:when test="${projectInfo[5] == 0}">Not Assigned</c:when>
+		         		    			<c:when test="${projectInfo[5] == 1}">Assigned</c:when>
+		         		    			<c:when test="${projectInfo[5] == 2}">Completed</c:when>
+	         		    			</c:choose> 
 	         		    		</c:forEach> </br>
 	         		    		
 	         		    		
 	         		    		<c:forEach items="${projectInfo[6]}" var="pStatusWorker">
-		         		    		<b>Worker Status:</b> 
+		         		    		<b>Your Status:</b> 
 		         		    		<c:choose>
 		         		    			<c:when test="${projectInfo[6] == 0}">Not Assigned</c:when>
-		         		    			<c:when test="${projectInfo[6] == 1}">Assigned</c:when>
+		         		    			<c:when test="${projectInfo[6] == 1}">Ongoing</c:when>
 		         		    			<c:when test="${projectInfo[6] == 2}">Completed</c:when>
 	         		    			</c:choose>
 		         		    	</c:forEach> </br>	
@@ -122,10 +127,10 @@
 		         		    		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
 		         		    		<input type="hidden" name="firstName" value="<%=(String)session.getAttribute("userFirst") %>">
 		         		    		<input type="hidden" name="projectId" value="${pId}">
-		         		    			<select name="workerStatus">
+		         		    			<select name="workerStatus" class="form-control">
 		         		    			
 	                                    <option value="0">Not Assigned</option>
-	                                    <option value="1">Assigned</option>
+	                                    <option value="1">Ongoing</option>
 	                                    <option value="2">Completed</option>
 	                                    </select>
 	                                    <input type="submit" value="Update Status &raquo;" class="btn btn-sm btn-info">

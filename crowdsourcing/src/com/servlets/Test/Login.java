@@ -140,6 +140,8 @@ public class Login extends HttpServlet{
 				System.out.println("Mismatch");
 				System.out.println(dbEmail + dbPassword + dbType);
 				System.out.println(email + password + type);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+	        	requestDispatcher.forward(request, response);
 			}
 		}
 		

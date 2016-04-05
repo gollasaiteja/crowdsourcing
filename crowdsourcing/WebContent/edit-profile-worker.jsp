@@ -46,13 +46,7 @@
 		%>
 		
 		<div class="container">
-
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-      	<h1>MTL Works:Worker's Profile</h1>
-      </div>
-		
-		
+		<div class="atmiddle"><button type="button" class="btn btn-lg btn-default navbar-btn">MTL WORKS: New Freelancer</button></div>
       <div class="row centered-form">
        	<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">
@@ -93,15 +87,18 @@
 		      				<input type="radio" name="skill" value="design" id="skill" /> Design
 		      				<input type="radio" name="skill" value="writing" id="skill" /> Programming
 		      				<input type="radio" name="skill" value="marketing" id="skill" /> Marketing
+		      				<input type="radio" name="skill" value="translation" id="skill" /> Translation
+					      	<input type="radio" name="skill" value="engineering" id="skill" /> Engineering
+					      	<input type="radio" name="skill" value="admin" id="skill" /> Admin Support
 		      			</div>
 		      		
       
       					<div class="form-group">
         					<input type="text" class="form-control" name="location" id="location" placeholder="location">
         				</div>
-                              <div class="form-group">
+                             <!--  <div class="form-group">
         					<input type="text" class="form-control" name="experience" id="experience" placeholder="experience">
-        				</div>
+        				</div>-->
 			    			<div class="form-group">
         					<input type="text" class="form-control" name="rate" id="rate" placeholder="rate">
         				</div>
