@@ -1,31 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import ="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%
-	String emailAtt = null; String firstAtt = null; String passwordAtt = null;
-	if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
+	String emailAtt = null; String firstAtt = null;
+	if(session.getAttribute("email") == null || session.getAttribute("user") == null){
 		response.sendRedirect("login.jsp");
 	}
 	else{
 		emailAtt = (String) session.getAttribute("email");
-		firstAtt = (String) session.getAttribute("userFirst");
+		firstAtt = (String) session.getAttribute("user");
 	}
 		
 	String userEmail = null;
 	String userFirst = null;
 	String sessionID = null;
+	
 	Cookie[] cookies = request.getCookies();
 		
 	if(cookies != null){
 		for(Cookie cookie : cookies){
 		    if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
+		    if(cookie.getName().equals("user")) userFirst = cookie.getValue();
 		    if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 		}
 	}
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title><%=(String)session.getAttribute("userFirst") %>'s homepage</title>
+		<title>Client Projects</title>
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,39 +77,46 @@
 		
 		    <div class="container">
 		      <div class="jumbotron">
-		        <h3>Hello <%=(String)session.getAttribute("userFirst")%>, welcome home!</h3>
-		        <p>You can view your assigned projects and update your progress.</p>
-		        <br>
-		        <p>
-		        <form role="form" method="post"  action="ViewProjectsWorker">
-			        <div class="row">
-			        <div class="col-xs-3 col-sm-3 col-md-3">
-			        <input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
-			        <input type="submit" value="My Projects &raquo" class="btn btn-lg btn-primary">
-			        </div>
-			        </div>
-		        </form>
-		        </p>
-		        <p>
-		        <form role="form" method="post" id="editworker_select" action="edit-profile-worker.jsp">
-			        <div class="row">
-			        <div class="col-xs-3 col-sm-3 col-md-3">
-			        <input type="submit" value="Edit Profile &raquo" class="btn btn-lg btn-primary">
-			        </div>
-			        </div>
-		        </form>
-		        </p>
-		        <br><hr>
-		        <form role="form" method="post" action="AllProjects">
-			        <div class="row">
-			        <div class="col-xs-3 col-sm-3 col-md-3">
-			        <input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
-			        <input type="hidden" name="user" value="<%=(String)session.getAttribute("userFirst") %>">
-			        <input type="submit" value="Apply for Projects &raquo" class="btn btn-lg btn-primary">
-			        </div>
-			        </div>
-		        </form>
+		      	</br>
+		        <h3><%=(String)session.getAttribute("user") %>, here are projects that you can apply to:</h3><br><hr>
+		        	<% 
+         			ArrayList rows = new ArrayList();
+         			if (request.getAttribute("projectList") != null){
+             			rows = (ArrayList) request.getAttribute("projectList");
+         			}
+         			%>
+         			<ol>
+         		    	<c:forEach items="${projectList}" var="project">
+         		    		<li class="projectgrid">
+	         		    		
+	         		    		<c:forEach var="title" items="${project[1]}">
+	         		    			<p>${title}</p>
+	    						</c:forEach>
+	    						
+	    						<c:forEach var="skill" items="${project[4]}">
+	         		    			<small style="text-transform:capitalize;"><u>${fn:toLowerCase(skill)}</u></small>
+	    						</c:forEach><br>
+	    						
+	    						<c:forEach var="description" items="${project[2]}">
+	         		    			<small>${description}</small>
+	    						</c:forEach><br><hr>	
+	    						
+	    						<c:forEach var="client" items="${project[3]}">
+	         		    		<div class="row">
+	         		    			<div class="col-xs-1 col-sm-1 col-md-1">	
+	         		    				<div>
+											<a href="mailto:${client}" class="btn btn-info">Apply &raquo;</a>
+				        				</div>
+		        					</div>
+		        				</div>			
+		        				</c:forEach><br>
+    						</li>     		    	
+         		    	</c:forEach>
+         			</ol>
+         			</br>
+         			<hr>
+		        
 		      </div>
-		      </div>
-</body>
+		  </div>
+	</body>
 </html>
