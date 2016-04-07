@@ -43,13 +43,11 @@ public class ViewProjectsClient extends HttpServlet{
 			String dbID = "null";
 			String dbName = "null";
 			String dbStatusClient = "null";
-			
 			while(result.next()){
 				dbID = result.getString("id");
 				dbName = result.getString("name");
 				dbStatusClient = result.getString("status_client");
 				System.out.println(dbID + dbName + dbStatusClient);
-				
 				ArrayList row = new ArrayList();
 			    for (int i = 1; i <= 1 ; i++){
 			    	row.add(result.getString("id"));

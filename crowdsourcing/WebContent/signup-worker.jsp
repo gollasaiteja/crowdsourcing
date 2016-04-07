@@ -72,16 +72,16 @@
 						    					<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
 						    				</div>	
 						    			</div>
-<<<<<<< HEAD
+
 						    			</div>
 						    			<div class="row">
 						    			<div class="col-xs-12 col-sm-12 col-md-12">
-=======
+
 						    			<div class="form-group">
 			    		                     	<div id="emailValidationError"></div>
 			    		                </div>
 						    			<div class="col-xs-6 col-sm-6 col-md-6">
->>>>>>> origin/master
+
 						    				<div class="form-group">
 						    					<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
 						    				</div>
