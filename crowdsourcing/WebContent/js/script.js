@@ -108,7 +108,7 @@ $(document).ready(function(){
         	$("#first_name").val(response.firstName);
         	$("#last_name").val(response.lastName);
         	$("#password").val(response.password);
-        	$("#card-holder-name").val(response.cardHolderName);
+        	$("#card_holder_name").val(response.cardHolderName);
         	$("#card-number").val(response.cardNumber);
         	$("#expiry-month").val(response.expiryMonth);
         	$("#expiry_year").val(response.expiryYear);

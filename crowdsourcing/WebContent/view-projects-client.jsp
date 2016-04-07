@@ -103,6 +103,18 @@
 			        					</div>
 		        					</form>
 		        					</div>
+		        					
+		        					<div class="col-xs-1 col-sm-1 col-md-1">
+		        					<form role="form" method="post" action="edit-project-clients.jsp">
+			        					<div>
+			        						<input type="hidden" name="project_id" value="${link}">			        						
+			        						<input type="hidden" name="user_first" value="<%=(String)session.getAttribute("userFirst") %>">
+			        						<input type="hidden" name="email" value="<%=(String)session.getAttribute("email")%>">		        					
+			        						<input type="submit" value="Edit &raquo;" class="btn btn-info">
+			        					</div>
+		        					</form>
+		        					</div>
+		        					
 		        					<div class="col-xs-1 col-sm-1 col-md-1">
 		        					<form role="form" method="post" action="DeleteProject">
 			        					<div>

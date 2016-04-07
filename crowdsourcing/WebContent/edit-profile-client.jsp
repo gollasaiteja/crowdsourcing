@@ -57,7 +57,7 @@
 			    	<h3 class="panel-title">Edit Profile <small>MTL Works</small></h3>
 			 	</div>
 			 	<div class="panel-body">
-			    	<form role="form" method="post" id="signupClient" action="SignupClient">
+			    	<form role="form" method="post" id="signupClient" action="UpdateClient">
 			    		<div class="row">
 			    			<div class="col-xs-6 col-sm-6 col-md-6">
 			    				<div class="form-group">
@@ -92,7 +92,7 @@
 			    		</div>
 			    			
 						<div class="form-group">
-        					<input type="text" class="form-control" name="card_holder_name" id="card-holder-name" placeholder="Card Holder's Name">
+        					<input type="text" class="form-control" name="card_holder_name" id="card_holder_name" placeholder="Card Holder's Name">
         				</div>
       
       					<div class="form-group">

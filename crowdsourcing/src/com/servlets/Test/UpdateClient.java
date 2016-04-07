@@ -47,7 +47,7 @@ public class UpdateClient extends HttpServlet {
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
 		String password = request.getParameter("password");
-		String cardHolderName = request.getParameter("card-holder-name");
+		String cardHolderName = request.getParameter("card_holder_name");
 		String cardNumber = request.getParameter("card_number");
 		String cvv = request.getParameter("cvv");
 		String expiryMonth = request.getParameter("expiry_month");
@@ -72,8 +72,16 @@ public class UpdateClient extends HttpServlet {
 		pst.setString(6,cvv);
 		pst.setString(7,expiryMonth);
 		pst.setString(8,expiryYear);
+		pst.setString(9,email);
 
 		int result = pst.executeUpdate();
+		
+		PreparedStatement pst1 = conn.prepareStatement("update test.users set password=? "
+				+ " where email=?");
+		pst1.setString(1,password);
+		pst1.setString(2,email);
+
+		int result1 = pst1.executeUpdate();
 		
 		
 		try{
@@ -84,7 +92,7 @@ public class UpdateClient extends HttpServlet {
 		catch(SQLException e){
 			e.printStackTrace();
 		}
-		if(result == 1){
+		
 			System.out.println("data updated succesfully!");
 			// HTTP session
 			HttpSession session1 = request.getSession();
@@ -100,10 +108,9 @@ public class UpdateClient extends HttpServlet {
             response.addCookie(userFirst);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
 			requestDispatcher.forward(request, response);
-		}
-		else{
-			System.out.println("Not inserted");
-		}
+		
+			
+		
 		
 }
 	catch(SQLException e){
