@@ -52,11 +52,11 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
+		          <button type="button" class="btn btn-default navbar-btn">MTL WORKS</button>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li><a href="index.jsp">Home</a></li>
+		            <li><a href="home-client.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
@@ -90,14 +90,16 @@
          		%>
 		        	<ul>
          		    	<c:forEach items="${project}" var="projectInfo">
-	         		    	<h3><%=(String)session.getAttribute("userFirst") %>, below you can see details of ${projectInfo[0]}:</h3><br>
+	         		    	<h3><%=(String)session.getAttribute("userFirst") %>, here are the details of ${projectInfo[0]}:</h3><br>
 	         		    	<b>Project Title:</b> ${projectInfo[0]}</br>
 	         		    	<b>Project Description:</b> ${projectInfo[1]} </br>
 	         		    	<b>Required Skill:</b> ${projectInfo[2]}</br>
 	         		    	<b>Required Availability:</b> ${projectInfo[3]} hours/week</br>
 	         		    	<b>Client Location:</b> ${projectInfo[4]}</br>
-	         		    	<b>Hourly Rate:</b> CAD ${projectInfo[5]}</br></br> 
-	         		    	
+	         		    	<b>Hourly Rate:</b> CAD ${projectInfo[5]}</br>
+	         		    	<c:if test="${ projectInfo[6] != NULL}">
+	         		    		<b>Credibility Score:</b> ${projectInfo[6]} out of 1.0 <br>
+	         		    	</c:if>
 	         		    			
 	         		    	<!--  if worker status is not 0, 1, 2, he can initiate contact --> 
 	         		    	<c:if test="${projectInfo[7] == 0}">
@@ -158,13 +160,15 @@
 	         		    	</c:if>
 	         		    	
 	         		    	<c:if test="${ projectInfo[7] == '2' && projectInfo[8] == '2' }">
+	         		    	
+	         		    	
 	         		    	<c:if test="${ projectInfo[10] != 'null'}">
 	         		    		<p class="bg-warning">The project is completed according to you and the contractor. Please make payment</p>
 	         		    		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 									<input type="hidden" name="cmd" value="_xclick">
 									<input type="hidden" name="business" value="${projectInfo[10]}">
 									<input type="hidden" name="lc" value="CA">
-									<input type="hidden" name="item_name" value="MTLWORKS">
+									<input type="hidden" name="item_name" value="${projectInfo[0]}">
 									<input type="hidden" name="currency_code" value="CAD">
 									<input type="hidden" name="bn" value="PP-DonationsBF:logo_paypal_212x56.png:NonHosted">
 									<input type="image" src="https://www.paypalobjects.com/webstatic/logo/logo_paypal_212x56.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">

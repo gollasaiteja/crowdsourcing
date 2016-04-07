@@ -65,11 +65,11 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
+		          <button type="button" class="btn btn-default navbar-btn">MTL WORKS</button>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li><a href="index.jsp">Home</a></li>
+		            <li><a href="home-client.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
@@ -115,7 +115,7 @@
 			    		<label for="project_skill">Choose a Skill Category:</label> 
 		      				<input type="radio" checked="checked" name="project_skill" value="writing" id="project_skill" /> Writing
 		      				<input type="radio" name="project_skill" value="design" id="project_skill" /> Design
-		      				<input type="radio" name="project_skill" value="writing" id="project_skill" /> Programming
+		      				<input type="radio" name="project_skill" value="programming" id="project_skill" /> Programming
 		      				<input type="radio" name="project_skill" value="marketing" id="project_skill" /> Marketing
 		      				<input type="radio" name="project_skill" value="translation" id="project_skill" /> Translation
 		      				<input type="radio" name="project_skill" value="engineering" id="project_skill" /> Engineering

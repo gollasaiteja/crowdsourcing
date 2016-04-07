@@ -30,7 +30,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Projects by <%=userFirst %></title>
+		<title>Projects by <%=(String)session.getAttribute("userFirst") %></title>
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,11 +53,11 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
+		          <button type="button" class="btn btn-default navbar-btn">MTL WORKS</button>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li><a href="index.jsp">Home</a></li>
+		            <li><a href="home-client.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>

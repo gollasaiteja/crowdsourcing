@@ -85,7 +85,7 @@
 			    		<label for="skill">Choose a Skill Category:</label> 
 		      				<input type="radio" checked="checked" name="skill" value="writing" id="skill" /> Writing
 		      				<input type="radio" name="skill" value="design" id="skill" /> Design
-		      				<input type="radio" name="skill" value="writing" id="skill" /> Programming
+		      				<input type="radio" name="skill" value="programming" id="skill" /> Programming
 		      				<input type="radio" name="skill" value="marketing" id="skill" /> Marketing
 		      				<input type="radio" name="skill" value="translation" id="skill" /> Translation
 					      	<input type="radio" name="skill" value="engineering" id="skill" /> Engineering

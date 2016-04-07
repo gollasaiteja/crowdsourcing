@@ -106,21 +106,24 @@ public class ViewRecommendation extends HttpServlet{
 					}
 			    }
 			    System.out.println(credRows);
-			    
-			    // HTTP session
-	            
-	            Cookie cookieEmail = new Cookie("email", clientEmail);
-	            Cookie cookieUserFirst = new Cookie("user", clientFirstName);
-	            cookieEmail.setMaxAge(30*60);
-	            cookieUserFirst.setMaxAge(30*60);
-	            response.addCookie(cookieEmail);
-	            response.addCookie(cookieUserFirst);
-	            
-	            request.setAttribute("recommendation", credRows);
+			    request.setAttribute("recommendation", credRows);
 			}
 			request.setAttribute("pID", projectID);
 			
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/recommendation.jsp");
+			// HTTP session
+		    HttpSession session = request.getSession();
+            session.setAttribute("email", clientEmail);
+            session.setAttribute("user", clientFirstName);
+            session.setMaxInactiveInterval(30*60); //session expires in 30 minutes
+            
+            Cookie cookieEmail = new Cookie("email", clientEmail);
+            Cookie cookieUserFirst = new Cookie("user", clientFirstName);
+            cookieEmail.setMaxAge(30*60);
+            cookieUserFirst.setMaxAge(30*60);
+            response.addCookie(cookieEmail);
+            response.addCookie(cookieUserFirst);
+			
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/recommendation.jsp");
             requestDispatcher.forward(request,response);
 		}
 		

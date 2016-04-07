@@ -52,11 +52,11 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
+		          <button type="button" class="btn btn-default navbar-btn">MTL WORKS</button>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li><a href="index.jsp">Home</a></li>
+		            <li><a href="home-worker.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
@@ -115,11 +115,11 @@
 	         		    		<c:forEach items="${projectInfo[6]}" var="pStatusWorker">
 		         		    		<b>Your Status:</b> 
 		         		    		<c:choose>
-		         		    			<c:when test="${projectInfo[6] == 0}">Not Assigned</c:when>
+		         		    			<c:when test="${projectInfo[6] == 0}">Started</c:when>
 		         		    			<c:when test="${projectInfo[6] == 1}">Ongoing</c:when>
 		         		    			<c:when test="${projectInfo[6] == 2}">Completed</c:when>
 	         		    			</c:choose>
-		         		    	</c:forEach> </br>	
+		         		    	</c:forEach> </br></br>	
 	         		    		
 	         		    		<c:forEach items="${projectInfo[0]}" var="pId">
 	         		    			<!--  Project ID: ${pId}-->
@@ -129,7 +129,7 @@
 		         		    		<input type="hidden" name="projectId" value="${pId}">
 		         		    			<select name="workerStatus" class="form-control">
 		         		    			
-	                                    <option value="0">Not Assigned</option>
+	                                    <option value="0">Started</option>
 	                                    <option value="1">Ongoing</option>
 	                                    <option value="2">Completed</option>
 	                                    </select>

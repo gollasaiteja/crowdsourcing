@@ -72,27 +72,28 @@
 						    					<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
 						    				</div>	
 						    			</div>
-<<<<<<< HEAD
-						    			</div>
-						    			<div class="row">
+						    		</div>
+						    		
+						    		<div class="row">
 						    			<div class="col-xs-12 col-sm-12 col-md-12">
-=======
 						    			<div class="form-group">
 			    		                     	<div id="emailValidationError"></div>
 			    		                </div>
-						    			<div class="col-xs-6 col-sm-6 col-md-6">
->>>>>>> origin/master
+			    		            	</div>
+			    		            </div>
+			    		            <div class="row">
+						    			<div class="col-xs-12 col-sm-12 col-md-12">
 						    				<div class="form-group">
 						    					<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
 						    				</div>
 						    			</div>
-						    			</div>
+						    		</div>
 						    			    			
 						    		<div class="form-group">
 						    		<label for="skill">Choose a Skill Category:</label> 
 					      				<input type="radio" checked="checked" name="skill" value="writing" id="skill" /> Writing
 					      				<input type="radio" name="skill" value="design" id="skill" /> Design
-					      				<input type="radio" name="skill" value="writing" id="skill" /> Programming
+					      				<input type="radio" name="skill" value="programming" id="skill" /> Programming
 					      				<input type="radio" name="skill" value="marketing" id="skill" /> Marketing
 					      				<input type="radio" name="skill" value="translation" id="skill" /> Translation
 					      				<input type="radio" name="skill" value="engineering" id="skill" /> Engineering
@@ -116,7 +117,7 @@
 			        				</div>
 			        				<div class="form-group row">
 						    			<div class="col-xs-4 col-sm-4 col-md-4"><label for="paypal">Paypal Business Email:</label></div>
-			        					<div class="col-xs-8 col-sm-8 col-md-8"><input class="form-control" name="paypal" id="paypal" placeholder="Paste paypal code here."></div>
+			        					<div class="col-xs-8 col-sm-8 col-md-8"><input class="form-control" name="paypal" id="paypal" placeholder="Enter email address associated with your Paypal business account."></div>
 			        				</div>
 			               				
 						    		<input type="submit" value="Register" id="submitBtn" class="btn btn-info btn-block">
