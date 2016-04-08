@@ -29,17 +29,17 @@
       		</div>
 
       <div class="jumbotron homeback" style="color:snow;">
-      	<h1>Let's do it together</h1>
-        <p class="lead">MTL Works is a great resource for remote work.</p>
-        <p><a class="btn btn-lg btn-primary" href="login.jsp" role="button">Log in</a></p>
+      	<h1>Clients</h1>
+        <p class="lead">As clients you can post new projects with a predefined skill. The recommendation algorithm in the system gives clients
+        ideal freelancers for the project. The client can communicate with the freelancer and assign project. When the status of
+        the project from both the client and freelancer are set to completed, clients should give credibility score before creating
+        a new project.</p>
+        <p><a class="btn btn-primary" href="signup-client.jsp" role="button">Sign Up as Client &raquo;</a></p>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
-        As clients you can post new projects with a predefined skill. The recommendation algorithm in the system gives clients
-        ideal freelancers for the project. The client can communicate with the freelancer and assign project. When the status of
-        the project from both the client and freelancer are set to completed, clients should give credibility score before creating
-        a new project. 
+         
       </div>
 
       <!-- Site footer -->

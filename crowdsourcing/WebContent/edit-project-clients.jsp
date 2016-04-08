@@ -67,11 +67,11 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="index.jsp"><button type="button" class="btn btn-default navbar-btn">MTL WORKS</button></a>
+		          <button type="button" class="btn btn-default navbar-btn">MTL WORKS</button>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li><a href="index.jsp">Home</a></li>
+		            <li><a href="home-client.jsp">Home</a></li>
 		            <li><a href="all-projects.jsp">Projects</a></li>
             		<li><a href="all-clients.jsp">Clients</a></li>
             		<li><a href="all-workers.jsp">Workers</a></li>
@@ -92,7 +92,7 @@
 	
 	<div class="container">
 		<div class="row centered-form">
-       	<div class="col-xs-8">
+       	<div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
         	<div class="panel panel-default">
         		<div class="panel-heading">
 			    	<h5 class="panel-title">Update project </h5>
@@ -115,10 +115,10 @@
 			    		
 			    		<div class="col-xs-12 col-sm-12 col-md-12">
 			    		<div class="form-group">
-			    		<label for="project_skill">Choose a Skill Category:</label> 
+			    		<label for="project_skill">Required Skill:</label> 
 		      				<input type="radio" checked="checked" name="project_skill" value="writing" id="project_skill" /> Writing
 		      				<input type="radio" name="project_skill" value="design" id="project_skill" /> Design
-		      				<input type="radio" name="project_skill" value="writing" id="project_skill" /> Programming
+		      				<input type="radio" name="project_skill" value="programming" id="project_skill" /> Programming
 		      				<input type="radio" name="project_skill" value="marketing" id="project_skill" /> Marketing
 		      				<input type="radio" name="project_skill" value="translation" id="project_skill" /> Translation
 		      				<input type="radio" name="project_skill" value="engineering" id="project_skill" /> Engineering
@@ -144,7 +144,9 @@
 				      	</div>
 				      	</div>
 			    		
-			    		<div class="col-xs-4 col-sm-6 col-md-6">	
+			    		<div class="col-xs-4 col-sm-6 col-md-6">
+			    		<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">
+		        		<input type="hidden" name="userFirst" value="<%=(String)session.getAttribute("userFirst") %>">	
 			    		<input type="submit" value="Update Project" class="btn btn-info btn-block">
 			    		</div>
 			    		</div>

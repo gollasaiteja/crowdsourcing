@@ -16,18 +16,16 @@
 <body>
 
 <%
-		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
+		String emailAtt = null; String firstAtt = null;
 		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
 		   response.sendRedirect("login.jsp");
 		}
 		else{
 			emailAtt = (String) session.getAttribute("email");
-			passwordAtt = (String) session.getAttribute("password");
 			firstAtt = (String) session.getAttribute("userFirst");
 		}
 		
 		String userEmail = null;
-		String userPassword = null;
 		String userFirst = null;
 		String sessionID = null;
 		Cookie[] cookies = request.getCookies();
@@ -35,21 +33,16 @@
 		if(cookies != null){
 			for(Cookie cookie : cookies){
 		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
 		    	if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}
 		}
 		
 		%>
-<div class="container">
 
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-      	<h1>MTL Works: Client's Profile</h1>
-      </div>
-		
-		
+
+<div class="container">
+<div class="atmiddle"><button type="button" class="btn btn-lg btn-default navbar-btn">MTL WORKS: <%=(String)session.getAttribute("userFirst") %>'s Profile</button></div>
       <div class="row centered-form">
        	<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">

@@ -18,18 +18,16 @@
 <body>
 
 <%
-		String emailAtt = null; String firstAtt = null; String passwordAtt = null;
+		String emailAtt = null; String firstAtt = null;
 		if(session.getAttribute("email") == null || session.getAttribute("userFirst") == null){
 		   response.sendRedirect("login.jsp");
 		}
 		else{
 			emailAtt = (String) session.getAttribute("email");
-			passwordAtt = (String) session.getAttribute("password");
 			firstAtt = (String) session.getAttribute("userFirst");
 		}
 		
 		String userEmail = null;
-		String userPassword = null;
 		String userFirst = null;
 		String sessionID = null;
 		Cookie[] cookies = request.getCookies();
@@ -37,7 +35,6 @@
 		if(cookies != null){
 			for(Cookie cookie : cookies){
 		    	if(cookie.getName().equals("email")) userEmail = cookie.getValue();
-		    	if(cookie.getName().equals("password")) userPassword = cookie.getValue();
 		    	if(cookie.getName().equals("userFirst")) userFirst = cookie.getValue();
 		    	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			}
@@ -46,12 +43,12 @@
 		%>
 		
 		<div class="container">
-		<div class="atmiddle"><button type="button" class="btn btn-lg btn-default navbar-btn">MTL WORKS: New Freelancer</button></div>
+		<div class="atmiddle"><button type="button" class="btn btn-lg btn-default navbar-btn">MTL WORKS: <%=(String)session.getAttribute("userFirst") %>'s Profile</button></div>
       <div class="row centered-form">
-       	<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+       	<div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-			    	<h3 class="panel-title">Edit Profile <small>MTL Works</small></h3>
+			    	<h3 class="panel-title"></h3>
 			 	</div>
 			 	<div class="panel-body">
 			    	<form role="form" method="post" action="UpdateWorker">
@@ -82,7 +79,7 @@
 			    			</div> --%>
 			    			    			
 			    		<div class="form-group">
-			    		<label for="skill">Choose a Skill Category:</label> 
+			    		<label for="skill">Skill:</label> 
 		      				<input type="radio" checked="checked" name="skill" value="writing" id="skill" /> Writing
 		      				<input type="radio" name="skill" value="design" id="skill" /> Design
 		      				<input type="radio" name="skill" value="programming" id="skill" /> Programming
@@ -105,7 +102,7 @@
 			    		<div class="form-group">
         					<input type="text" class="form-control" name="availability" id="availability" placeholder="availability">
         				</div>
-               			<input type="hidden" name="email" value="<%=userEmail %>"/>	
+               			<input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>"/>	
 			    		<input type="submit" value="Update" class="btn btn-info btn-block">
 			    		
 			    	</form>

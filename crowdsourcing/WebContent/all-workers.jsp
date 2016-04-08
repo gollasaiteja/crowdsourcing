@@ -17,7 +17,7 @@
 	<body>
 		<div class="container">
 			<div class="masthead">
-        		<h1><button type="button" class="btn btn-lg btn-success">MTL Works</button></h1>
+        		<h1><button type="button" class="btn btn-lg">MTL Works</button></h1>
         		<nav class="navbar navbar-default">
           			<ul class="nav nav-justified">
             			<li class="active"><a href="index.jsp">Home</a></li>
@@ -29,16 +29,16 @@
       		</div>
 
       <div class="jumbotron homeback" style="color:snow;">
-      	<h1>Let's do it together</h1>
-        <p class="lead">MTL Works is a great resource for remote work.</p>
-        <p><a class="btn btn-lg btn-primary" href="login.jsp" role="button">Log in</a></p>
+      	<h1>Freelancers</h1>
+        <p class="lead">Freelancers can select a skill with their profile. This skill is used by system to match projects posted on the website,
+        for which a freelancer may be recommended. The recommendation is based on skill and credibility score accumulated from all
+        previously completed projects.</p>
+        <p><a class="btn btn-primary" href="signup-worker.jsp" role="button">Sign Up as Freelancer &raquo;</a></p>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
-        Freelancers can select a skill with their profile. This skill is used by system to match projects posted on the website,
-        for which a freelancer may be recommended. The recommendation is based on skill and credibility score accumulated from all
-        previously completed projects.
+        
       </div>
 
       <footer class="footer">

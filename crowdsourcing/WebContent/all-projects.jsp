@@ -29,15 +29,15 @@
       		</div>
 
       <div class="jumbotron homeback" style="color:snow;">
-      	<h1>Let's do it together</h1>
-        <p class="lead">MTL Works is a great resource for remote work.</p>
+      	<h1>How Projects Work</h1>
+        <p class="lead">Projects have title, description and importantly a skill associated with it. When a project is completed, the client
+        must give a credibility score to the freelancer.</p>
         <p><a class="btn btn-lg btn-primary" href="login.jsp" role="button">Log in</a></p>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
-        Projects have title, description and importantly a skill associated with it. When a project is completed, the client
-        must give a credibility score to the freelancer. 
+         
       </div>
 
       <!-- Site footer -->

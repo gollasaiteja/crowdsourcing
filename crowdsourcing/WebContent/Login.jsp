@@ -17,17 +17,22 @@
 	<body>
 		  <div class="wrapper">
 		    <form class="form-signin" method="post" action="Login">       
-		      <h2><a class="btn btn-lg btn-default" href="index.jsp" role="button">MTL WORKS</a></h2>
+		      <h2><a class="btn btn-lg btn-block" href="index.jsp" role="button">MTL WORKS</a></h2>
 		      <input type="text" class="form-control" name="email" placeholder="Email Address" required="true" autofocus="" />
 		      <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
 		      <label for="client"> 
-		      	<input type="radio" checked="checked" name="type" value="1" id="client" />  I'm a Client
+		      	<input type="radio" name="type" value="1" id="client" />  I'm a Client
 		      </label><br />
 			  <label for="worker">
-			  	<input type="radio" name="type" value="0" id="worker" />  I'm a Freelancer
+			  	<input type="radio" checked="checked" name="type" value="0" id="worker" />  I'm a Freelancer
 			  </label><br />
-		      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+		      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+			  <br><br><hr>    
+		      <div class="row">
+			    <a class="btn btn-warning btn-block" href="signup-client.jsp" role="button">Sign Up as Client</a>
+			    <a class="btn btn-warning btn-block" href="signup-worker.jsp" role="button">Sign Up as Freelancer</a>
+			  </div>
 		    </form>
-  		</div>
+		</div>
 	</body>
 </html>

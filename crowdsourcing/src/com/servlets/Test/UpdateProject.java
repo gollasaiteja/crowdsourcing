@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +43,9 @@ public class UpdateProject extends HttpServlet {
 		String location = request.getParameter("project_location");
 		String rate = request.getParameter("project_rate");
 	 
-		HttpSession session=request.getSession();
+		String clientFirstName = request.getParameter("userFirst");
+		String clientEmail = request.getParameter("email");
+		System.out.println(clientFirstName+clientEmail+projectskill);
 		// Opening connection to DB to fetch user details
 					DBConnection obj = new DBConnection();
 					// SQL Query
@@ -59,7 +62,19 @@ public class UpdateProject extends HttpServlet {
 						
 						pst.executeUpdate();
 						
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("view-projects-client.jsp");
+						// HTTP session
+					    HttpSession session = request.getSession();
+			            session.setAttribute("email", clientEmail);
+			            session.setAttribute("user", clientFirstName);
+			            session.setMaxInactiveInterval(30*60);
+			            Cookie cookieEmail = new Cookie("email", clientEmail);
+			            Cookie cookieUserFirst = new Cookie("user", clientFirstName);
+			            cookieEmail.setMaxAge(30*60);
+			            cookieUserFirst.setMaxAge(30*60);
+			            response.addCookie(cookieEmail);
+			            response.addCookie(cookieUserFirst);
+						
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("home-client.jsp");
 						requestDispatcher.forward(request, response);
 						
 					}

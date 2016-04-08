@@ -11,7 +11,6 @@
 	}
 	
 	String userEmail = null;
-	String userPassword = null;
 	String userFirst = null;
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
