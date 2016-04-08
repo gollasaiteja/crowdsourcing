@@ -77,12 +77,14 @@ public class ViewRecommendation extends HttpServlet{
 			    	System.out.println("yes");
 			    	String workerID = (String) row1.get(i);
 			    	request.setAttribute("wID",workerID);
-			    	PreparedStatement getcredScores = conn.prepareStatement(" SELECT first_name, last_name, email, credibility, paypal from test.workers WHERE id=?");
+			    	PreparedStatement getcredScores = conn.prepareStatement(" SELECT first_name, last_name, email, rate, availability, credibility, paypal from test.workers WHERE id=?");
 					getcredScores.setString(1,workerID);
 					ResultSet credScores = getcredScores.executeQuery();
 					String rwFirstName = "null";
 					String rwLastName = "null";
 					String rwEmail = "null";
+					String rwRate = "null";
+					String rwAvailability = "null";
 					String rwCredScore = "null";
 					String rwPaypal = "null";
 				    
@@ -90,6 +92,8 @@ public class ViewRecommendation extends HttpServlet{
 						rwFirstName = credScores.getString("first_name");
 						rwLastName = credScores.getString("last_name");
 						rwEmail = credScores.getString("email");
+						rwRate = credScores.getString("rate");
+						rwAvailability = credScores.getString("availability");
 						rwCredScore = credScores.getString("credibility");
 						rwPaypal = credScores.getString("paypal");
 						ArrayList row2 = new ArrayList();
@@ -101,6 +105,11 @@ public class ViewRecommendation extends HttpServlet{
 					    	row2.add(rwCredScore);
 					    	row2.add(rwPaypal);
 					    	row2.add(projectID);
+					    	row2.add(dbProjectSkill);
+					    	row2.add(rwRate);
+					    	row2.add(dbProjectRate);
+					    	row2.add(rwAvailability);
+					    	row2.add(dbProjectAvailability);
 					    }
 					    credRows.add(row2);
 					}

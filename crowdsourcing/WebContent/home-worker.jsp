@@ -94,7 +94,7 @@
 		        </form>
 		        </p>
 		        <br><hr>
-		        <form role="form" method="post" action="AllProjects">
+		        <form role="form" method="post" action="ApplyProjects">
 			        <div class="row">
 			        <div class="col-xs-3 col-sm-3 col-md-3">
 			        <input type="hidden" name="email" value="<%=(String)session.getAttribute("email") %>">

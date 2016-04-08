@@ -88,7 +88,7 @@
          			%>
          			<ul>
          		    	<c:forEach items="${recommendation}" var="recommendedWorker">
-	    					<li>
+	    					<li class="projectgrid">
 	    						<c:forEach items="${recommendedWorker[1]}" var="wFirstName">
 	         		    			<b>Name:</b> ${wFirstName}
 	    						</c:forEach>
@@ -99,13 +99,26 @@
 	         		    			<b>Email:</b> ${wEmail} </br>
 	    						</c:forEach>
 	    						<c:forEach items="${recommendedWorker[4]}" var="wCredibility">
-	         		    			<b>Total Credibility Score:</b> ${wCredibility} </br>
+	         		    			<b>Freelancer Credibility:</b> ${wCredibility} out of 1.0 </br>
+	    						</c:forEach>
+	    						<c:forEach items="${recommendedWorker[8]}" var="wRate">
+	    							<b>Freelancer's Rate:</b> ${wRate} CAD/hour
+	    						</c:forEach>
+	    						<c:forEach items="${recommendedWorker[9]}" var="pRate">
+	    							<b>Your Rate:</b> ${pRate} CAD/hour
+	    						</c:forEach><br>
+	    						
+	    						<c:forEach items="${recommendedWorker[10]}" var="wAvailibility">
+	    							<b>Freelancer's Availability:</b> ${wAvailibility} hours/week
+	    						</c:forEach>
+	    						<c:forEach items="${recommendedWorker[11]}" var="pAvailability">
+	    							<b>Projects Estimated Availability:</b> ${pAvailability} hours/week
 	    						</c:forEach>
 	    						
 	    						<c:forEach items="${recommendedWorker[0]}" var="wID">
 	    							<!--  Worker ID: ${wID} </br>-->
 	    						</c:forEach>
-	    						<br>
+	    						<br><br>
 				        					<div>
 												<a href="mailto:${recommendedWorker[3]}" class="btn btn-info">Send email &raquo;</a>
 				        					</div>
@@ -117,7 +130,7 @@
 				        						<input type="hidden" name="project_id" value="<%=request.getAttribute("pID")%>">
 				        						<input type="hidden" name="user_first" value="<%=(String)session.getAttribute("userFirst") %>">
 				        						<input type="hidden" name="email" value="<%=(String)session.getAttribute("email")%>">
-				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-info">
+				        						<input type="submit" value="Assign Project &raquo;" class="btn btn-success">
 				        					</div>
 			        					</form>
 			        					

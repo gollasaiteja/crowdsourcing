@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/AllProjects")
+@WebServlet("/ApplyProjects")
 
-public class AllProjects extends HttpServlet{
+public class ApplyProjects extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
     
-    public AllProjects(){
+    public ApplyProjects(){
     	
     }
 
