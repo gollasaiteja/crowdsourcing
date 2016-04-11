@@ -116,7 +116,7 @@
 			    		<div class="col-xs-12 col-sm-12 col-md-12">
 			    		<div class="form-group">
 			    		<label for="project_skill">Required Skill:</label> 
-		      				<input type="radio" checked="checked" name="project_skill" value="writing" id="project_skill" /> Writing
+		      				<input type="radio" name="project_skill" value="writing" id="project_skill" /> Writing
 		      				<input type="radio" name="project_skill" value="design" id="project_skill" /> Design
 		      				<input type="radio" name="project_skill" value="programming" id="project_skill" /> Programming
 		      				<input type="radio" name="project_skill" value="marketing" id="project_skill" /> Marketing
